@@ -11,7 +11,7 @@ from aind_behavior_services.calibration import aind_manipulator
 from aind_behavior_services.rig import AindBehaviorRigModel
 from pydantic import BaseModel, Field
 
-__version__ = "0.3.0"
+__version__ = "0.1.0"
 
 
 class AindManipulatorAdditionalSettings(BaseModel):
@@ -34,20 +34,15 @@ class RigCalibration(BaseModel):
 
 class AindIsoForceRig(AindBehaviorRigModel):
     version: Literal[__version__] = __version__
-    triggered_camera_controller: rig.CameraController[rig.SpinnakerCamera] = Field(
+    triggered_camera_controller: rig.cameras.CameraController[rig.cameras.SpinnakerCamera] = Field(
         ..., description="Required camera controller to triggered cameras."
     )
-    monitoring_camera_controller: Optional[rig.CameraController[rig.WebCamera]] = Field(
-        default=None, description="Optional camera controller for monitoring cameras."
-    )
-    harp_behavior: rig.HarpBehavior = Field(..., description="Harp behavior")
-    harp_lickometer: rig.HarpLicketySplit = Field(..., description="Harp lickometer")
+    harp_behavior: rig.harp.HarpBehavior = Field(..., description="Harp behavior")
+    harp_lickometer: rig.harp.HarpLicketySplit = Field(..., description="Harp lickometer")
     harp_load_cells: lcc.LoadCells = Field(..., description="Harp load cells")
-    harp_clock_generator: rig.HarpWhiteRabbit = Field(..., description="Harp clock generator")
-    harp_analog_input: Optional[rig.HarpAnalogInput] = Field(default=None, description="Harp analog input")
-    harp_environment_sensor: Optional[rig.HarpEnvironmentSensor] = Field(
+    harp_clock_generator: rig.harp.HarpWhiteRabbit = Field(..., description="Harp clock generator")
+    harp_environment_sensor: Optional[rig.harp.HarpEnvironmentSensor] = Field(
         default=None, description="Harp Environment sensor"
     )
     manipulator: AindManipulatorDevice = Field(..., description="Manipulator")
-    screen: rig.Screen = Field(default=rig.Screen(), description="Screen settings")
     calibration: RigCalibration = Field(..., description="Load cells calibration")
