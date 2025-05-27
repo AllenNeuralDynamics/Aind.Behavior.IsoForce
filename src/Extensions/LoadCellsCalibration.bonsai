@@ -165,8 +165,8 @@
                           <Name>ThisOffset</Name>
                         </Expression>
                         <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="gl:Delay">
-                            <gl:DueTime>PT0.05S</gl:DueTime>
+                          <Combinator xsi:type="rx:Delay">
+                            <rx:DueTime>PT0.05S</rx:DueTime>
                           </Combinator>
                         </Expression>
                         <Expression xsi:type="MulticastSubject">

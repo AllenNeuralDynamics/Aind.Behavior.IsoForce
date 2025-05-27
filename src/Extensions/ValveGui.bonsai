@@ -149,8 +149,8 @@
               <Property Name="DueTime" DisplayName="Interval" />
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="gl:Timer">
-                <gl:DueTime>PT0.5S</gl:DueTime>
+              <Combinator xsi:type="rx:Timer">
+                <rx:DueTime>PT0.5S</rx:DueTime>
               </Combinator>
             </Expression>
             <Expression xsi:type="ExternalizedMapping">
@@ -249,8 +249,8 @@
               <Name>TriggerValve</Name>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="gl:Delay">
-                <gl:DueTime>PT0.2S</gl:DueTime>
+              <Combinator xsi:type="rx:Delay">
+                <rx:DueTime>PT0.2S</rx:DueTime>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
