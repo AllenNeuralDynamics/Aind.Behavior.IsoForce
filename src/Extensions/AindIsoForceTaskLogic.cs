@@ -9,113 +9,33 @@ namespace AindIsoForceDataSchema.TaskLogic
 {
     #pragma warning disable // Disable all warnings
 
+    /// <summary>
+    /// Defines the action types
+    /// </summary>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Bonsai.CombinatorAttribute()]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    public partial class ActionUpdater
+    public enum Action
     {
     
-        private UpdateTargetParameter _targetParameter = AindIsoForceDataSchema.TaskLogic.UpdateTargetParameter.Probability;
+        [System.Runtime.Serialization.EnumMemberAttribute(Value="0")]
+        None = 0,
     
-        private UpdateTargetParameterBy _updatedBy = AindIsoForceDataSchema.TaskLogic.UpdateTargetParameterBy.Time;
+        [System.Runtime.Serialization.EnumMemberAttribute(Value="1")]
+        Left = 1,
     
-        private NumericalUpdater _updater = new NumericalUpdater();
+        [System.Runtime.Serialization.EnumMemberAttribute(Value="2")]
+        Right = 2,
     
-        public ActionUpdater()
-        {
-        }
+        [System.Runtime.Serialization.EnumMemberAttribute(Value="3")]
+        LeftRight = 3,
     
-        protected ActionUpdater(ActionUpdater other)
-        {
-            _targetParameter = other._targetParameter;
-            _updatedBy = other._updatedBy;
-            _updater = other._updater;
-        }
+        [System.Runtime.Serialization.EnumMemberAttribute(Value="4")]
+        Push = 4,
     
-        /// <summary>
-        /// Target parameter
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("target_parameter")]
-        [System.ComponentModel.DescriptionAttribute("Target parameter")]
-        public UpdateTargetParameter TargetParameter
-        {
-            get
-            {
-                return _targetParameter;
-            }
-            set
-            {
-                _targetParameter = value;
-            }
-        }
+        [System.Runtime.Serialization.EnumMemberAttribute(Value="8")]
+        Pull = 8,
     
-        /// <summary>
-        /// Independent variable
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("updated_by")]
-        [System.ComponentModel.DescriptionAttribute("Independent variable")]
-        public UpdateTargetParameterBy UpdatedBy
-        {
-            get
-            {
-                return _updatedBy;
-            }
-            set
-            {
-                _updatedBy = value;
-            }
-        }
-    
-        /// <summary>
-        /// Updater
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("updater", Required=Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DescriptionAttribute("Updater")]
-        public NumericalUpdater Updater
-        {
-            get
-            {
-                return _updater;
-            }
-            set
-            {
-                _updater = value;
-            }
-        }
-    
-        public System.IObservable<ActionUpdater> Process()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new ActionUpdater(this)));
-        }
-    
-        public System.IObservable<ActionUpdater> Process<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new ActionUpdater(this));
-        }
-    
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            stringBuilder.Append("target_parameter = " + _targetParameter + ", ");
-            stringBuilder.Append("updated_by = " + _updatedBy + ", ");
-            stringBuilder.Append("updater = " + _updater);
-            return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
+        [System.Runtime.Serialization.EnumMemberAttribute(Value="12")]
+        UpDown = 12,
     }
 
 
@@ -131,8 +51,6 @@ namespace AindIsoForceDataSchema.TaskLogic
     
         private Environment _environment = new Environment();
     
-        private System.Collections.Generic.IDictionary<string, NumericalUpdater> _updaters;
-    
         private OperationControl _operationControl;
     
         public AindIsoForceTaskParameters()
@@ -144,7 +62,6 @@ namespace AindIsoForceDataSchema.TaskLogic
             _rngSeed = other._rngSeed;
             _aindBehaviorServicesPkgVersion = other._aindBehaviorServicesPkgVersion;
             _environment = other._environment;
-            _updaters = other._updaters;
             _operationControl = other._operationControl;
         }
     
@@ -198,24 +115,6 @@ namespace AindIsoForceDataSchema.TaskLogic
         }
     
         /// <summary>
-        /// List of numerical updaters
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("updaters")]
-        [System.ComponentModel.DescriptionAttribute("List of numerical updaters")]
-        public System.Collections.Generic.IDictionary<string, NumericalUpdater> Updaters
-        {
-            get
-            {
-                return _updaters;
-            }
-            set
-            {
-                _updaters = value;
-            }
-        }
-    
-        /// <summary>
         /// Operation control
         /// </summary>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
@@ -248,7 +147,6 @@ namespace AindIsoForceDataSchema.TaskLogic
             stringBuilder.Append("rng_seed = " + _rngSeed + ", ");
             stringBuilder.Append("aind_behavior_services_pkg_version = " + _aindBehaviorServicesPkgVersion + ", ");
             stringBuilder.Append("environment = " + _environment + ", ");
-            stringBuilder.Append("updaters = " + _updaters + ", ");
             stringBuilder.Append("operation_control = " + _operationControl);
             return true;
         }
@@ -264,86 +162,6 @@ namespace AindIsoForceDataSchema.TaskLogic
             }
             stringBuilder.Append("}");
             return stringBuilder.ToString();
-        }
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Bonsai.CombinatorAttribute()]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    public partial class AudioFeedback : ContinuousFeedback
-    {
-    
-        private System.Collections.Generic.List<double> _converterLutInput = new System.Collections.Generic.List<double>();
-    
-        private System.Collections.Generic.List<double> _converterLutOutput = new System.Collections.Generic.List<double>();
-    
-        public AudioFeedback()
-        {
-        }
-    
-        protected AudioFeedback(AudioFeedback other) : 
-                base(other)
-        {
-            _converterLutInput = other._converterLutInput;
-            _converterLutOutput = other._converterLutOutput;
-        }
-    
-        /// <summary>
-        /// Normalized input domain. All values should be between 0 and 1
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("converter_lut_input")]
-        [System.ComponentModel.DescriptionAttribute("Normalized input domain. All values should be between 0 and 1")]
-        public System.Collections.Generic.List<double> ConverterLutInput
-        {
-            get
-            {
-                return _converterLutInput;
-            }
-            set
-            {
-                _converterLutInput = value;
-            }
-        }
-    
-        /// <summary>
-        /// Output domain used to linearly interpolate the input values to the output values
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("converter_lut_output")]
-        [System.ComponentModel.DescriptionAttribute("Output domain used to linearly interpolate the input values to the output values")]
-        public System.Collections.Generic.List<double> ConverterLutOutput
-        {
-            get
-            {
-                return _converterLutOutput;
-            }
-            set
-            {
-                _converterLutOutput = value;
-            }
-        }
-    
-        public System.IObservable<AudioFeedback> Process()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new AudioFeedback(this)));
-        }
-    
-        public System.IObservable<AudioFeedback> Process<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new AudioFeedback(this));
-        }
-    
-        protected override bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            if (base.PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(", ");
-            }
-            stringBuilder.Append("converter_lut_input = " + _converterLutInput + ", ");
-            stringBuilder.Append("converter_lut_output = " + _converterLutOutput);
-            return true;
         }
     }
 
@@ -868,7 +686,7 @@ namespace AindIsoForceDataSchema.TaskLogic
     
         private Distribution _blockSize;
     
-        private Trial _trialStatistics = new Trial();
+        private Trial _trialTemplate = new Trial();
     
         public BlockGenerator()
         {
@@ -878,7 +696,7 @@ namespace AindIsoForceDataSchema.TaskLogic
                 base(other)
         {
             _blockSize = other._blockSize;
-            _trialStatistics = other._trialStatistics;
+            _trialTemplate = other._trialTemplate;
         }
     
         /// <summary>
@@ -903,17 +721,17 @@ namespace AindIsoForceDataSchema.TaskLogic
         /// Statistics of the trials in the block
         /// </summary>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("trial_statistics", Required=Newtonsoft.Json.Required.Always)]
+        [Newtonsoft.Json.JsonPropertyAttribute("trial_template", Required=Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DescriptionAttribute("Statistics of the trials in the block")]
-        public Trial TrialStatistics
+        public Trial TrialTemplate
         {
             get
             {
-                return _trialStatistics;
+                return _trialTemplate;
             }
             set
             {
-                _trialStatistics = value;
+                _trialTemplate = value;
             }
         }
     
@@ -934,7 +752,7 @@ namespace AindIsoForceDataSchema.TaskLogic
                 stringBuilder.Append(", ");
             }
             stringBuilder.Append("block_size = " + _blockSize + ", ");
-            stringBuilder.Append("trial_statistics = " + _trialStatistics);
+            stringBuilder.Append("trial_template = " + _trialTemplate);
             return true;
         }
     }
@@ -965,53 +783,6 @@ namespace AindIsoForceDataSchema.TaskLogic
         public System.IObservable<BlockStatistics> Process<TSource>(System.IObservable<TSource> source)
         {
             return System.Reactive.Linq.Observable.Select(source, _ => new BlockStatistics(this));
-        }
-    
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            return false;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "continuous_feedback_mode")]
-    [JsonInheritanceAttribute("Manipulator", typeof(ManipulatorFeedback))]
-    [JsonInheritanceAttribute("Audio", typeof(AudioFeedback))]
-    [Bonsai.CombinatorAttribute()]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    public partial class ContinuousFeedback
-    {
-    
-        public ContinuousFeedback()
-        {
-        }
-    
-        protected ContinuousFeedback(ContinuousFeedback other)
-        {
-        }
-    
-        public System.IObservable<ContinuousFeedback> Process()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new ContinuousFeedback(this)));
-        }
-    
-        public System.IObservable<ContinuousFeedback> Process<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new ContinuousFeedback(this));
         }
     
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
@@ -1390,177 +1161,117 @@ namespace AindIsoForceDataSchema.TaskLogic
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.CombinatorAttribute()]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    public partial class ForceLookUpTable
+    public partial class ForceOperationControl
     {
     
-        private string _path;
+        private LoadCellInput _left;
     
-        private double _offset = 0D;
+        private LoadCellInput _right;
     
-        private double _scale = 1D;
+        private LoadCellInput _push;
     
-        private double _leftMin;
+        private LoadCellInput _pull;
     
-        private double _leftMax;
-    
-        private double _rightMin;
-    
-        private double _rightMax;
-    
-        public ForceLookUpTable()
+        public ForceOperationControl()
         {
         }
     
-        protected ForceLookUpTable(ForceLookUpTable other)
+        protected ForceOperationControl(ForceOperationControl other)
         {
-            _path = other._path;
-            _offset = other._offset;
-            _scale = other._scale;
-            _leftMin = other._leftMin;
-            _leftMax = other._leftMax;
-            _rightMin = other._rightMin;
-            _rightMax = other._rightMax;
+            _left = other._left;
+            _right = other._right;
+            _push = other._push;
+            _pull = other._pull;
         }
     
         /// <summary>
-        /// Reference to the look up table image. Should be a 1 channel image. Value = LUT[Left, Right]
+        /// Left load cell input
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("path", Required=Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DescriptionAttribute("Reference to the look up table image. Should be a 1 channel image. Value = LUT[Le" +
-            "ft, Right]")]
-        public string Path
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [Newtonsoft.Json.JsonPropertyAttribute("left")]
+        [System.ComponentModel.DescriptionAttribute("Left load cell input")]
+        public LoadCellInput Left
         {
             get
             {
-                return _path;
+                return _left;
             }
             set
             {
-                _path = value;
+                _left = value;
             }
         }
     
         /// <summary>
-        /// Offset to add to the look up table value
+        /// Right load cell input
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("offset")]
-        [System.ComponentModel.DescriptionAttribute("Offset to add to the look up table value")]
-        public double Offset
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [Newtonsoft.Json.JsonPropertyAttribute("right")]
+        [System.ComponentModel.DescriptionAttribute("Right load cell input")]
+        public LoadCellInput Right
         {
             get
             {
-                return _offset;
+                return _right;
             }
             set
             {
-                _offset = value;
+                _right = value;
             }
         }
     
         /// <summary>
-        /// Scale to multiply the look up table value
+        /// Push load cell input
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scale")]
-        [System.ComponentModel.DescriptionAttribute("Scale to multiply the look up table value")]
-        public double Scale
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [Newtonsoft.Json.JsonPropertyAttribute("push")]
+        [System.ComponentModel.DescriptionAttribute("Push load cell input")]
+        public LoadCellInput Push
         {
             get
             {
-                return _scale;
+                return _push;
             }
             set
             {
-                _scale = value;
+                _push = value;
             }
         }
     
         /// <summary>
-        /// The lower value of Left force used to linearly scale the input coordinate to.
+        /// Pull load cell input
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("left_min", Required=Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DescriptionAttribute("The lower value of Left force used to linearly scale the input coordinate to.")]
-        public double LeftMin
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [Newtonsoft.Json.JsonPropertyAttribute("pull")]
+        [System.ComponentModel.DescriptionAttribute("Pull load cell input")]
+        public LoadCellInput Pull
         {
             get
             {
-                return _leftMin;
+                return _pull;
             }
             set
             {
-                _leftMin = value;
+                _pull = value;
             }
         }
     
-        /// <summary>
-        /// The upper value of Left force used to linearly scale the input coordinate to.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("left_max", Required=Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DescriptionAttribute("The upper value of Left force used to linearly scale the input coordinate to.")]
-        public double LeftMax
+        public System.IObservable<ForceOperationControl> Process()
         {
-            get
-            {
-                return _leftMax;
-            }
-            set
-            {
-                _leftMax = value;
-            }
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new ForceOperationControl(this)));
         }
     
-        /// <summary>
-        /// The lower value of Right force used to linearly scale the input coordinate to.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("right_min", Required=Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DescriptionAttribute("The lower value of Right force used to linearly scale the input coordinate to.")]
-        public double RightMin
+        public System.IObservable<ForceOperationControl> Process<TSource>(System.IObservable<TSource> source)
         {
-            get
-            {
-                return _rightMin;
-            }
-            set
-            {
-                _rightMin = value;
-            }
-        }
-    
-        /// <summary>
-        /// The upper value of Right force used to linearly scale the input coordinate to.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("right_max", Required=Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DescriptionAttribute("The upper value of Right force used to linearly scale the input coordinate to.")]
-        public double RightMax
-        {
-            get
-            {
-                return _rightMax;
-            }
-            set
-            {
-                _rightMax = value;
-            }
-        }
-    
-        public System.IObservable<ForceLookUpTable> Process()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new ForceLookUpTable(this)));
-        }
-    
-        public System.IObservable<ForceLookUpTable> Process<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new ForceLookUpTable(this));
+            return System.Reactive.Linq.Observable.Select(source, _ => new ForceOperationControl(this));
         }
     
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("path = " + _path + ", ");
-            stringBuilder.Append("offset = " + _offset + ", ");
-            stringBuilder.Append("scale = " + _scale + ", ");
-            stringBuilder.Append("left_min = " + _leftMin + ", ");
-            stringBuilder.Append("left_max = " + _leftMax + ", ");
-            stringBuilder.Append("right_min = " + _rightMin + ", ");
-            stringBuilder.Append("right_max = " + _rightMax);
+            stringBuilder.Append("left = " + _left + ", ");
+            stringBuilder.Append("right = " + _right + ", ");
+            stringBuilder.Append("push = " + _push + ", ");
+            stringBuilder.Append("pull = " + _pull);
             return true;
         }
     
@@ -1582,115 +1293,117 @@ namespace AindIsoForceDataSchema.TaskLogic
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.CombinatorAttribute()]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    public partial class ForceOperationControl
+    public partial class ForceThreshold
     {
     
-        private PressMode _pressMode = AindIsoForceDataSchema.TaskLogic.PressMode.Double;
+        private double? _left;
     
-        private int _leftIndex = 0;
+        private double? _right;
     
-        private int _rightIndex = 1;
+        private double? _push;
     
-        private ForceLookUpTable _forceLookupTable;
+        private double? _pull;
     
-        public ForceOperationControl()
+        public ForceThreshold()
         {
         }
     
-        protected ForceOperationControl(ForceOperationControl other)
+        protected ForceThreshold(ForceThreshold other)
         {
-            _pressMode = other._pressMode;
-            _leftIndex = other._leftIndex;
-            _rightIndex = other._rightIndex;
-            _forceLookupTable = other._forceLookupTable;
+            _left = other._left;
+            _right = other._right;
+            _push = other._push;
+            _pull = other._pull;
         }
     
         /// <summary>
-        /// Defines the press mode. Default is to use both sensors individually
+        /// Left force threshold
         /// </summary>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("press_mode")]
-        [System.ComponentModel.DescriptionAttribute("Defines the press mode. Default is to use both sensors individually")]
-        public PressMode PressMode
+        [Newtonsoft.Json.JsonPropertyAttribute("left")]
+        [System.ComponentModel.DescriptionAttribute("Left force threshold")]
+        public double? Left
         {
             get
             {
-                return _pressMode;
+                return _left;
             }
             set
             {
-                _pressMode = value;
+                _left = value;
             }
         }
     
         /// <summary>
-        /// Index of the left sensor
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("left_index")]
-        [System.ComponentModel.DescriptionAttribute("Index of the left sensor")]
-        public int LeftIndex
-        {
-            get
-            {
-                return _leftIndex;
-            }
-            set
-            {
-                _leftIndex = value;
-            }
-        }
-    
-        /// <summary>
-        /// Index of the right sensor
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("right_index")]
-        [System.ComponentModel.DescriptionAttribute("Index of the right sensor")]
-        public int RightIndex
-        {
-            get
-            {
-                return _rightIndex;
-            }
-            set
-            {
-                _rightIndex = value;
-            }
-        }
-    
-        /// <summary>
-        /// Look up table for force projection
+        /// Right force threshold
         /// </summary>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("force_lookup_table")]
-        [System.ComponentModel.DescriptionAttribute("Look up table for force projection")]
-        public ForceLookUpTable ForceLookupTable
+        [Newtonsoft.Json.JsonPropertyAttribute("right")]
+        [System.ComponentModel.DescriptionAttribute("Right force threshold")]
+        public double? Right
         {
             get
             {
-                return _forceLookupTable;
+                return _right;
             }
             set
             {
-                _forceLookupTable = value;
+                _right = value;
             }
         }
     
-        public System.IObservable<ForceOperationControl> Process()
+        /// <summary>
+        /// Push force threshold
+        /// </summary>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [Newtonsoft.Json.JsonPropertyAttribute("push")]
+        [System.ComponentModel.DescriptionAttribute("Push force threshold")]
+        public double? Push
         {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new ForceOperationControl(this)));
+            get
+            {
+                return _push;
+            }
+            set
+            {
+                _push = value;
+            }
         }
     
-        public System.IObservable<ForceOperationControl> Process<TSource>(System.IObservable<TSource> source)
+        /// <summary>
+        /// Pull force threshold
+        /// </summary>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [Newtonsoft.Json.JsonPropertyAttribute("pull")]
+        [System.ComponentModel.DescriptionAttribute("Pull force threshold")]
+        public double? Pull
         {
-            return System.Reactive.Linq.Observable.Select(source, _ => new ForceOperationControl(this));
+            get
+            {
+                return _pull;
+            }
+            set
+            {
+                _pull = value;
+            }
+        }
+    
+        public System.IObservable<ForceThreshold> Process()
+        {
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new ForceThreshold(this)));
+        }
+    
+        public System.IObservable<ForceThreshold> Process<TSource>(System.IObservable<TSource> source)
+        {
+            return System.Reactive.Linq.Observable.Select(source, _ => new ForceThreshold(this));
         }
     
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("press_mode = " + _pressMode + ", ");
-            stringBuilder.Append("left_index = " + _leftIndex + ", ");
-            stringBuilder.Append("right_index = " + _rightIndex + ", ");
-            stringBuilder.Append("force_lookup_table = " + _forceLookupTable);
+            stringBuilder.Append("left = " + _left + ", ");
+            stringBuilder.Append("right = " + _right + ", ");
+            stringBuilder.Append("push = " + _push + ", ");
+            stringBuilder.Append("pull = " + _pull);
             return true;
         }
     
@@ -1914,465 +1627,74 @@ namespace AindIsoForceDataSchema.TaskLogic
     }
 
 
-    /// <summary>
-    /// Defines an abstract class for an harvest action
-    /// </summary>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
-    [System.ComponentModel.DescriptionAttribute("Defines an abstract class for an harvest action")]
     [Bonsai.CombinatorAttribute()]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    public partial class HarvestAction
+    public partial class LoadCellInput
     {
     
-        private HarvestActionLabel _action = AindIsoForceDataSchema.TaskLogic.HarvestActionLabel.None;
+        private int _channel;
     
-        private HarvestMode _harvestMode;
+        private bool _isInverted = false;
     
-        private double _probability = 1D;
-    
-        private double _amount = 1D;
-    
-        private double _delay = 0D;
-    
-        private double _forceDuration = 0.5D;
-    
-        private double _upperForceThreshold = 30000D;
-    
-        private double _lowerForceThreshold = 5000D;
-    
-        private bool _isOperant = true;
-    
-        private Distribution _timeToCollect;
-    
-        private System.Collections.Generic.List<ActionUpdater> _actionUpdaters = new System.Collections.Generic.List<ActionUpdater>();
-    
-        private ContinuousFeedback _continuousFeedback;
-    
-        public HarvestAction()
+        public LoadCellInput()
         {
         }
     
-        protected HarvestAction(HarvestAction other)
+        protected LoadCellInput(LoadCellInput other)
         {
-            _action = other._action;
-            _harvestMode = other._harvestMode;
-            _probability = other._probability;
-            _amount = other._amount;
-            _delay = other._delay;
-            _forceDuration = other._forceDuration;
-            _upperForceThreshold = other._upperForceThreshold;
-            _lowerForceThreshold = other._lowerForceThreshold;
-            _isOperant = other._isOperant;
-            _timeToCollect = other._timeToCollect;
-            _actionUpdaters = other._actionUpdaters;
-            _continuousFeedback = other._continuousFeedback;
+            _channel = other._channel;
+            _isInverted = other._isInverted;
         }
     
         /// <summary>
-        /// Label of the action
+        /// Load cell channel number
         /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        [System.ComponentModel.DescriptionAttribute("Label of the action")]
-        public HarvestActionLabel Action
+        [Newtonsoft.Json.JsonPropertyAttribute("channel", Required=Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DescriptionAttribute("Load cell channel number")]
+        public int Channel
         {
             get
             {
-                return _action;
+                return _channel;
             }
             set
             {
-                _action = value;
+                _channel = value;
             }
         }
     
         /// <summary>
-        /// Type of the trial
+        /// Whether the load cell is inverted
         /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("harvest_mode", Required=Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DescriptionAttribute("Type of the trial")]
-        public HarvestMode HarvestMode
+        [Newtonsoft.Json.JsonPropertyAttribute("is_inverted")]
+        [System.ComponentModel.DescriptionAttribute("Whether the load cell is inverted")]
+        public bool IsInverted
         {
             get
             {
-                return _harvestMode;
+                return _isInverted;
             }
             set
             {
-                _harvestMode = value;
+                _isInverted = value;
             }
         }
     
-        /// <summary>
-        /// Probability of reward
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("probability")]
-        [System.ComponentModel.DescriptionAttribute("Probability of reward")]
-        public double Probability
+        public System.IObservable<LoadCellInput> Process()
         {
-            get
-            {
-                return _probability;
-            }
-            set
-            {
-                _probability = value;
-            }
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new LoadCellInput(this)));
         }
     
-        /// <summary>
-        /// Amount of reward to be delivered
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
-        [System.ComponentModel.DescriptionAttribute("Amount of reward to be delivered")]
-        public double Amount
+        public System.IObservable<LoadCellInput> Process<TSource>(System.IObservable<TSource> source)
         {
-            get
-            {
-                return _amount;
-            }
-            set
-            {
-                _amount = value;
-            }
-        }
-    
-        /// <summary>
-        /// Delay between successful harvest and reward delivery
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("delay")]
-        [System.ComponentModel.DescriptionAttribute("Delay between successful harvest and reward delivery")]
-        public double Delay
-        {
-            get
-            {
-                return _delay;
-            }
-            set
-            {
-                _delay = value;
-            }
-        }
-    
-        /// <summary>
-        /// Duration that the force much stay above threshold
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("force_duration")]
-        [System.ComponentModel.DescriptionAttribute("Duration that the force much stay above threshold")]
-        public double ForceDuration
-        {
-            get
-            {
-                return _forceDuration;
-            }
-            set
-            {
-                _forceDuration = value;
-            }
-        }
-    
-        /// <summary>
-        /// Upper bound of the force target region or the target cached force required.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("upper_force_threshold")]
-        [System.ComponentModel.DescriptionAttribute("Upper bound of the force target region or the target cached force required.")]
-        public double UpperForceThreshold
-        {
-            get
-            {
-                return _upperForceThreshold;
-            }
-            set
-            {
-                _upperForceThreshold = value;
-            }
-        }
-    
-        /// <summary>
-        /// Lower bound of the force target region.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lower_force_threshold")]
-        [System.ComponentModel.DescriptionAttribute("Lower bound of the force target region.")]
-        public double LowerForceThreshold
-        {
-            get
-            {
-                return _lowerForceThreshold;
-            }
-            set
-            {
-                _lowerForceThreshold = value;
-            }
-        }
-    
-        /// <summary>
-        /// Whether the reward delivery is contingent on licking.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("is_operant")]
-        [System.ComponentModel.DescriptionAttribute("Whether the reward delivery is contingent on licking.")]
-        public bool IsOperant
-        {
-            get
-            {
-                return _isOperant;
-            }
-            set
-            {
-                _isOperant = value;
-            }
-        }
-    
-        /// <summary>
-        /// Time to collect the reward after it is available. If null, the reward will be available indefinitely.
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("time_to_collect")]
-        [System.ComponentModel.DescriptionAttribute("Time to collect the reward after it is available. If null, the reward will be ava" +
-            "ilable indefinitely.")]
-        public Distribution TimeToCollect
-        {
-            get
-            {
-                return _timeToCollect;
-            }
-            set
-            {
-                _timeToCollect = value;
-            }
-        }
-    
-        /// <summary>
-        /// List of action updaters. All updaters are called at the start of a new trial.
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("action_updaters")]
-        [System.ComponentModel.DescriptionAttribute("List of action updaters. All updaters are called at the start of a new trial.")]
-        public System.Collections.Generic.List<ActionUpdater> ActionUpdaters
-        {
-            get
-            {
-                return _actionUpdaters;
-            }
-            set
-            {
-                _actionUpdaters = value;
-            }
-        }
-    
-        /// <summary>
-        /// Continuous feedback settings
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("continuous_feedback")]
-        [System.ComponentModel.DescriptionAttribute("Continuous feedback settings")]
-        public ContinuousFeedback ContinuousFeedback
-        {
-            get
-            {
-                return _continuousFeedback;
-            }
-            set
-            {
-                _continuousFeedback = value;
-            }
-        }
-    
-        public System.IObservable<HarvestAction> Process()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new HarvestAction(this)));
-        }
-    
-        public System.IObservable<HarvestAction> Process<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new HarvestAction(this));
+            return System.Reactive.Linq.Observable.Select(source, _ => new LoadCellInput(this));
         }
     
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("action = " + _action + ", ");
-            stringBuilder.Append("harvest_mode = " + _harvestMode + ", ");
-            stringBuilder.Append("probability = " + _probability + ", ");
-            stringBuilder.Append("amount = " + _amount + ", ");
-            stringBuilder.Append("delay = " + _delay + ", ");
-            stringBuilder.Append("force_duration = " + _forceDuration + ", ");
-            stringBuilder.Append("upper_force_threshold = " + _upperForceThreshold + ", ");
-            stringBuilder.Append("lower_force_threshold = " + _lowerForceThreshold + ", ");
-            stringBuilder.Append("is_operant = " + _isOperant + ", ");
-            stringBuilder.Append("time_to_collect = " + _timeToCollect + ", ");
-            stringBuilder.Append("action_updaters = " + _actionUpdaters + ", ");
-            stringBuilder.Append("continuous_feedback = " + _continuousFeedback);
-            return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
-    }
-
-
-    /// <summary>
-    /// Defines the harvest actions
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum HarvestActionLabel
-    {
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="Left")]
-        Left = 0,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="Right")]
-        Right = 1,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="None")]
-        None = 2,
-    }
-
-
-    /// <summary>
-    /// Defines the trial types
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum HarvestMode
-    {
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="None")]
-        None = 0,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="Accumulation")]
-        Accumulation = 1,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="RegionOfInterest")]
-        RegionOfInterest = 2,
-    }
-
-
-    /// <summary>
-    /// Defines an initiation period
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
-    [System.ComponentModel.DescriptionAttribute("Defines an initiation period")]
-    [Bonsai.CombinatorAttribute()]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    public partial class InitiationPeriod
-    {
-    
-        private Distribution _duration;
-    
-        private bool _hasCue = true;
-    
-        private bool _abortOnForce = false;
-    
-        private double _abortOnForceThreshold = 0D;
-    
-        public InitiationPeriod()
-        {
-        }
-    
-        protected InitiationPeriod(InitiationPeriod other)
-        {
-            _duration = other._duration;
-            _hasCue = other._hasCue;
-            _abortOnForce = other._abortOnForce;
-            _abortOnForceThreshold = other._abortOnForceThreshold;
-        }
-    
-        /// <summary>
-        /// Duration of the initiation period
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        [System.ComponentModel.DescriptionAttribute("Duration of the initiation period")]
-        public Distribution Duration
-        {
-            get
-            {
-                return _duration;
-            }
-            set
-            {
-                _duration = value;
-            }
-        }
-    
-        /// <summary>
-        /// Whether to use a cue to signal the start of the period.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("has_cue")]
-        [System.ComponentModel.DescriptionAttribute("Whether to use a cue to signal the start of the period.")]
-        public bool HasCue
-        {
-            get
-            {
-                return _hasCue;
-            }
-            set
-            {
-                _hasCue = value;
-            }
-        }
-    
-        /// <summary>
-        /// Whether to abort the trial if a choice is made during the initiation period.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("abort_on_force")]
-        [System.ComponentModel.DescriptionAttribute("Whether to abort the trial if a choice is made during the initiation period.")]
-        public bool AbortOnForce
-        {
-            get
-            {
-                return _abortOnForce;
-            }
-            set
-            {
-                _abortOnForce = value;
-            }
-        }
-    
-        /// <summary>
-        /// Time out for the quiescence period
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("abort_on_force_threshold")]
-        [System.ComponentModel.DescriptionAttribute("Time out for the quiescence period")]
-        public double AbortOnForceThreshold
-        {
-            get
-            {
-                return _abortOnForceThreshold;
-            }
-            set
-            {
-                _abortOnForceThreshold = value;
-            }
-        }
-    
-        public System.IObservable<InitiationPeriod> Process()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new InitiationPeriod(this)));
-        }
-    
-        public System.IObservable<InitiationPeriod> Process<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new InitiationPeriod(this));
-        }
-    
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            stringBuilder.Append("duration = " + _duration + ", ");
-            stringBuilder.Append("has_cue = " + _hasCue + ", ");
-            stringBuilder.Append("abort_on_force = " + _abortOnForce + ", ");
-            stringBuilder.Append("abort_on_force_threshold = " + _abortOnForceThreshold);
+            stringBuilder.Append("channel = " + _channel + ", ");
+            stringBuilder.Append("is_inverted = " + _isInverted);
             return true;
         }
     
@@ -2599,86 +1921,6 @@ namespace AindIsoForceDataSchema.TaskLogic
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.CombinatorAttribute()]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    public partial class ManipulatorFeedback : ContinuousFeedback
-    {
-    
-        private System.Collections.Generic.List<double> _converterLutInput = new System.Collections.Generic.List<double>();
-    
-        private System.Collections.Generic.List<double> _converterLutOutput = new System.Collections.Generic.List<double>();
-    
-        public ManipulatorFeedback()
-        {
-        }
-    
-        protected ManipulatorFeedback(ManipulatorFeedback other) : 
-                base(other)
-        {
-            _converterLutInput = other._converterLutInput;
-            _converterLutOutput = other._converterLutOutput;
-        }
-    
-        /// <summary>
-        /// Normalized input domain. All values should be between 0 and 1
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("converter_lut_input")]
-        [System.ComponentModel.DescriptionAttribute("Normalized input domain. All values should be between 0 and 1")]
-        public System.Collections.Generic.List<double> ConverterLutInput
-        {
-            get
-            {
-                return _converterLutInput;
-            }
-            set
-            {
-                _converterLutInput = value;
-            }
-        }
-    
-        /// <summary>
-        /// Output domain used to linearly interpolate the input values to the output values
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("converter_lut_output")]
-        [System.ComponentModel.DescriptionAttribute("Output domain used to linearly interpolate the input values to the output values")]
-        public System.Collections.Generic.List<double> ConverterLutOutput
-        {
-            get
-            {
-                return _converterLutOutput;
-            }
-            set
-            {
-                _converterLutOutput = value;
-            }
-        }
-    
-        public System.IObservable<ManipulatorFeedback> Process()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new ManipulatorFeedback(this)));
-        }
-    
-        public System.IObservable<ManipulatorFeedback> Process<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new ManipulatorFeedback(this));
-        }
-    
-        protected override bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            if (base.PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(", ");
-            }
-            stringBuilder.Append("converter_lut_input = " + _converterLutInput + ", ");
-            stringBuilder.Append("converter_lut_output = " + _converterLutOutput);
-            return true;
-        }
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Bonsai.CombinatorAttribute()]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     public partial class NormalDistribution : Distribution
     {
     
@@ -2884,215 +2126,101 @@ namespace AindIsoForceDataSchema.TaskLogic
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.CombinatorAttribute()]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    public partial class NumericalUpdater
+    public partial class OperantReward : RewardPeriod
     {
     
-        private NumericalUpdaterOperation _operation = AindIsoForceDataSchema.TaskLogic.NumericalUpdaterOperation.None;
+        private Distribution _amount;
     
-        private NumericalUpdaterParameters _parameters;
+        private Distribution _delay;
     
-        public NumericalUpdater()
+        private Distribution _timeToCollect;
+    
+        public OperantReward()
         {
         }
     
-        protected NumericalUpdater(NumericalUpdater other)
+        protected OperantReward(OperantReward other) : 
+                base(other)
         {
-            _operation = other._operation;
-            _parameters = other._parameters;
-        }
-    
-        /// <summary>
-        /// Operation to perform on the parameter
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
-        [System.ComponentModel.DescriptionAttribute("Operation to perform on the parameter")]
-        public NumericalUpdaterOperation Operation
-        {
-            get
-            {
-                return _operation;
-            }
-            set
-            {
-                _operation = value;
-            }
+            _amount = other._amount;
+            _delay = other._delay;
+            _timeToCollect = other._timeToCollect;
         }
     
         /// <summary>
-        /// Parameters of the updater
+        /// Amount of reward to dispense
         /// </summary>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        [System.ComponentModel.DescriptionAttribute("Parameters of the updater")]
-        public NumericalUpdaterParameters Parameters
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        [System.ComponentModel.DescriptionAttribute("Amount of reward to dispense")]
+        public Distribution Amount
         {
             get
             {
-                return _parameters;
+                return _amount;
             }
             set
             {
-                _parameters = value;
+                _amount = value;
             }
         }
     
-        public System.IObservable<NumericalUpdater> Process()
+        /// <summary>
+        /// Delay before dispensing the reward
+        /// </summary>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [Newtonsoft.Json.JsonPropertyAttribute("delay")]
+        [System.ComponentModel.DescriptionAttribute("Delay before dispensing the reward")]
+        public Distribution Delay
         {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new NumericalUpdater(this)));
+            get
+            {
+                return _delay;
+            }
+            set
+            {
+                _delay = value;
+            }
         }
     
-        public System.IObservable<NumericalUpdater> Process<TSource>(System.IObservable<TSource> source)
+        /// <summary>
+        /// Time to collect the reward
+        /// </summary>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [Newtonsoft.Json.JsonPropertyAttribute("time_to_collect")]
+        [System.ComponentModel.DescriptionAttribute("Time to collect the reward")]
+        public Distribution TimeToCollect
         {
-            return System.Reactive.Linq.Observable.Select(source, _ => new NumericalUpdater(this));
+            get
+            {
+                return _timeToCollect;
+            }
+            set
+            {
+                _timeToCollect = value;
+            }
         }
     
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        public System.IObservable<OperantReward> Process()
         {
-            stringBuilder.Append("operation = " + _operation + ", ");
-            stringBuilder.Append("parameters = " + _parameters);
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new OperantReward(this)));
+        }
+    
+        public System.IObservable<OperantReward> Process<TSource>(System.IObservable<TSource> source)
+        {
+            return System.Reactive.Linq.Observable.Select(source, _ => new OperantReward(this));
+        }
+    
+        protected override bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        {
+            if (base.PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(", ");
+            }
+            stringBuilder.Append("amount = " + _amount + ", ");
+            stringBuilder.Append("delay = " + _delay + ", ");
+            stringBuilder.Append("time_to_collect = " + _timeToCollect);
             return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NumericalUpdaterOperation
-    {
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="None")]
-        None = 0,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="Offset")]
-        Offset = 1,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="Gain")]
-        Gain = 2,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="Set")]
-        Set = 3,
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Bonsai.CombinatorAttribute()]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    public partial class NumericalUpdaterParameters
-    {
-    
-        private Distribution _value;
-    
-        private double _minimum = 0D;
-    
-        private double _maximum = 0D;
-    
-        public NumericalUpdaterParameters()
-        {
-        }
-    
-        protected NumericalUpdaterParameters(NumericalUpdaterParameters other)
-        {
-            _value = other._value;
-            _minimum = other._minimum;
-            _maximum = other._maximum;
-        }
-    
-        /// <summary>
-        /// The value of the update. This value will be multiplied by the optional input event value.
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        [System.ComponentModel.DescriptionAttribute("The value of the update. This value will be multiplied by the optional input even" +
-            "t value.")]
-        public Distribution Value
-        {
-            get
-            {
-                return _value;
-            }
-            set
-            {
-                _value = value;
-            }
-        }
-    
-        /// <summary>
-        /// Minimum value of the parameter
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("minimum")]
-        [System.ComponentModel.DescriptionAttribute("Minimum value of the parameter")]
-        public double Minimum
-        {
-            get
-            {
-                return _minimum;
-            }
-            set
-            {
-                _minimum = value;
-            }
-        }
-    
-        /// <summary>
-        /// Maximum value of the parameter
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maximum")]
-        [System.ComponentModel.DescriptionAttribute("Maximum value of the parameter")]
-        public double Maximum
-        {
-            get
-            {
-                return _maximum;
-            }
-            set
-            {
-                _maximum = value;
-            }
-        }
-    
-        public System.IObservable<NumericalUpdaterParameters> Process()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new NumericalUpdaterParameters(this)));
-        }
-    
-        public System.IObservable<NumericalUpdaterParameters> Process<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new NumericalUpdaterParameters(this));
-        }
-    
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            stringBuilder.Append("value = " + _value + ", ");
-            stringBuilder.Append("minimum = " + _minimum + ", ");
-            stringBuilder.Append("maximum = " + _maximum);
-            return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
         }
     }
 
@@ -3105,8 +2233,6 @@ namespace AindIsoForceDataSchema.TaskLogic
     
         private ForceOperationControl _force;
     
-        private SpoutOperationControl _spout;
-    
         public OperationControl()
         {
         }
@@ -3114,7 +2240,6 @@ namespace AindIsoForceDataSchema.TaskLogic
         protected OperationControl(OperationControl other)
         {
             _force = other._force;
-            _spout = other._spout;
         }
     
         /// <summary>
@@ -3135,24 +2260,6 @@ namespace AindIsoForceDataSchema.TaskLogic
             }
         }
     
-        /// <summary>
-        /// Operation control for spout
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("spout")]
-        [System.ComponentModel.DescriptionAttribute("Operation control for spout")]
-        public SpoutOperationControl Spout
-        {
-            get
-            {
-                return _spout;
-            }
-            set
-            {
-                _spout = value;
-            }
-        }
-    
         public System.IObservable<OperationControl> Process()
         {
             return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new OperationControl(this)));
@@ -3165,8 +2272,7 @@ namespace AindIsoForceDataSchema.TaskLogic
     
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("force = " + _force + ", ");
-            stringBuilder.Append("spout = " + _spout);
+            stringBuilder.Append("force = " + _force);
             return true;
         }
     
@@ -3577,37 +2683,6 @@ namespace AindIsoForceDataSchema.TaskLogic
 
 
     /// <summary>
-    /// Defines the press mode
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PressMode
-    {
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="Double")]
-        Double = 0,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="SingleAverage")]
-        SingleAverage = 1,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="SingleMax")]
-        SingleMax = 2,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="SingleMin")]
-        SingleMin = 3,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="SingleLeft")]
-        SingleLeft = 4,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="SingleRight")]
-        SingleRight = 5,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="SingleLookupTable")]
-        SingleLookupTable = 6,
-    }
-
-
-    /// <summary>
     /// Defines a quiescence settings
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
@@ -3619,9 +2694,7 @@ namespace AindIsoForceDataSchema.TaskLogic
     
         private Distribution _duration;
     
-        private double _forceThreshold = 0D;
-    
-        private bool _hasCue = false;
+        private ForceThreshold _forceThreshold;
     
         public QuiescencePeriod()
         {
@@ -3631,15 +2704,14 @@ namespace AindIsoForceDataSchema.TaskLogic
         {
             _duration = other._duration;
             _forceThreshold = other._forceThreshold;
-            _hasCue = other._hasCue;
         }
     
         /// <summary>
-        /// Duration of the quiescence period
+        /// Duration force has to stay below threshold to start the trial.
         /// </summary>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        [System.ComponentModel.DescriptionAttribute("Duration of the quiescence period")]
+        [System.ComponentModel.DescriptionAttribute("Duration force has to stay below threshold to start the trial.")]
         public Distribution Duration
         {
             get
@@ -3653,11 +2725,13 @@ namespace AindIsoForceDataSchema.TaskLogic
         }
     
         /// <summary>
-        /// Time out for the quiescence period
+        /// Threshold for the force sensors to be considered quiescent. If None, the threshold will be ignored.
         /// </summary>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("force_threshold")]
-        [System.ComponentModel.DescriptionAttribute("Time out for the quiescence period")]
-        public double ForceThreshold
+        [System.ComponentModel.DescriptionAttribute("Threshold for the force sensors to be considered quiescent. If None, the threshol" +
+            "d will be ignored.")]
+        public ForceThreshold ForceThreshold
         {
             get
             {
@@ -3666,23 +2740,6 @@ namespace AindIsoForceDataSchema.TaskLogic
             set
             {
                 _forceThreshold = value;
-            }
-        }
-    
-        /// <summary>
-        /// Whether to use a cue to signal the start of the period.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("has_cue")]
-        [System.ComponentModel.DescriptionAttribute("Whether to use a cue to signal the start of the period.")]
-        public bool HasCue
-        {
-            get
-            {
-                return _hasCue;
-            }
-            set
-            {
-                _hasCue = value;
             }
         }
     
@@ -3699,8 +2756,7 @@ namespace AindIsoForceDataSchema.TaskLogic
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
             stringBuilder.Append("duration = " + _duration + ", ");
-            stringBuilder.Append("force_threshold = " + _forceThreshold + ", ");
-            stringBuilder.Append("has_cue = " + _hasCue);
+            stringBuilder.Append("force_threshold = " + _forceThreshold);
             return true;
         }
     
@@ -3731,9 +2787,11 @@ namespace AindIsoForceDataSchema.TaskLogic
     
         private Distribution _duration;
     
-        private bool _hasCue = true;
+        private ForceThreshold _forceThreshold;
     
-        private bool _hasFeedback = false;
+        private Action _rewardedAction = AindIsoForceDataSchema.TaskLogic.Action.None;
+    
+        private Distribution _forceDuration;
     
         public ResponsePeriod()
         {
@@ -3742,8 +2800,9 @@ namespace AindIsoForceDataSchema.TaskLogic
         protected ResponsePeriod(ResponsePeriod other)
         {
             _duration = other._duration;
-            _hasCue = other._hasCue;
-            _hasFeedback = other._hasFeedback;
+            _forceThreshold = other._forceThreshold;
+            _rewardedAction = other._rewardedAction;
+            _forceDuration = other._forceDuration;
         }
     
         /// <summary>
@@ -3765,36 +2824,53 @@ namespace AindIsoForceDataSchema.TaskLogic
         }
     
         /// <summary>
-        /// Whether to use a cue to signal the start of the period.
+        /// Threshold for the force sensors to be considered active. If None, the crossings will be ignored.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("has_cue")]
-        [System.ComponentModel.DescriptionAttribute("Whether to use a cue to signal the start of the period.")]
-        public bool HasCue
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [Newtonsoft.Json.JsonPropertyAttribute("force_threshold")]
+        [System.ComponentModel.DescriptionAttribute("Threshold for the force sensors to be considered active. If None, the crossings w" +
+            "ill be ignored.")]
+        public ForceThreshold ForceThreshold
         {
             get
             {
-                return _hasCue;
+                return _forceThreshold;
             }
             set
             {
-                _hasCue = value;
+                _forceThreshold = value;
+            }
+        }
+    
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [Newtonsoft.Json.JsonPropertyAttribute("rewarded_action")]
+        public Action RewardedAction
+        {
+            get
+            {
+                return _rewardedAction;
+            }
+            set
+            {
+                _rewardedAction = value;
             }
         }
     
         /// <summary>
-        /// Whether to provide feedback to the animal after the response period.
+        /// Duration the force must stay above threshold.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("has_feedback")]
-        [System.ComponentModel.DescriptionAttribute("Whether to provide feedback to the animal after the response period.")]
-        public bool HasFeedback
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [Newtonsoft.Json.JsonPropertyAttribute("force_duration")]
+        [System.ComponentModel.DescriptionAttribute("Duration the force must stay above threshold.")]
+        public Distribution ForceDuration
         {
             get
             {
-                return _hasFeedback;
+                return _forceDuration;
             }
             set
             {
-                _hasFeedback = value;
+                _forceDuration = value;
             }
         }
     
@@ -3811,9 +2887,137 @@ namespace AindIsoForceDataSchema.TaskLogic
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
             stringBuilder.Append("duration = " + _duration + ", ");
-            stringBuilder.Append("has_cue = " + _hasCue + ", ");
-            stringBuilder.Append("has_feedback = " + _hasFeedback);
+            stringBuilder.Append("force_threshold = " + _forceThreshold + ", ");
+            stringBuilder.Append("rewarded_action = " + _rewardedAction + ", ");
+            stringBuilder.Append("force_duration = " + _forceDuration);
             return true;
+        }
+    
+        public override string ToString()
+        {
+            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+            stringBuilder.Append(GetType().Name);
+            stringBuilder.Append(" { ");
+            if (PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(" ");
+            }
+            stringBuilder.Append("}");
+            return stringBuilder.ToString();
+        }
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [Bonsai.CombinatorAttribute()]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
+    public partial class Reward : RewardPeriod
+    {
+    
+        private Distribution _amount;
+    
+        private Distribution _delay;
+    
+        public Reward()
+        {
+        }
+    
+        protected Reward(Reward other) : 
+                base(other)
+        {
+            _amount = other._amount;
+            _delay = other._delay;
+        }
+    
+        /// <summary>
+        /// Amount of reward to dispense
+        /// </summary>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        [System.ComponentModel.DescriptionAttribute("Amount of reward to dispense")]
+        public Distribution Amount
+        {
+            get
+            {
+                return _amount;
+            }
+            set
+            {
+                _amount = value;
+            }
+        }
+    
+        /// <summary>
+        /// Delay before dispensing the reward
+        /// </summary>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [Newtonsoft.Json.JsonPropertyAttribute("delay")]
+        [System.ComponentModel.DescriptionAttribute("Delay before dispensing the reward")]
+        public Distribution Delay
+        {
+            get
+            {
+                return _delay;
+            }
+            set
+            {
+                _delay = value;
+            }
+        }
+    
+        public System.IObservable<Reward> Process()
+        {
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new Reward(this)));
+        }
+    
+        public System.IObservable<Reward> Process<TSource>(System.IObservable<TSource> source)
+        {
+            return System.Reactive.Linq.Observable.Select(source, _ => new Reward(this));
+        }
+    
+        protected override bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        {
+            if (base.PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(", ");
+            }
+            stringBuilder.Append("amount = " + _amount + ", ");
+            stringBuilder.Append("delay = " + _delay);
+            return true;
+        }
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "is_operant")]
+    [JsonInheritanceAttribute("False", typeof(Reward))]
+    [JsonInheritanceAttribute("True", typeof(OperantReward))]
+    [Bonsai.CombinatorAttribute()]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
+    public partial class RewardPeriod
+    {
+    
+        public RewardPeriod()
+        {
+        }
+    
+        protected RewardPeriod(RewardPeriod other)
+        {
+        }
+    
+        public System.IObservable<RewardPeriod> Process()
+        {
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new RewardPeriod(this)));
+        }
+    
+        public System.IObservable<RewardPeriod> Process<TSource>(System.IObservable<TSource> source)
+        {
+            return System.Reactive.Linq.Observable.Select(source, _ => new RewardPeriod(this));
+        }
+    
+        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        {
+            return false;
         }
     
         public override string ToString()
@@ -4093,113 +3297,6 @@ namespace AindIsoForceDataSchema.TaskLogic
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Bonsai.CombinatorAttribute()]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    public partial class SpoutOperationControl
-    {
-    
-        private double _defaultRetractedPosition = 0D;
-    
-        private double _defaultExtendedPosition = 0D;
-    
-        private bool _enabled = true;
-    
-        public SpoutOperationControl()
-        {
-        }
-    
-        protected SpoutOperationControl(SpoutOperationControl other)
-        {
-            _defaultRetractedPosition = other._defaultRetractedPosition;
-            _defaultExtendedPosition = other._defaultExtendedPosition;
-            _enabled = other._enabled;
-        }
-    
-        /// <summary>
-        /// Default retracted position (mm)
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("default_retracted_position")]
-        [System.ComponentModel.DescriptionAttribute("Default retracted position (mm)")]
-        public double DefaultRetractedPosition
-        {
-            get
-            {
-                return _defaultRetractedPosition;
-            }
-            set
-            {
-                _defaultRetractedPosition = value;
-            }
-        }
-    
-        /// <summary>
-        /// Default extended position (mm)
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("default_extended_position")]
-        [System.ComponentModel.DescriptionAttribute("Default extended position (mm)")]
-        public double DefaultExtendedPosition
-        {
-            get
-            {
-                return _defaultExtendedPosition;
-            }
-            set
-            {
-                _defaultExtendedPosition = value;
-            }
-        }
-    
-        /// <summary>
-        /// Whether the spout control is enabled
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        [System.ComponentModel.DescriptionAttribute("Whether the spout control is enabled")]
-        public bool Enabled
-        {
-            get
-            {
-                return _enabled;
-            }
-            set
-            {
-                _enabled = value;
-            }
-        }
-    
-        public System.IObservable<SpoutOperationControl> Process()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new SpoutOperationControl(this)));
-        }
-    
-        public System.IObservable<SpoutOperationControl> Process<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new SpoutOperationControl(this));
-        }
-    
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            stringBuilder.Append("default_retracted_position = " + _defaultRetractedPosition + ", ");
-            stringBuilder.Append("default_extended_position = " + _defaultExtendedPosition + ", ");
-            stringBuilder.Append("enabled = " + _enabled);
-            return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
-    }
-
-
     /// <summary>
     /// Defines a trial
     /// </summary>
@@ -4214,13 +3311,9 @@ namespace AindIsoForceDataSchema.TaskLogic
     
         private QuiescencePeriod _quiescencePeriod;
     
-        private InitiationPeriod _initiationPeriod;
-    
         private ResponsePeriod _responsePeriod;
     
-        private HarvestAction _leftHarvest;
-    
-        private HarvestAction _rightHarvest;
+        private RewardPeriod _rewardPeriod;
     
         public Trial()
         {
@@ -4230,10 +3323,8 @@ namespace AindIsoForceDataSchema.TaskLogic
         {
             _interTrialInterval = other._interTrialInterval;
             _quiescencePeriod = other._quiescencePeriod;
-            _initiationPeriod = other._initiationPeriod;
             _responsePeriod = other._responsePeriod;
-            _leftHarvest = other._leftHarvest;
-            _rightHarvest = other._rightHarvest;
+            _rewardPeriod = other._rewardPeriod;
         }
     
         /// <summary>
@@ -4273,24 +3364,6 @@ namespace AindIsoForceDataSchema.TaskLogic
         }
     
         /// <summary>
-        /// Initiation settings
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("initiation_period")]
-        [System.ComponentModel.DescriptionAttribute("Initiation settings")]
-        public InitiationPeriod InitiationPeriod
-        {
-            get
-            {
-                return _initiationPeriod;
-            }
-            set
-            {
-                _initiationPeriod = value;
-            }
-        }
-    
-        /// <summary>
         /// Response settings
         /// </summary>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
@@ -4309,38 +3382,20 @@ namespace AindIsoForceDataSchema.TaskLogic
         }
     
         /// <summary>
-        /// Specification of the left action
+        /// Reward settings
         /// </summary>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("left_harvest")]
-        [System.ComponentModel.DescriptionAttribute("Specification of the left action")]
-        public HarvestAction LeftHarvest
+        [Newtonsoft.Json.JsonPropertyAttribute("reward_period")]
+        [System.ComponentModel.DescriptionAttribute("Reward settings")]
+        public RewardPeriod RewardPeriod
         {
             get
             {
-                return _leftHarvest;
+                return _rewardPeriod;
             }
             set
             {
-                _leftHarvest = value;
-            }
-        }
-    
-        /// <summary>
-        /// Specification of the right action
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("right_harvest")]
-        [System.ComponentModel.DescriptionAttribute("Specification of the right action")]
-        public HarvestAction RightHarvest
-        {
-            get
-            {
-                return _rightHarvest;
-            }
-            set
-            {
-                _rightHarvest = value;
+                _rewardPeriod = value;
             }
         }
     
@@ -4358,10 +3413,8 @@ namespace AindIsoForceDataSchema.TaskLogic
         {
             stringBuilder.Append("inter_trial_interval = " + _interTrialInterval + ", ");
             stringBuilder.Append("quiescence_period = " + _quiescencePeriod + ", ");
-            stringBuilder.Append("initiation_period = " + _initiationPeriod + ", ");
             stringBuilder.Append("response_period = " + _responsePeriod + ", ");
-            stringBuilder.Append("left_harvest = " + _leftHarvest + ", ");
-            stringBuilder.Append("right_harvest = " + _rightHarvest);
+            stringBuilder.Append("reward_period = " + _rewardPeriod);
             return true;
         }
     
@@ -4689,53 +3742,6 @@ namespace AindIsoForceDataSchema.TaskLogic
             stringBuilder.Append("}");
             return stringBuilder.ToString();
         }
-    }
-
-
-    /// <summary>
-    /// Defines the target parameters
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTargetParameter
-    {
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="LowerForceThreshold")]
-        LowerForceThreshold = 0,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="UpperForceThreshold")]
-        UpperForceThreshold = 1,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="Probability")]
-        Probability = 2,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="Amount")]
-        Amount = 3,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="ForceDuration")]
-        ForceDuration = 4,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="Delay")]
-        Delay = 5,
-    }
-
-
-    /// <summary>
-    /// Defines the independent variable used for the update
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTargetParameterBy
-    {
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="Time")]
-        Time = 0,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="Reward")]
-        Reward = 1,
-    
-        [System.Runtime.Serialization.EnumMemberAttribute(Value="Trial")]
-        Trial = 2,
     }
 
 
@@ -5154,47 +4160,6 @@ namespace AindIsoForceDataSchema.TaskLogic
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ManipulatorFeedback>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<AudioFeedback>))]
-    public partial class MatchContinuousFeedback : Bonsai.Expressions.SingleArgumentExpressionBuilder
-    {
-    
-        public Bonsai.Expressions.TypeMapping Type { get; set; }
-
-        public override System.Linq.Expressions.Expression Build(System.Collections.Generic.IEnumerable<System.Linq.Expressions.Expression> arguments)
-        {
-            var typeMapping = Type;
-            var returnType = typeMapping != null ? typeMapping.GetType().GetGenericArguments()[0] : typeof(ContinuousFeedback);
-            return System.Linq.Expressions.Expression.Call(
-                typeof(MatchContinuousFeedback),
-                "Process",
-                new System.Type[] { returnType },
-                System.Linq.Enumerable.Single(arguments));
-        }
-
-    
-        private static System.IObservable<TResult> Process<TResult>(System.IObservable<ContinuousFeedback> source)
-            where TResult : ContinuousFeedback
-        {
-            return System.Reactive.Linq.Observable.Create<TResult>(observer =>
-            {
-                var sourceObserver = System.Reactive.Observer.Create<ContinuousFeedback>(
-                    value =>
-                    {
-                        var match = value as TResult;
-                        if (match != null) observer.OnNext(match);
-                    },
-                    observer.OnError,
-                    observer.OnCompleted);
-                return System.ObservableExtensions.SubscribeSafe(source, sourceObserver);
-            });
-        }
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
-    [System.ComponentModel.DefaultPropertyAttribute("Type")]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Scalar>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<NormalDistribution>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<LogNormalDistribution>))]
@@ -5241,6 +4206,47 @@ namespace AindIsoForceDataSchema.TaskLogic
     }
 
 
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DefaultPropertyAttribute("Type")]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Reward>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<OperantReward>))]
+    public partial class MatchRewardPeriod : Bonsai.Expressions.SingleArgumentExpressionBuilder
+    {
+    
+        public Bonsai.Expressions.TypeMapping Type { get; set; }
+
+        public override System.Linq.Expressions.Expression Build(System.Collections.Generic.IEnumerable<System.Linq.Expressions.Expression> arguments)
+        {
+            var typeMapping = Type;
+            var returnType = typeMapping != null ? typeMapping.GetType().GetGenericArguments()[0] : typeof(RewardPeriod);
+            return System.Linq.Expressions.Expression.Call(
+                typeof(MatchRewardPeriod),
+                "Process",
+                new System.Type[] { returnType },
+                System.Linq.Enumerable.Single(arguments));
+        }
+
+    
+        private static System.IObservable<TResult> Process<TResult>(System.IObservable<RewardPeriod> source)
+            where TResult : RewardPeriod
+        {
+            return System.Reactive.Linq.Observable.Create<TResult>(observer =>
+            {
+                var sourceObserver = System.Reactive.Observer.Create<RewardPeriod>(
+                    value =>
+                    {
+                        var match = value as TResult;
+                        if (match != null) observer.OnNext(match);
+                    },
+                    observer.OnError,
+                    observer.OnCompleted);
+                return System.ObservableExtensions.SubscribeSafe(source, sourceObserver);
+            });
+        }
+    }
+
+
     /// <summary>
     /// Serializes a sequence of data model objects into JSON strings.
     /// </summary>
@@ -5256,19 +4262,9 @@ namespace AindIsoForceDataSchema.TaskLogic
             return System.Reactive.Linq.Observable.Select(source, value => Newtonsoft.Json.JsonConvert.SerializeObject(value));
         }
 
-        public System.IObservable<string> Process(System.IObservable<ActionUpdater> source)
-        {
-            return Process<ActionUpdater>(source);
-        }
-
         public System.IObservable<string> Process(System.IObservable<AindIsoForceTaskParameters> source)
         {
             return Process<AindIsoForceTaskParameters>(source);
-        }
-
-        public System.IObservable<string> Process(System.IObservable<AudioFeedback> source)
-        {
-            return Process<AudioFeedback>(source);
         }
 
         public System.IObservable<string> Process(System.IObservable<BetaDistribution> source)
@@ -5306,11 +4302,6 @@ namespace AindIsoForceDataSchema.TaskLogic
             return Process<BlockStatistics>(source);
         }
 
-        public System.IObservable<string> Process(System.IObservable<ContinuousFeedback> source)
-        {
-            return Process<ContinuousFeedback>(source);
-        }
-
         public System.IObservable<string> Process(System.IObservable<Distribution> source)
         {
             return Process<Distribution>(source);
@@ -5331,14 +4322,14 @@ namespace AindIsoForceDataSchema.TaskLogic
             return Process<ExponentialDistributionParameters>(source);
         }
 
-        public System.IObservable<string> Process(System.IObservable<ForceLookUpTable> source)
-        {
-            return Process<ForceLookUpTable>(source);
-        }
-
         public System.IObservable<string> Process(System.IObservable<ForceOperationControl> source)
         {
             return Process<ForceOperationControl>(source);
+        }
+
+        public System.IObservable<string> Process(System.IObservable<ForceThreshold> source)
+        {
+            return Process<ForceThreshold>(source);
         }
 
         public System.IObservable<string> Process(System.IObservable<GammaDistribution> source)
@@ -5351,14 +4342,9 @@ namespace AindIsoForceDataSchema.TaskLogic
             return Process<GammaDistributionParameters>(source);
         }
 
-        public System.IObservable<string> Process(System.IObservable<HarvestAction> source)
+        public System.IObservable<string> Process(System.IObservable<LoadCellInput> source)
         {
-            return Process<HarvestAction>(source);
-        }
-
-        public System.IObservable<string> Process(System.IObservable<InitiationPeriod> source)
-        {
-            return Process<InitiationPeriod>(source);
+            return Process<LoadCellInput>(source);
         }
 
         public System.IObservable<string> Process(System.IObservable<LogNormalDistribution> source)
@@ -5371,11 +4357,6 @@ namespace AindIsoForceDataSchema.TaskLogic
             return Process<LogNormalDistributionParameters>(source);
         }
 
-        public System.IObservable<string> Process(System.IObservable<ManipulatorFeedback> source)
-        {
-            return Process<ManipulatorFeedback>(source);
-        }
-
         public System.IObservable<string> Process(System.IObservable<NormalDistribution> source)
         {
             return Process<NormalDistribution>(source);
@@ -5386,14 +4367,9 @@ namespace AindIsoForceDataSchema.TaskLogic
             return Process<NormalDistributionParameters>(source);
         }
 
-        public System.IObservable<string> Process(System.IObservable<NumericalUpdater> source)
+        public System.IObservable<string> Process(System.IObservable<OperantReward> source)
         {
-            return Process<NumericalUpdater>(source);
-        }
-
-        public System.IObservable<string> Process(System.IObservable<NumericalUpdaterParameters> source)
-        {
-            return Process<NumericalUpdaterParameters>(source);
+            return Process<OperantReward>(source);
         }
 
         public System.IObservable<string> Process(System.IObservable<OperationControl> source)
@@ -5431,6 +4407,16 @@ namespace AindIsoForceDataSchema.TaskLogic
             return Process<ResponsePeriod>(source);
         }
 
+        public System.IObservable<string> Process(System.IObservable<Reward> source)
+        {
+            return Process<Reward>(source);
+        }
+
+        public System.IObservable<string> Process(System.IObservable<RewardPeriod> source)
+        {
+            return Process<RewardPeriod>(source);
+        }
+
         public System.IObservable<string> Process(System.IObservable<Scalar> source)
         {
             return Process<Scalar>(source);
@@ -5444,11 +4430,6 @@ namespace AindIsoForceDataSchema.TaskLogic
         public System.IObservable<string> Process(System.IObservable<ScalingParameters> source)
         {
             return Process<ScalingParameters>(source);
-        }
-
-        public System.IObservable<string> Process(System.IObservable<SpoutOperationControl> source)
-        {
-            return Process<SpoutOperationControl>(source);
         }
 
         public System.IObservable<string> Process(System.IObservable<Trial> source)
@@ -5495,9 +4476,7 @@ namespace AindIsoForceDataSchema.TaskLogic
     [System.ComponentModel.DescriptionAttribute("Deserializes a sequence of JSON strings into data model objects.")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Transform)]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ActionUpdater>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<AindIsoForceTaskParameters>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<AudioFeedback>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<BetaDistribution>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<BetaDistributionParameters>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<BinomialDistribution>))]
@@ -5505,24 +4484,20 @@ namespace AindIsoForceDataSchema.TaskLogic
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Block>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<BlockGenerator>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<BlockStatistics>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ContinuousFeedback>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Distribution>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Environment>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ExponentialDistribution>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ExponentialDistributionParameters>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ForceLookUpTable>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ForceOperationControl>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ForceThreshold>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<GammaDistribution>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<GammaDistributionParameters>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<HarvestAction>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<InitiationPeriod>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<LoadCellInput>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<LogNormalDistribution>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<LogNormalDistributionParameters>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ManipulatorFeedback>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<NormalDistribution>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<NormalDistributionParameters>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<NumericalUpdater>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<NumericalUpdaterParameters>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<OperantReward>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<OperationControl>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<PdfDistribution>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<PdfDistributionParameters>))]
@@ -5530,10 +4505,11 @@ namespace AindIsoForceDataSchema.TaskLogic
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<PoissonDistributionParameters>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<QuiescencePeriod>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ResponsePeriod>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Reward>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<RewardPeriod>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Scalar>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ScalarDistributionParameter>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ScalingParameters>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<SpoutOperationControl>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Trial>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<TruncationParameters>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<UniformDistribution>))]

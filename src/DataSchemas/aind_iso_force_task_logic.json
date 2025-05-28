@@ -1,27 +1,27 @@
 {
   "definitions": {
-    "ActionUpdater": {
-      "properties": {
-        "target_parameter": {
-          "$ref": "#/definitions/UpdateTargetParameter",
-          "default": "Probability",
-          "description": "Target parameter"
-        },
-        "updated_by": {
-          "$ref": "#/definitions/UpdateTargetParameterBy",
-          "default": "Time",
-          "description": "Independent variable"
-        },
-        "updater": {
-          "$ref": "#/definitions/NumericalUpdater",
-          "description": "Updater"
-        }
-      },
-      "required": [
-        "updater"
+    "Action": {
+      "description": "Defines the action types",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        8,
+        12
       ],
-      "title": "ActionUpdater",
-      "type": "object"
+      "title": "Action",
+      "type": "integer",
+      "x-enumNames": [
+        "None",
+        "Left",
+        "Right",
+        "LeftRight",
+        "Push",
+        "Pull",
+        "UpDown"
+      ]
     },
     "AindIsoForceTaskParameters": {
       "additionalProperties": true,
@@ -49,27 +49,26 @@
           "$ref": "#/definitions/Environment",
           "description": "Environment settings"
         },
-        "updaters": {
-          "additionalProperties": {
-            "$ref": "#/definitions/NumericalUpdater"
-          },
-          "description": "List of numerical updaters",
-          "title": "Updaters",
-          "type": "object"
-        },
         "operation_control": {
           "$ref": "#/definitions/OperationControl",
           "default": {
             "force": {
-              "force_lookup_table": null,
-              "left_index": 0,
-              "press_mode": "Double",
-              "right_index": 1
-            },
-            "spout": {
-              "default_extended_position": 0.0,
-              "default_retracted_position": 0.0,
-              "enabled": true
+              "left": {
+                "channel": 0,
+                "is_inverted": false
+              },
+              "pull": {
+                "channel": 1,
+                "is_inverted": true
+              },
+              "push": {
+                "channel": 1,
+                "is_inverted": false
+              },
+              "right": {
+                "channel": 0,
+                "is_inverted": true
+              }
             }
           },
           "description": "Operation control"
@@ -79,46 +78,6 @@
         "environment"
       ],
       "title": "AindIsoForceTaskParameters",
-      "type": "object"
-    },
-    "AudioFeedback": {
-      "properties": {
-        "continuous_feedback_mode": {
-          "const": "Audio",
-          "default": "Audio",
-          "title": "Continuous Feedback Mode",
-          "type": "string"
-        },
-        "converter_lut_input": {
-          "default": [
-            0,
-            1
-          ],
-          "description": "Normalized input domain. All values should be between 0 and 1",
-          "items": {
-            "maximum": 1,
-            "minimum": 0,
-            "type": "number"
-          },
-          "minItems": 2,
-          "title": "Converter Lut Input",
-          "type": "array"
-        },
-        "converter_lut_output": {
-          "default": [
-            0,
-            1
-          ],
-          "description": "Output domain used to linearly interpolate the input values to the output values",
-          "items": {
-            "type": "number"
-          },
-          "minItems": 2,
-          "title": "Converter Lut Output",
-          "type": "array"
-        }
-      },
-      "title": "AudioFeedback",
       "type": "object"
     },
     "BetaDistribution": {
@@ -326,13 +285,13 @@
           },
           "description": "Size of the block"
         },
-        "trial_statistics": {
+        "trial_template": {
           "$ref": "#/definitions/Trial",
           "description": "Statistics of the trials in the block"
         }
       },
       "required": [
-        "trial_statistics"
+        "trial_template"
       ],
       "title": "BlockGenerator",
       "type": "object"
@@ -351,23 +310,6 @@
         },
         {
           "$ref": "#/definitions/BlockGenerator"
-        }
-      ]
-    },
-    "ContinuousFeedback": {
-      "discriminator": {
-        "mapping": {
-          "Audio": "#/definitions/AudioFeedback",
-          "Manipulator": "#/definitions/ManipulatorFeedback"
-        },
-        "propertyName": "continuous_feedback_mode"
-      },
-      "oneOf": [
-        {
-          "$ref": "#/definitions/ManipulatorFeedback"
-        },
-        {
-          "$ref": "#/definitions/AudioFeedback"
         }
       ]
     },
@@ -521,89 +463,100 @@
       "title": "ExponentialDistributionParameters",
       "type": "object"
     },
-    "ForceLookUpTable": {
-      "properties": {
-        "path": {
-          "description": "Reference to the look up table image. Should be a 1 channel image. Value = LUT[Left, Right]",
-          "title": "Path",
-          "type": "string"
-        },
-        "offset": {
-          "default": 0,
-          "description": "Offset to add to the look up table value",
-          "title": "Offset",
-          "type": "number"
-        },
-        "scale": {
-          "default": 1,
-          "description": "Scale to multiply the look up table value",
-          "title": "Scale",
-          "type": "number"
-        },
-        "left_min": {
-          "description": "The lower value of Left force used to linearly scale the input coordinate to.",
-          "title": "Left Min",
-          "type": "number"
-        },
-        "left_max": {
-          "description": "The upper value of Left force used to linearly scale the input coordinate to.",
-          "title": "Left Max",
-          "type": "number"
-        },
-        "right_min": {
-          "description": "The lower value of Right force used to linearly scale the input coordinate to.",
-          "title": "Right Min",
-          "type": "number"
-        },
-        "right_max": {
-          "description": "The upper value of Right force used to linearly scale the input coordinate to.",
-          "title": "Right Max",
-          "type": "number"
-        }
-      },
-      "required": [
-        "path",
-        "left_min",
-        "left_max",
-        "right_min",
-        "right_max"
-      ],
-      "title": "ForceLookUpTable",
-      "type": "object"
-    },
     "ForceOperationControl": {
       "properties": {
-        "press_mode": {
-          "$ref": "#/definitions/PressMode",
-          "default": "Double",
-          "description": "Defines the press mode. Default is to use both sensors individually"
+        "left": {
+          "$ref": "#/definitions/LoadCellInput",
+          "default": {
+            "channel": 0,
+            "is_inverted": false
+          },
+          "description": "Left load cell input"
         },
-        "left_index": {
-          "default": 0,
-          "description": "Index of the left sensor",
-          "title": "Left Index",
-          "type": "integer"
+        "right": {
+          "$ref": "#/definitions/LoadCellInput",
+          "default": {
+            "channel": 0,
+            "is_inverted": true
+          },
+          "description": "Right load cell input"
         },
-        "right_index": {
-          "default": 1,
-          "description": "Index of the right sensor",
-          "title": "Right Index",
-          "type": "integer"
+        "push": {
+          "$ref": "#/definitions/LoadCellInput",
+          "default": {
+            "channel": 1,
+            "is_inverted": false
+          },
+          "description": "Push load cell input"
         },
-        "force_lookup_table": {
+        "pull": {
+          "$ref": "#/definitions/LoadCellInput",
+          "default": {
+            "channel": 1,
+            "is_inverted": true
+          },
+          "description": "Pull load cell input"
+        }
+      },
+      "title": "ForceOperationControl",
+      "type": "object"
+    },
+    "ForceThreshold": {
+      "properties": {
+        "left": {
           "default": null,
-          "description": "Look up table for force projection",
+          "description": "Left force threshold",
           "oneOf": [
             {
-              "$ref": "#/definitions/ForceLookUpTable"
+              "type": "number"
             },
             {
               "type": "null"
             }
-          ]
+          ],
+          "title": "Left"
+        },
+        "right": {
+          "default": null,
+          "description": "Right force threshold",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Right"
+        },
+        "push": {
+          "default": null,
+          "description": "Push force threshold",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Push"
+        },
+        "pull": {
+          "default": null,
+          "description": "Pull force threshold",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Pull"
         }
       },
-      "title": "ForceOperationControl",
+      "title": "ForceThreshold",
       "type": "object"
     },
     "GammaDistribution": {
@@ -677,156 +630,26 @@
       "title": "GammaDistributionParameters",
       "type": "object"
     },
-    "HarvestAction": {
-      "description": "Defines an abstract class for an harvest action",
+    "LoadCellInput": {
       "properties": {
-        "action": {
-          "$ref": "#/definitions/HarvestActionLabel",
-          "default": "None",
-          "description": "Label of the action"
+        "channel": {
+          "description": "Load cell channel number",
+          "maximum": 7,
+          "minimum": 0,
+          "title": "Channel",
+          "type": "integer"
         },
-        "harvest_mode": {
-          "$ref": "#/definitions/HarvestMode",
-          "description": "Type of the trial"
-        },
-        "probability": {
-          "default": 1,
-          "description": "Probability of reward",
-          "title": "Probability",
-          "type": "number"
-        },
-        "amount": {
-          "default": 1,
-          "description": "Amount of reward to be delivered",
-          "title": "Amount",
-          "type": "number"
-        },
-        "delay": {
-          "default": 0,
-          "description": "Delay between successful harvest and reward delivery",
-          "title": "Delay",
-          "type": "number"
-        },
-        "force_duration": {
-          "default": 0.5,
-          "description": "Duration that the force much stay above threshold",
-          "title": "Force Duration",
-          "type": "number"
-        },
-        "upper_force_threshold": {
-          "default": 30000,
-          "description": "Upper bound of the force target region or the target cached force required.",
-          "title": "Upper Force Threshold",
-          "type": "number"
-        },
-        "lower_force_threshold": {
-          "default": 5000,
-          "description": "Lower bound of the force target region.",
-          "title": "Lower Force Threshold",
-          "type": "number"
-        },
-        "is_operant": {
-          "default": true,
-          "description": "Whether the reward delivery is contingent on licking.",
-          "title": "Is Operant",
+        "is_inverted": {
+          "default": false,
+          "description": "Whether the load cell is inverted",
+          "title": "Is Inverted",
           "type": "boolean"
-        },
-        "time_to_collect": {
-          "default": null,
-          "description": "Time to collect the reward after it is available. If null, the reward will be available indefinitely.",
-          "oneOf": [
-            {
-              "$ref": "#/definitions/Distribution"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "action_updaters": {
-          "default": [],
-          "description": "List of action updaters. All updaters are called at the start of a new trial.",
-          "items": {
-            "$ref": "#/definitions/ActionUpdater"
-          },
-          "title": "Action Updaters",
-          "type": "array"
-        },
-        "continuous_feedback": {
-          "default": null,
-          "description": "Continuous feedback settings",
-          "oneOf": [
-            {
-              "$ref": "#/definitions/ContinuousFeedback"
-            },
-            {
-              "type": "null"
-            }
-          ]
         }
       },
       "required": [
-        "harvest_mode"
+        "channel"
       ],
-      "title": "HarvestAction",
-      "type": "object"
-    },
-    "HarvestActionLabel": {
-      "description": "Defines the harvest actions",
-      "enum": [
-        "Left",
-        "Right",
-        "None"
-      ],
-      "title": "HarvestActionLabel",
-      "type": "string"
-    },
-    "HarvestMode": {
-      "description": "Defines the trial types",
-      "enum": [
-        "None",
-        "Accumulation",
-        "RegionOfInterest"
-      ],
-      "title": "HarvestMode",
-      "type": "string"
-    },
-    "InitiationPeriod": {
-      "description": "Defines an initiation period",
-      "properties": {
-        "duration": {
-          "$ref": "#/definitions/Distribution",
-          "default": {
-            "family": "Scalar",
-            "distribution_parameters": {
-              "family": "Scalar",
-              "value": 0.5
-            },
-            "truncation_parameters": null,
-            "scaling_parameters": null
-          },
-          "description": "Duration of the initiation period"
-        },
-        "has_cue": {
-          "default": true,
-          "description": "Whether to use a cue to signal the start of the period.",
-          "title": "Has Cue",
-          "type": "boolean"
-        },
-        "abort_on_force": {
-          "default": false,
-          "description": "Whether to abort the trial if a choice is made during the initiation period.",
-          "title": "Abort On Force",
-          "type": "boolean"
-        },
-        "abort_on_force_threshold": {
-          "default": 0,
-          "description": "Time out for the quiescence period",
-          "title": "Abort On Force Threshold",
-          "type": "number"
-        }
-      },
-      "title": "InitiationPeriod",
+      "title": "LoadCellInput",
       "type": "object"
     },
     "LogNormalDistribution": {
@@ -898,46 +721,6 @@
       "title": "LogNormalDistributionParameters",
       "type": "object"
     },
-    "ManipulatorFeedback": {
-      "properties": {
-        "continuous_feedback_mode": {
-          "const": "Manipulator",
-          "default": "Manipulator",
-          "title": "Continuous Feedback Mode",
-          "type": "string"
-        },
-        "converter_lut_input": {
-          "default": [
-            0,
-            1
-          ],
-          "description": "Normalized input domain. All values should be between 0 and 1",
-          "items": {
-            "maximum": 1,
-            "minimum": 0,
-            "type": "number"
-          },
-          "minItems": 2,
-          "title": "Converter Lut Input",
-          "type": "array"
-        },
-        "converter_lut_output": {
-          "default": [
-            0,
-            1
-          ],
-          "description": "Output domain used to linearly interpolate the input values to the output values",
-          "items": {
-            "type": "number"
-          },
-          "minItems": 2,
-          "title": "Converter Lut Output",
-          "type": "array"
-        }
-      },
-      "title": "ManipulatorFeedback",
-      "type": "object"
-    },
     "NormalDistribution": {
       "properties": {
         "family": {
@@ -1007,47 +790,28 @@
       "title": "NormalDistributionParameters",
       "type": "object"
     },
-    "NumericalUpdater": {
+    "OperantReward": {
       "properties": {
-        "operation": {
-          "$ref": "#/definitions/NumericalUpdaterOperation",
-          "default": "None",
-          "description": "Operation to perform on the parameter"
+        "is_operant": {
+          "const": true,
+          "default": true,
+          "title": "Is Operant",
+          "type": "integer"
         },
-        "parameters": {
-          "$ref": "#/definitions/NumericalUpdaterParameters",
+        "amount": {
+          "$ref": "#/definitions/Distribution",
           "default": {
-            "value": {
-              "distribution_parameters": {
-                "family": "Scalar",
-                "value": 0.0
-              },
+            "family": "Scalar",
+            "distribution_parameters": {
               "family": "Scalar",
-              "scaling_parameters": null,
-              "truncation_parameters": null
+              "value": 1.0
             },
-            "minimum": 0.0,
-            "maximum": 0.0
+            "truncation_parameters": null,
+            "scaling_parameters": null
           },
-          "description": "Parameters of the updater"
-        }
-      },
-      "title": "NumericalUpdater",
-      "type": "object"
-    },
-    "NumericalUpdaterOperation": {
-      "enum": [
-        "None",
-        "Offset",
-        "Gain",
-        "Set"
-      ],
-      "title": "NumericalUpdaterOperation",
-      "type": "string"
-    },
-    "NumericalUpdaterParameters": {
-      "properties": {
-        "value": {
+          "description": "Amount of reward to dispense"
+        },
+        "delay": {
           "$ref": "#/definitions/Distribution",
           "default": {
             "family": "Scalar",
@@ -1058,22 +822,23 @@
             "truncation_parameters": null,
             "scaling_parameters": null
           },
-          "description": "The value of the update. This value will be multiplied by the optional input event value."
+          "description": "Delay before dispensing the reward"
         },
-        "minimum": {
-          "default": 0,
-          "description": "Minimum value of the parameter",
-          "title": "Minimum",
-          "type": "number"
-        },
-        "maximum": {
-          "default": 0,
-          "description": "Maximum value of the parameter",
-          "title": "Maximum",
-          "type": "number"
+        "time_to_collect": {
+          "$ref": "#/definitions/Distribution",
+          "default": {
+            "family": "Scalar",
+            "distribution_parameters": {
+              "family": "Scalar",
+              "value": 0.5
+            },
+            "truncation_parameters": null,
+            "scaling_parameters": null
+          },
+          "description": "Time to collect the reward"
         }
       },
-      "title": "NumericalUpdaterParameters",
+      "title": "OperantReward",
       "type": "object"
     },
     "OperationControl": {
@@ -1081,21 +846,24 @@
         "force": {
           "$ref": "#/definitions/ForceOperationControl",
           "default": {
-            "press_mode": "Double",
-            "left_index": 0,
-            "right_index": 1,
-            "force_lookup_table": null
+            "left": {
+              "channel": 0,
+              "is_inverted": false
+            },
+            "right": {
+              "channel": 0,
+              "is_inverted": true
+            },
+            "push": {
+              "channel": 1,
+              "is_inverted": false
+            },
+            "pull": {
+              "channel": 1,
+              "is_inverted": true
+            }
           },
           "description": "Operation control for force sensor"
-        },
-        "spout": {
-          "$ref": "#/definitions/SpoutOperationControl",
-          "default": {
-            "default_retracted_position": 0.0,
-            "default_extended_position": 0.0,
-            "enabled": true
-          },
-          "description": "Operation control for spout"
         }
       },
       "title": "OperationControl",
@@ -1248,20 +1016,6 @@
       "title": "PoissonDistributionParameters",
       "type": "object"
     },
-    "PressMode": {
-      "description": "Defines the press mode",
-      "enum": [
-        "Double",
-        "SingleAverage",
-        "SingleMax",
-        "SingleMin",
-        "SingleLeft",
-        "SingleRight",
-        "SingleLookupTable"
-      ],
-      "title": "PressMode",
-      "type": "string"
-    },
     "QuiescencePeriod": {
       "description": "Defines a quiescence settings",
       "properties": {
@@ -1276,19 +1030,17 @@
             "truncation_parameters": null,
             "scaling_parameters": null
           },
-          "description": "Duration of the quiescence period"
+          "description": "Duration force has to stay below threshold to start the trial."
         },
         "force_threshold": {
-          "default": 0,
-          "description": "Time out for the quiescence period",
-          "title": "Force Threshold",
-          "type": "number"
-        },
-        "has_cue": {
-          "default": false,
-          "description": "Whether to use a cue to signal the start of the period.",
-          "title": "Has Cue",
-          "type": "boolean"
+          "$ref": "#/definitions/ForceThreshold",
+          "default": {
+            "left": null,
+            "right": null,
+            "push": null,
+            "pull": null
+          },
+          "description": "Threshold for the force sensors to be considered quiescent. If None, the threshold will be ignored."
         }
       },
       "title": "QuiescencePeriod",
@@ -1310,21 +1062,91 @@
           },
           "description": "Duration of the response period. I.e. the time the animal has to make a choice."
         },
-        "has_cue": {
-          "default": true,
-          "description": "Whether to use a cue to signal the start of the period.",
-          "title": "Has Cue",
-          "type": "boolean"
+        "force_threshold": {
+          "$ref": "#/definitions/ForceThreshold",
+          "default": {
+            "left": null,
+            "right": null,
+            "push": null,
+            "pull": null
+          },
+          "description": "Threshold for the force sensors to be considered active. If None, the crossings will be ignored."
         },
-        "has_feedback": {
-          "default": false,
-          "description": "Whether to provide feedback to the animal after the response period.",
-          "title": "Has Feedback",
-          "type": "boolean"
+        "rewarded_action": {
+          "$ref": "#/definitions/Action",
+          "default": 0
+        },
+        "force_duration": {
+          "$ref": "#/definitions/Distribution",
+          "default": {
+            "family": "Scalar",
+            "distribution_parameters": {
+              "family": "Scalar",
+              "value": 0.05
+            },
+            "truncation_parameters": null,
+            "scaling_parameters": null
+          },
+          "description": "Duration the force must stay above threshold."
         }
       },
       "title": "ResponsePeriod",
       "type": "object"
+    },
+    "Reward": {
+      "properties": {
+        "is_operant": {
+          "const": false,
+          "default": false,
+          "title": "Is Operant",
+          "type": "integer"
+        },
+        "amount": {
+          "$ref": "#/definitions/Distribution",
+          "default": {
+            "family": "Scalar",
+            "distribution_parameters": {
+              "family": "Scalar",
+              "value": 1.0
+            },
+            "truncation_parameters": null,
+            "scaling_parameters": null
+          },
+          "description": "Amount of reward to dispense"
+        },
+        "delay": {
+          "$ref": "#/definitions/Distribution",
+          "default": {
+            "family": "Scalar",
+            "distribution_parameters": {
+              "family": "Scalar",
+              "value": 0.0
+            },
+            "truncation_parameters": null,
+            "scaling_parameters": null
+          },
+          "description": "Delay before dispensing the reward"
+        }
+      },
+      "title": "Reward",
+      "type": "object"
+    },
+    "RewardPeriod": {
+      "discriminator": {
+        "mapping": {
+          "False": "#/definitions/Reward",
+          "True": "#/definitions/OperantReward"
+        },
+        "propertyName": "is_operant"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/definitions/Reward"
+        },
+        {
+          "$ref": "#/definitions/OperantReward"
+        }
+      ]
     },
     "Scalar": {
       "properties": {
@@ -1394,30 +1216,6 @@
       "title": "ScalingParameters",
       "type": "object"
     },
-    "SpoutOperationControl": {
-      "properties": {
-        "default_retracted_position": {
-          "default": 0,
-          "description": "Default retracted position (mm)",
-          "title": "Default Retracted Position",
-          "type": "number"
-        },
-        "default_extended_position": {
-          "default": 0,
-          "description": "Default extended position (mm)",
-          "title": "Default Extended Position",
-          "type": "number"
-        },
-        "enabled": {
-          "default": true,
-          "description": "Whether the spout control is enabled",
-          "title": "Enabled",
-          "type": "boolean"
-        }
-      },
-      "title": "SpoutOperationControl",
-      "type": "object"
-    },
     "Trial": {
       "description": "Defines a trial",
       "properties": {
@@ -1446,24 +1244,6 @@
             }
           ]
         },
-        "initiation_period": {
-          "$ref": "#/definitions/InitiationPeriod",
-          "default": {
-            "duration": {
-              "distribution_parameters": {
-                "family": "Scalar",
-                "value": 0.5
-              },
-              "family": "Scalar",
-              "scaling_parameters": null,
-              "truncation_parameters": null
-            },
-            "has_cue": true,
-            "abort_on_force": false,
-            "abort_on_force_threshold": 0.0
-          },
-          "description": "Initiation settings"
-        },
         "response_period": {
           "$ref": "#/definitions/ResponsePeriod",
           "default": {
@@ -1476,34 +1256,49 @@
               "scaling_parameters": null,
               "truncation_parameters": null
             },
-            "has_cue": true,
-            "has_feedback": false
+            "force_threshold": {
+              "left": null,
+              "pull": null,
+              "push": null,
+              "right": null
+            },
+            "rewarded_action": 0,
+            "force_duration": {
+              "distribution_parameters": {
+                "family": "Scalar",
+                "value": 0.05
+              },
+              "family": "Scalar",
+              "scaling_parameters": null,
+              "truncation_parameters": null
+            }
           },
           "description": "Response settings"
         },
-        "left_harvest": {
-          "default": null,
-          "description": "Specification of the left action",
-          "oneOf": [
-            {
-              "$ref": "#/definitions/HarvestAction"
+        "reward_period": {
+          "$ref": "#/definitions/RewardPeriod",
+          "default": {
+            "is_operant": false,
+            "amount": {
+              "distribution_parameters": {
+                "family": "Scalar",
+                "value": 1.0
+              },
+              "family": "Scalar",
+              "scaling_parameters": null,
+              "truncation_parameters": null
             },
-            {
-              "type": "null"
+            "delay": {
+              "distribution_parameters": {
+                "family": "Scalar",
+                "value": 0.0
+              },
+              "family": "Scalar",
+              "scaling_parameters": null,
+              "truncation_parameters": null
             }
-          ]
-        },
-        "right_harvest": {
-          "default": null,
-          "description": "Specification of the right action",
-          "oneOf": [
-            {
-              "$ref": "#/definitions/HarvestAction"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          },
+          "description": "Reward settings"
         }
       },
       "title": "Trial",
@@ -1601,29 +1396,6 @@
       },
       "title": "UniformDistributionParameters",
       "type": "object"
-    },
-    "UpdateTargetParameter": {
-      "description": "Defines the target parameters",
-      "enum": [
-        "LowerForceThreshold",
-        "UpperForceThreshold",
-        "Probability",
-        "Amount",
-        "ForceDuration",
-        "Delay"
-      ],
-      "title": "UpdateTargetParameter",
-      "type": "string"
-    },
-    "UpdateTargetParameterBy": {
-      "description": "Defines the independent variable used for the update",
-      "enum": [
-        "Time",
-        "Reward",
-        "Trial"
-      ],
-      "title": "UpdateTargetParameterBy",
-      "type": "string"
     }
   },
   "additionalProperties": false,
