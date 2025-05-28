@@ -5,11 +5,12 @@ import warnings
 from pathlib import Path
 from typing import Generic, List, Optional, TypeVar, Union
 
-from aind_behavior_iso_force.rig import AindIsoForceRig
-from aind_behavior_iso_force.task_logic import AindIsoForceTaskLogic
 from aind_behavior_services.session import AindBehaviorSessionModel
 from aind_behavior_services.utils import run_bonsai_process
 from pydantic import ValidationError
+
+from aind_behavior_iso_force.rig import AindIsoForceRig
+from aind_behavior_iso_force.task_logic import AindIsoForceTaskLogic
 
 sys.path.append(".")
 from examples import example_roi_trial_type  # isort:skip # pylint: disable=wrong-import-position

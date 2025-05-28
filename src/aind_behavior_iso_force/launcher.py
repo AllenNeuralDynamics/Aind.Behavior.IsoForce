@@ -24,9 +24,7 @@ def make_launcher() -> behavior_launcher.BehaviorLauncher:
 
     if use_watchdog:
         srv.attach_data_mapper(AindDataMapperWrapper.from_launcher)
-        srv.attach_data_transfer(
-            watchdog_data_transfer_factory(remote_dir, project_name="TBD")
-        )
+        srv.attach_data_transfer(watchdog_data_transfer_factory(remote_dir, project_name="TBD"))
     else:
         srv.attach_data_transfer(behavior_launcher.robocopy_data_transfer_factory(Path(remote_dir)))
 

@@ -4,12 +4,13 @@ from datetime import datetime
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
+from aind_data_schema.core.rig import Rig
+from git import Repo
+
 from aind_behavior_iso_force.data_mappers import (
     AindRigDataMapper,
     AindSessionDataMapper,
 )
-from aind_data_schema.core.rig import Rig
-from git import Repo
 
 sys.path.append(".")
 from examples.example_roi_trial_type import mock_rig, mock_session, mock_task_logic  # isort:skip # pylint: disable=wrong-import-position
