@@ -17,10 +17,10 @@
         "None",
         "Left",
         "Right",
-        "LeftRight",
+        "RightLeft",
         "Push",
         "Pull",
-        "UpDown"
+        "PushPull"
       ]
     },
     "AindIsoForceTaskParameters": {

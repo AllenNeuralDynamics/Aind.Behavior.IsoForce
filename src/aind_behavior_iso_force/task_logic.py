@@ -62,10 +62,10 @@ class Action(IntFlag):
     NONE = 0
     LEFT = 1 << 0
     RIGHT = 1 << 1
-    LEFT_RIGHT = LEFT | RIGHT
+    RIGHT_LEFT = LEFT | RIGHT
     PUSH = 1 << 2
     PULL = 1 << 3
-    UP_DOWN = PUSH | PULL
+    PUSH_PULL = PUSH | PULL
 
 class ForceThreshold(BaseModel):
     left: Optional[float] = Field(default=None, description="Left force threshold")

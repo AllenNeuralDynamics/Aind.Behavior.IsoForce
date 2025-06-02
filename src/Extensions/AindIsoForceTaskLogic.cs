@@ -26,7 +26,7 @@ namespace AindIsoForceDataSchema.TaskLogic
         Right = 2,
     
         [System.Runtime.Serialization.EnumMemberAttribute(Value="3")]
-        LeftRight = 3,
+        RightLeft = 3,
     
         [System.Runtime.Serialization.EnumMemberAttribute(Value="4")]
         Push = 4,
@@ -35,7 +35,7 @@ namespace AindIsoForceDataSchema.TaskLogic
         Pull = 8,
     
         [System.Runtime.Serialization.EnumMemberAttribute(Value="12")]
-        UpDown = 12,
+        PushPull = 12,
     }
 
 

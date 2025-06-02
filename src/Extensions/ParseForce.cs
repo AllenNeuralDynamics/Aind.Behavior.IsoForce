@@ -87,6 +87,32 @@ public class JoystickForce
         }
     }
 
+    public double this[AindIsoForceDataSchema.TaskLogic.Action index]
+    {
+        get
+        {
+            switch (index)
+            {
+                case AindIsoForceDataSchema.TaskLogic.Action.Left:
+                    return Left;
+                case AindIsoForceDataSchema.TaskLogic.Action.Right:
+                    return Right;
+                case AindIsoForceDataSchema.TaskLogic.Action.Push:
+                    return Push;
+                case AindIsoForceDataSchema.TaskLogic.Action.Pull:
+                    return Pull;
+                case AindIsoForceDataSchema.TaskLogic.Action.None:
+                    return double.NaN;
+                case AindIsoForceDataSchema.TaskLogic.Action.RightLeft:
+                    return RightLeft;
+                case AindIsoForceDataSchema.TaskLogic.Action.PushPull:
+                    return PushPull;
+                default:
+                    throw new ArgumentOutOfRangeException("index", "Invalid action type specified.");
+            }
+        }
+    }
+
     private ForceOperationControl sourceSettings;
     public ForceOperationControl SourceSettings
     {
