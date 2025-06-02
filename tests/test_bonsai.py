@@ -13,7 +13,7 @@ from aind_behavior_iso_force.rig import AindIsoForceRig
 from aind_behavior_iso_force.task_logic import AindIsoForceTaskLogic
 
 sys.path.append(".")
-from examples import example_roi_trial_type  # isort:skip # pylint: disable=wrong-import-position
+from examples import example  # isort:skip # pylint: disable=wrong-import-position
 from tests import JSON_ROOT  # isort:skip # pylint: disable=wrong-import-position
 
 TModel = TypeVar("TModel", bound=Union[AindIsoForceRig, AindIsoForceTaskLogic, AindBehaviorSessionModel])
@@ -25,7 +25,7 @@ class BonsaiTests(unittest.TestCase):
         warnings.simplefilter("ignore", category=Warning)
 
     def test_deserialization(self):
-        example_roi_trial_type.main("./local/{schema}.json")
+        example.main("./local/{schema}.json")
 
         models_to_test = [
             TestModel(bonsai_property="SessionPath", json_root=JSON_ROOT, model=AindBehaviorSessionModel),

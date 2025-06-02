@@ -13,7 +13,7 @@ from aind_behavior_iso_force.data_mappers import (
 )
 
 sys.path.append(".")
-from examples.example_roi_trial_type import mock_rig, mock_session, mock_task_logic  # isort:skip # pylint: disable=wrong-import-position
+from examples.example import mock_rig, mock_session, mock_task_logic  # isort:skip # pylint: disable=wrong-import-position
 
 
 class TestAindSessionDataMapper(unittest.TestCase):

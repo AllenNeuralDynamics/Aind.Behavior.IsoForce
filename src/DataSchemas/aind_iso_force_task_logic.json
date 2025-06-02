@@ -792,11 +792,11 @@
     },
     "OperantReward": {
       "properties": {
-        "is_operant": {
-          "const": true,
-          "default": true,
-          "title": "Is Operant",
-          "type": "integer"
+        "reward_type": {
+          "const": "Operant",
+          "default": "Operant",
+          "title": "Reward Type",
+          "type": "string"
         },
         "amount": {
           "$ref": "#/definitions/Distribution",
@@ -1095,11 +1095,11 @@
     },
     "Reward": {
       "properties": {
-        "is_operant": {
-          "const": false,
-          "default": false,
-          "title": "Is Operant",
-          "type": "integer"
+        "reward_type": {
+          "const": "Pavlovian",
+          "default": "Pavlovian",
+          "title": "Reward Type",
+          "type": "string"
         },
         "amount": {
           "$ref": "#/definitions/Distribution",
@@ -1134,10 +1134,10 @@
     "RewardPeriod": {
       "discriminator": {
         "mapping": {
-          "False": "#/definitions/Reward",
-          "True": "#/definitions/OperantReward"
+          "Operant": "#/definitions/OperantReward",
+          "Pavlovian": "#/definitions/Reward"
         },
-        "propertyName": "is_operant"
+        "propertyName": "reward_type"
       },
       "oneOf": [
         {
@@ -1278,7 +1278,7 @@
         "reward_period": {
           "$ref": "#/definitions/RewardPeriod",
           "default": {
-            "is_operant": false,
+            "reward_type": "Pavlovian",
             "amount": {
               "distribution_parameters": {
                 "family": "Scalar",

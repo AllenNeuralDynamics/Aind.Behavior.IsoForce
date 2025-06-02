@@ -2989,9 +2989,9 @@ namespace AindIsoForceDataSchema.TaskLogic
 
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.3.0.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "is_operant")]
-    [JsonInheritanceAttribute("False", typeof(Reward))]
-    [JsonInheritanceAttribute("True", typeof(OperantReward))]
+    [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "reward_type")]
+    [JsonInheritanceAttribute("Pavlovian", typeof(Reward))]
+    [JsonInheritanceAttribute("Operant", typeof(OperantReward))]
     [Bonsai.CombinatorAttribute()]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     public partial class RewardPeriod

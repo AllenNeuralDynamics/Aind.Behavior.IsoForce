@@ -141,7 +141,7 @@ class ResponsePeriod(BaseModel):
 
 
 class Reward(BaseModel):
-    is_operant: Literal[False] = False
+    reward_type: Literal["Pavlovian"] = "Pavlovian"
     amount: distributions.Distribution = Field(
         default=scalar_value(1.0), description="Amount of reward to dispense", validate_default=True
     )
@@ -151,13 +151,15 @@ class Reward(BaseModel):
 
 
 class OperantReward(Reward):
-    is_operant: Literal[True] = True
+    reward_type: Literal["Operant"] = "Operant"
     time_to_collect: distributions.Distribution = Field(
         default=scalar_value(0.5), description="Time to collect the reward", validate_default=True
     )
 
 
-RewardPeriod = TypeAliasType("RewardPeriod", Annotated[Union[Reward, OperantReward], Field(discriminator="is_operant")])
+RewardPeriod = TypeAliasType(
+    "RewardPeriod", Annotated[Union[Reward, OperantReward], Field(discriminator="reward_type")]
+)
 
 
 class Trial(BaseModel):
