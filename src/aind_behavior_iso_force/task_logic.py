@@ -1,15 +1,16 @@
 from __future__ import annotations
 
 from enum import Enum, IntFlag
-from functools import partial
-from typing import Annotated, Dict, List, Literal, Optional, Self, Union
+from typing import Annotated, List, Literal, Optional, Self, Union
 
 import aind_behavior_services.task_logic.distributions as distributions
-from aind_behavior_services.task_logic import TaskParameters, AindBehaviorTaskLogicModel
-from pydantic import BaseModel, Field, field_validator, model_validator
+from aind_behavior_services.task_logic import AindBehaviorTaskLogicModel, TaskParameters
+from pydantic import BaseModel, Field, model_validator
 from typing_extensions import TypeAliasType
 
 from aind_behavior_iso_force import __version__
+
+from .rig import lcc
 
 
 def scalar_value(value: float) -> distributions.Scalar:
@@ -56,6 +57,7 @@ def normal_distribution_value(mean: float, std: float) -> distributions.Normal:
         distribution_parameters=distributions.NormalDistributionParameters(mean=mean, std=std)
     )
 
+
 class Action(IntFlag):
     """Defines the action types"""
 
@@ -66,6 +68,7 @@ class Action(IntFlag):
     PUSH = 1 << 2
     PULL = 1 << 3
     PUSH_PULL = PUSH | PULL
+
 
 class ForceThreshold(BaseModel):
     left: Optional[float] = Field(default=None, description="Left force threshold")
@@ -83,7 +86,7 @@ class ForceThreshold(BaseModel):
         Returns:
             Optional[float]: The force threshold for the action, or None if no threshold is set.
         """
-        if bin(action).count('1') != 1:
+        if bin(action).count("1") != 1:
             raise ValueError("Only one flag in the Action enum can be set at a time.")
         if action == Action.LEFT:
             return self.left
@@ -95,17 +98,21 @@ class ForceThreshold(BaseModel):
             return self.pull
         return None
 
+
 class QuiescencePeriod(BaseModel):
     """Defines a quiescence settings"""
 
     duration: distributions.Distribution = Field(
-        default=scalar_value(0.5), description="Duration force has to stay below threshold to start the trial.", validate_default=True
+        default=scalar_value(0.5),
+        description="Duration force has to stay below threshold to start the trial.",
+        validate_default=True,
     )
     force_threshold: ForceThreshold = Field(
         default=ForceThreshold(),
         description="Threshold for the force sensors to be considered quiescent. If None, the threshold will be ignored.",
         validate_default=True,
     )
+
 
 class ResponsePeriod(BaseModel):
     """Defines a response period"""
@@ -121,33 +128,36 @@ class ResponsePeriod(BaseModel):
         validate_default=True,
     )
     rewarded_action: Action = Field(default=Action.NONE)
-    force_duration: distributions.Distribution = Field(default=scalar_value(0.05), description="Duration the force must stay above threshold.", validate_default=True)
+    force_duration: distributions.Distribution = Field(
+        default=scalar_value(0.05), description="Duration the force must stay above threshold.", validate_default=True
+    )
 
     @model_validator(mode="after")
     def _validate_rewarded_action_vs_threshold(self) -> Self:
         if self.rewarded_action != Action.NONE:
             if self.force_threshold.from_action(self.rewarded_action) is None:
-                raise ValueError(
-                    "Force threshold must be set for the rewarded action."
-                )
+                raise ValueError("Force threshold must be set for the rewarded action.")
         return self
 
 
 class Reward(BaseModel):
     is_operant: Literal[False] = False
-    amount: distributions.Distribution = Field(default=scalar_value(1.0), description="Amount of reward to dispense", validate_default=True)
-    delay:  distributions.Distribution = Field(
+    amount: distributions.Distribution = Field(
+        default=scalar_value(1.0), description="Amount of reward to dispense", validate_default=True
+    )
+    delay: distributions.Distribution = Field(
         default=scalar_value(0.0), description="Delay before dispensing the reward", validate_default=True
     )
 
+
 class OperantReward(Reward):
     is_operant: Literal[True] = True
-    time_to_collect: distributions.Distribution = Field(default=scalar_value(0.5), description="Time to collect the reward", validate_default=True)
+    time_to_collect: distributions.Distribution = Field(
+        default=scalar_value(0.5), description="Time to collect the reward", validate_default=True
+    )
 
 
-RewardPeriod = TypeAliasType(
-    "RewardPeriod",
-    Annotated[Union[Reward, OperantReward], Field(discriminator="is_operant")])
+RewardPeriod = TypeAliasType("RewardPeriod", Annotated[Union[Reward, OperantReward], Field(discriminator="is_operant")])
 
 
 class Trial(BaseModel):
@@ -160,8 +170,7 @@ class Trial(BaseModel):
     response_period: ResponsePeriod = Field(
         default=ResponsePeriod(), validate_default=True, description="Response settings"
     )
-    reward_period: RewardPeriod = Field(
-        default=Reward(), validate_default=True, description="Reward settings")
+    reward_period: RewardPeriod = Field(default=Reward(), validate_default=True, description="Reward settings")
 
 
 class BlockStatisticsMode(str, Enum):
@@ -199,25 +208,26 @@ class Environment(BaseModel):
         description="Number of times to repeat the environment. If null, the environment will be repeated indefinitely",
     )
 
-from .rig import lcc
 
 class LoadCellInput(BaseModel):
     channel: lcc.LoadCellChannel = Field(..., description="Load cell channel number")
     is_inverted: bool = Field(default=False, description="Whether the load cell is inverted")
 
 
-
 class ForceOperationControl(BaseModel):
-
     left: LoadCellInput = Field(default=LoadCellInput(channel=0, is_inverted=False), description="Left load cell input")
-    right: LoadCellInput = Field(default=LoadCellInput(channel=0, is_inverted=True), description="Right load cell input")
+    right: LoadCellInput = Field(
+        default=LoadCellInput(channel=0, is_inverted=True), description="Right load cell input"
+    )
     push: LoadCellInput = Field(default=LoadCellInput(channel=1, is_inverted=False), description="Push load cell input")
     pull: LoadCellInput = Field(default=LoadCellInput(channel=1, is_inverted=True), description="Pull load cell input")
+
 
 class OperationControl(BaseModel):
     force: ForceOperationControl = Field(
         default=ForceOperationControl(), validate_default=True, description="Operation control for force sensor"
     )
+
 
 class AindIsoForceTaskParameters(TaskParameters):
     environment: Environment = Field(..., description="Environment settings")
