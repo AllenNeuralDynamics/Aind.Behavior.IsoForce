@@ -1448,7 +1448,9 @@
                           </PropertyMappings>
                         </Expression>
                         <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="p14:ParseForce" />
+                          <Combinator xsi:type="p14:ParseForce">
+                            <p14:ForceOperationControl />
+                          </Combinator>
                         </Expression>
                         <Expression xsi:type="WorkflowOutput" />
                       </Nodes>
@@ -1484,207 +1486,6 @@
                   <Edge From="13" To="14" Label="Source1" />
                   <Edge From="14" To="15" Label="Source1" />
                   <Edge From="15" To="16" Label="Source1" />
-                </Edges>
-              </Workflow>
-            </Expression>
-            <Expression xsi:type="GroupWorkflow">
-              <Name>SpoutControl</Name>
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>SpoutPosition</Name>
-                  </Expression>
-                  <Expression xsi:type="WorkflowOutput" />
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>RigSchema</Name>
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>Manipulator</Selector>
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>AdditionalSettings</Selector>
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>SpoutAxis</Selector>
-                  </Expression>
-                  <Expression xsi:type="InputMapping">
-                    <PropertyMappings>
-                      <Property Name="Value" Selector="value__" />
-                    </PropertyMappings>
-                  </Expression>
-                  <Expression xsi:type="PropertySource" TypeArguments="p5:AxisConfiguration,p5:Axis">
-                    <MemberName>Axis</MemberName>
-                    <Value>None</Value>
-                  </Expression>
-                  <Expression xsi:type="rx:BehaviorSubject" TypeArguments="sys:Single">
-                    <rx:Name>SpoutPosition</rx:Name>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Timer">
-                      <rx:DueTime>PT0S</rx:DueTime>
-                      <rx:Period>PT0.05S</rx:Period>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Gate" />
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:DistinctUntilChanged" />
-                  </Expression>
-                  <Expression xsi:type="scr:ExpressionTransform">
-                    <scr:Name>double(it)</scr:Name>
-                    <scr:Expression>double(it)</scr:Expression>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:CombineLatest" />
-                  </Expression>
-                  <Expression xsi:type="GroupWorkflow">
-                    <Name>GetCalibration</Name>
-                    <Workflow>
-                      <Nodes>
-                        <Expression xsi:type="SubscribeSubject">
-                          <Name>RigSchema</Name>
-                        </Expression>
-                        <Expression xsi:type="MemberSelector">
-                          <Selector>Manipulator</Selector>
-                        </Expression>
-                        <Expression xsi:type="MemberSelector">
-                          <Selector>Calibration</Selector>
-                        </Expression>
-                        <Expression xsi:type="MemberSelector">
-                          <Selector>Input</Selector>
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="p2:SerializeToJson" />
-                        </Expression>
-                        <Expression xsi:type="p5:DeserializeFromJson">
-                          <p5:Type xsi:type="TypeMapping" TypeArguments="p5:AindManipulatorCalibrationInput" />
-                        </Expression>
-                        <Expression xsi:type="WorkflowOutput" />
-                      </Nodes>
-                      <Edges>
-                        <Edge From="0" To="1" Label="Source1" />
-                        <Edge From="1" To="2" Label="Source1" />
-                        <Edge From="2" To="3" Label="Source1" />
-                        <Edge From="3" To="4" Label="Source1" />
-                        <Edge From="4" To="5" Label="Source1" />
-                        <Edge From="5" To="6" Label="Source1" />
-                      </Edges>
-                    </Workflow>
-                  </Expression>
-                  <Expression xsi:type="PropertyMapping">
-                    <PropertyMappings>
-                      <Property Name="Calibration" />
-                    </PropertyMappings>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="p5:ManipulatorSiUnitConverter">
-                      <p5:ConverterMode>MmToStep</p5:ConverterMode>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>RigSchema</Name>
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>Manipulator</Selector>
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>AdditionalSettings</Selector>
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>SpoutAxis</Selector>
-                  </Expression>
-                  <Expression xsi:type="PropertyMapping">
-                    <PropertyMappings>
-                      <Property Name="Axis" />
-                    </PropertyMappings>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="p14:MoveAbsoluteSingleAxis">
-                      <p14:Axis>Y1</p14:Axis>
-                      <p14:MessageType>Write</p14:MessageType>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="MulticastSubject">
-                    <Name>StepperDriverCommands</Name>
-                  </Expression>
-                  <Expression xsi:type="rx:BehaviorSubject" TypeArguments="sys:Boolean">
-                    <rx:Name>ForceSpoutAvailability</rx:Name>
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>TaskLogicParameters</Name>
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>OperationControl.Spout</Selector>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:WithLatestFrom" />
-                  </Expression>
-                  <Expression xsi:type="scr:ExpressionTransform">
-                    <scr:Expression>Item1 ? Item2.DefaultExtendedPosition : Item2.DefaultRetractedPosition</scr:Expression>
-                  </Expression>
-                  <Expression xsi:type="MulticastSubject">
-                    <Name>SpoutPosition</Name>
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>TaskLogicParameters</Name>
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>OperationControl.Spout</Selector>
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>Enabled</Selector>
-                  </Expression>
-                  <Expression xsi:type="rx:Condition">
-                    <Workflow>
-                      <Nodes>
-                        <Expression xsi:type="WorkflowInput">
-                          <Name>Source1</Name>
-                        </Expression>
-                        <Expression xsi:type="WorkflowOutput" />
-                      </Nodes>
-                      <Edges>
-                        <Edge From="0" To="1" Label="Source1" />
-                      </Edges>
-                    </Workflow>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:SubscribeWhen" />
-                  </Expression>
-                </Nodes>
-                <Edges>
-                  <Edge From="0" To="1" Label="Source1" />
-                  <Edge From="2" To="3" Label="Source1" />
-                  <Edge From="3" To="4" Label="Source1" />
-                  <Edge From="4" To="5" Label="Source1" />
-                  <Edge From="5" To="6" Label="Source1" />
-                  <Edge From="6" To="7" Label="Source1" />
-                  <Edge From="7" To="13" Label="Source1" />
-                  <Edge From="8" To="10" Label="Source1" />
-                  <Edge From="9" To="10" Label="Source2" />
-                  <Edge From="10" To="11" Label="Source1" />
-                  <Edge From="11" To="12" Label="Source1" />
-                  <Edge From="12" To="13" Label="Source2" />
-                  <Edge From="13" To="16" Label="Source1" />
-                  <Edge From="14" To="15" Label="Source1" />
-                  <Edge From="15" To="16" Label="Source2" />
-                  <Edge From="16" To="22" Label="Source1" />
-                  <Edge From="17" To="18" Label="Source1" />
-                  <Edge From="18" To="19" Label="Source1" />
-                  <Edge From="19" To="20" Label="Source1" />
-                  <Edge From="20" To="21" Label="Source1" />
-                  <Edge From="21" To="22" Label="Source2" />
-                  <Edge From="22" To="23" Label="Source1" />
-                  <Edge From="24" To="27" Label="Source1" />
-                  <Edge From="25" To="26" Label="Source1" />
-                  <Edge From="26" To="27" Label="Source2" />
-                  <Edge From="27" To="28" Label="Source1" />
-                  <Edge From="28" To="29" Label="Source1" />
-                  <Edge From="29" To="34" Label="Source1" />
-                  <Edge From="30" To="31" Label="Source1" />
-                  <Edge From="31" To="32" Label="Source1" />
-                  <Edge From="32" To="33" Label="Source1" />
-                  <Edge From="33" To="34" Label="Source2" />
                 </Edges>
               </Workflow>
             </Expression>
@@ -3974,86 +3775,6 @@ groupMasks:
                         <Expression xsi:type="rx:AsyncSubject">
                           <Name>deviceName</Name>
                         </Expression>
-                        <Expression xsi:type="Disable">
-                          <Builder xsi:type="SubscribeSubject">
-                            <Name>CurrentForceLut</Name>
-                          </Builder>
-                        </Expression>
-                        <Expression xsi:type="Disable">
-                          <Builder xsi:type="MemberSelector">
-                            <Selector>Item2</Selector>
-                          </Builder>
-                        </Expression>
-                        <Expression xsi:type="Disable">
-                          <Builder xsi:type="SubscribeSubject">
-                            <Name>Modality</Name>
-                          </Builder>
-                        </Expression>
-                        <Expression xsi:type="Disable">
-                          <Builder xsi:type="PropertyMapping">
-                            <PropertyMappings>
-                              <Property Name="Modality" />
-                            </PropertyMappings>
-                          </Builder>
-                        </Expression>
-                        <Expression xsi:type="Disable">
-                          <Builder xsi:type="SubscribeSubject">
-                            <Name>deviceName</Name>
-                          </Builder>
-                        </Expression>
-                        <Expression xsi:type="Disable">
-                          <Builder xsi:type="PropertyMapping">
-                            <PropertyMappings>
-                              <Property Name="DeviceName" />
-                            </PropertyMappings>
-                          </Builder>
-                        </Expression>
-                        <Expression xsi:type="Annotation">
-                          <Name>FIXME</Name>
-                          <Text><![CDATA[https://github.com/AllenNeuralDynamics/Aind.Behavior.IsoForce/issues]]></Text>
-                        </Expression>
-                        <Expression xsi:type="Disable">
-                          <Builder xsi:type="IncludeWorkflow" Path="Extensions\LogImage.bonsai">
-                            <SubjectName>LoggingRootPath</SubjectName>
-                            <Modality xsi:nil="true" />
-                            <LogName>ForceLut</LogName>
-                            <DeviceName />
-                          </Builder>
-                        </Expression>
-                        <Expression xsi:type="SubscribeSubject">
-                          <Name>SpoutPosition</Name>
-                        </Expression>
-                        <Expression xsi:type="SubscribeSubject">
-                          <Name>HarpTimestampSource</Name>
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="rx:WithLatestFrom" />
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="harp:CreateTimestamped" />
-                        </Expression>
-                        <Expression xsi:type="SubscribeSubject">
-                          <Name>deviceName</Name>
-                        </Expression>
-                        <Expression xsi:type="PropertyMapping">
-                          <PropertyMappings>
-                            <Property Name="DeviceName" />
-                          </PropertyMappings>
-                        </Expression>
-                        <Expression xsi:type="SubscribeSubject">
-                          <Name>Modality</Name>
-                        </Expression>
-                        <Expression xsi:type="PropertyMapping">
-                          <PropertyMappings>
-                            <Property Name="Modality" />
-                          </PropertyMappings>
-                        </Expression>
-                        <Expression xsi:type="IncludeWorkflow" Path="AllenNeuralDynamics.Core:LogCsv.bonsai">
-                          <SubjectName>LoggingRootPath</SubjectName>
-                          <Modality>Behavior</Modality>
-                          <LogName>SpoutPosition</LogName>
-                          <DeviceName xsi:nil="true" />
-                        </Expression>
                         <Expression xsi:type="SubscribeSubject">
                           <Name>CurrentForce</Name>
                         </Expression>
@@ -4062,8 +3783,11 @@ groupMasks:
                           <scr:Expression>new(
 Seconds as Seconds,
 new(
-Value.LeftForce as LeftForce,
-Value.RightForce as RightForce) as Force)</scr:Expression>
+Value.Left as Left,
+Value.Right as Right,
+Value.Push as Push,
+Value.Pull as Pull
+) as Force)</scr:Expression>
                         </Expression>
                         <Expression xsi:type="SubscribeSubject">
                           <Name>deviceName</Name>
@@ -4106,29 +3830,14 @@ Value.RightForce as RightForce) as Force)</scr:Expression>
                         <Edge From="0" To="1" Label="Source1" />
                         <Edge From="1" To="2" Label="Source1" />
                         <Edge From="3" To="4" Label="Source1" />
-                        <Edge From="4" To="10" Label="Source1" />
+                        <Edge From="4" To="9" Label="Source1" />
                         <Edge From="5" To="6" Label="Source1" />
-                        <Edge From="6" To="10" Label="Source2" />
+                        <Edge From="6" To="9" Label="Source2" />
                         <Edge From="7" To="8" Label="Source1" />
-                        <Edge From="8" To="10" Label="Source3" />
-                        <Edge From="9" To="10" Label="Source4" />
-                        <Edge From="11" To="13" Label="Source1" />
-                        <Edge From="12" To="13" Label="Source2" />
-                        <Edge From="13" To="14" Label="Source1" />
-                        <Edge From="14" To="19" Label="Source1" />
-                        <Edge From="15" To="16" Label="Source1" />
-                        <Edge From="16" To="19" Label="Source2" />
-                        <Edge From="17" To="18" Label="Source1" />
-                        <Edge From="18" To="19" Label="Source3" />
-                        <Edge From="20" To="21" Label="Source1" />
-                        <Edge From="21" To="26" Label="Source1" />
-                        <Edge From="22" To="23" Label="Source1" />
-                        <Edge From="23" To="26" Label="Source2" />
-                        <Edge From="24" To="25" Label="Source1" />
-                        <Edge From="25" To="26" Label="Source3" />
-                        <Edge From="27" To="28" Label="Source1" />
-                        <Edge From="28" To="29" Label="Source1" />
-                        <Edge From="29" To="30" Label="Source1" />
+                        <Edge From="8" To="9" Label="Source3" />
+                        <Edge From="10" To="11" Label="Source1" />
+                        <Edge From="11" To="12" Label="Source1" />
+                        <Edge From="12" To="13" Label="Source1" />
                       </Edges>
                     </Workflow>
                   </Expression>
@@ -4606,69 +4315,6 @@ Value.RightForce as RightForce) as Force)</scr:Expression>
               <Name>HwShortcuts</Name>
               <Workflow>
                 <Nodes>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="IntProperty">
-                      <Value>0</Value>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="rx:Visualizer">
-                    <Workflow>
-                      <Nodes>
-                        <Expression xsi:type="gui:SliderBuilder">
-                          <gui:Name>Frequency</gui:Name>
-                          <gui:Enabled>true</gui:Enabled>
-                          <gui:Visible>true</gui:Visible>
-                          <gui:Minimum>1</gui:Minimum>
-                          <gui:Maximum>10000</gui:Maximum>
-                          <gui:DecimalPlaces xsi:nil="true" />
-                          <gui:Value>5000</gui:Value>
-                        </Expression>
-                        <Expression xsi:type="rx:BehaviorSubject">
-                          <Name>Frequency</Name>
-                        </Expression>
-                        <Expression xsi:type="VisualizerMapping" />
-                        <Expression xsi:type="SubscribeSubject">
-                          <Name>EnableExperimentUI</Name>
-                        </Expression>
-                        <Expression xsi:type="PropertyMapping">
-                          <PropertyMappings>
-                            <Property Name="Enabled" />
-                          </PropertyMappings>
-                        </Expression>
-                        <Expression xsi:type="gui:TableLayoutPanelBuilder">
-                          <gui:Name>ToneTester</gui:Name>
-                          <gui:Enabled>true</gui:Enabled>
-                          <gui:Visible>true</gui:Visible>
-                          <gui:ColumnCount>1</gui:ColumnCount>
-                          <gui:RowCount>2</gui:RowCount>
-                          <gui:ColumnStyles />
-                          <gui:RowStyles>
-                            <gui:RowStyle>
-                              <gui:SizeType>Percent</gui:SizeType>
-                              <gui:Height>0.3</gui:Height>
-                            </gui:RowStyle>
-                            <gui:RowStyle>
-                              <gui:SizeType>Percent</gui:SizeType>
-                              <gui:Height>0.7</gui:Height>
-                            </gui:RowStyle>
-                          </gui:RowStyles>
-                          <gui:CellSpans />
-                        </Expression>
-                        <Expression xsi:type="WorkflowOutput" />
-                      </Nodes>
-                      <Edges>
-                        <Edge From="0" To="1" Label="Source1" />
-                        <Edge From="1" To="2" Label="Source1" />
-                        <Edge From="2" To="5" Label="Source1" />
-                        <Edge From="3" To="4" Label="Source1" />
-                        <Edge From="4" To="5" Label="Source2" />
-                        <Edge From="5" To="6" Label="Source1" />
-                      </Edges>
-                    </Workflow>
-                  </Expression>
-                  <Expression xsi:type="VisualizerMapping">
-                    <VisualizerType xsi:type="TypeMapping" TypeArguments="gui:TableLayoutPanelVisualizer" />
-                  </Expression>
                   <Expression xsi:type="gui:ButtonBuilder">
                     <gui:Name>ForceReward</gui:Name>
                     <gui:Enabled>true</gui:Enabled>
@@ -4723,17 +4369,14 @@ Value.RightForce as RightForce) as Force)</scr:Expression>
                 <Edges>
                   <Edge From="0" To="1" Label="Source1" />
                   <Edge From="1" To="2" Label="Source1" />
-                  <Edge From="2" To="6" Label="Source1" />
+                  <Edge From="2" To="3" Label="Source1" />
                   <Edge From="3" To="4" Label="Source1" />
-                  <Edge From="4" To="5" Label="Source1" />
-                  <Edge From="5" To="6" Label="Source2" />
+                  <Edge From="5" To="9" Label="Source1" />
                   <Edge From="6" To="7" Label="Source1" />
-                  <Edge From="8" To="12" Label="Source1" />
+                  <Edge From="7" To="8" Label="Source1" />
+                  <Edge From="8" To="9" Label="Source2" />
                   <Edge From="9" To="10" Label="Source1" />
                   <Edge From="10" To="11" Label="Source1" />
-                  <Edge From="11" To="12" Label="Source2" />
-                  <Edge From="12" To="13" Label="Source1" />
-                  <Edge From="13" To="14" Label="Source1" />
                 </Edges>
               </Workflow>
             </Expression>
@@ -4845,40 +4488,6 @@ Value.RightForce as RightForce) as Force)</scr:Expression>
                     <gui:CellSpans />
                   </Expression>
                   <Expression xsi:type="VisualizerMapping" />
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>CalibratedLoadCellData</Name>
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>TaskLogicParameters</Name>
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>OperationControl</Selector>
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>Force</Selector>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:WithLatestFrom" />
-                  </Expression>
-                  <Expression xsi:type="scr:ExpressionTransform">
-                    <scr:Name>relabel</scr:Name>
-                    <scr:Expression>new(
-it.Item1.Seconds as Seconds,
-it.Item1.Value[Item2.LeftIndex] as LeftLoadCell,
-it.Item1.Value[Item2.RightIndex] as RightLoadCell)
-</scr:Expression>
-                  </Expression>
-                  <Expression xsi:type="zg:RollingGraphBuilder">
-                    <zg:IndexSelector>Seconds</zg:IndexSelector>
-                    <zg:ValueSelector>LeftLoadCell,RightLoadCell</zg:ValueSelector>
-                    <zg:SymbolType>None</zg:SymbolType>
-                    <zg:LineWidth>1</zg:LineWidth>
-                    <zg:CurveSettings />
-                    <zg:Capacity>5000</zg:Capacity>
-                    <zg:Min xsi:nil="true" />
-                    <zg:Max xsi:nil="true" />
-                  </Expression>
-                  <Expression xsi:type="VisualizerMapping" />
                   <Expression xsi:type="gui:TableLayoutPanelBuilder">
                     <gui:Enabled>true</gui:Enabled>
                     <gui:Visible>true</gui:Visible>
@@ -4906,16 +4515,8 @@ it.Item1.Value[Item2.RightIndex] as RightLoadCell)
                   <Edge From="12" To="13" Label="Source1" />
                   <Edge From="13" To="14" Label="Source2" />
                   <Edge From="14" To="15" Label="Source1" />
-                  <Edge From="15" To="24" Label="Source1" />
-                  <Edge From="16" To="20" Label="Source1" />
-                  <Edge From="17" To="18" Label="Source1" />
-                  <Edge From="18" To="19" Label="Source1" />
-                  <Edge From="19" To="20" Label="Source2" />
-                  <Edge From="20" To="21" Label="Source1" />
-                  <Edge From="21" To="22" Label="Source1" />
-                  <Edge From="22" To="23" Label="Source1" />
-                  <Edge From="23" To="24" Label="Source2" />
-                  <Edge From="24" To="25" Label="Source1" />
+                  <Edge From="15" To="16" Label="Source1" />
+                  <Edge From="16" To="17" Label="Source1" />
                 </Edges>
               </Workflow>
             </Expression>
