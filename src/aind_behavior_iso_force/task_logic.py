@@ -109,7 +109,7 @@ class QuiescencePeriod(BaseModel):
     )
     force_threshold: ForceThreshold = Field(
         default=ForceThreshold(),
-        description="Threshold for the force sensors to be considered quiescent. If None, the threshold will be ignored.",
+        description="Threshold for the force sensors to be considered quiescent.",
         validate_default=True,
     )
 

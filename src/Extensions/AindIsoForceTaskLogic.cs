@@ -2725,12 +2725,11 @@ namespace AindIsoForceDataSchema.TaskLogic
         }
     
         /// <summary>
-        /// Threshold for the force sensors to be considered quiescent. If None, the threshold will be ignored.
+        /// Threshold for the force sensors to be considered quiescent.
         /// </summary>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("force_threshold")]
-        [System.ComponentModel.DescriptionAttribute("Threshold for the force sensors to be considered quiescent. If None, the threshol" +
-            "d will be ignored.")]
+        [System.ComponentModel.DescriptionAttribute("Threshold for the force sensors to be considered quiescent.")]
         public ForceThreshold ForceThreshold
         {
             get
