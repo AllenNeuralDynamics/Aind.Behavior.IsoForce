@@ -16,10 +16,7 @@ public class ProcessCrossingOutcome
         {
             var start = value.Item1;
             var end = value.Item2;
-            if (start.Value[start.Value.TriggeredAction] == end.Value[start.Value.TriggeredAction])
-            {
-                throw new InvalidOperationException("Start and end actions must be different.");
-            }
+
             return new CrossingOutcome()
             {
                 Start = start,
