@@ -28,6 +28,7 @@
                  xmlns:p16="clr-namespace:AllenNeuralDynamics.HarpUtils;assembly=AllenNeuralDynamics.HarpUtils"
                  xmlns:gui="clr-namespace:Bonsai.Gui;assembly=Bonsai.Gui"
                  xmlns:zg="clr-namespace:Bonsai.Gui.ZedGraph;assembly=Bonsai.Gui.ZedGraph"
+                 xmlns:ui="clr-namespace:Bonsai.Design;assembly=Bonsai.Design"
                  xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
                  xmlns:p17="clr-namespace:Bonsai.Vision.Design;assembly=Bonsai.Vision.Design"
                  xmlns="https://bonsai-rx.org/2018/workflow">
@@ -4951,6 +4952,13 @@ Value.Pull as Pull
               <gui:Visible>true</gui:Visible>
               <gui:Font>Microsoft Sans Serif, 10pt</gui:Font>
             </Expression>
+            <Expression xsi:type="ui:VisualizerWindow">
+              <ui:Text>ControlUI</ui:Text>
+              <ui:Visible>true</ui:Visible>
+              <ui:Location xsi:nil="true" />
+              <ui:Size xsi:nil="true" />
+              <ui:WindowState xsi:nil="true" />
+            </Expression>
             <Expression xsi:type="WorkflowOutput" />
             <Expression xsi:type="SubscribeSubject">
               <Name>StartExperiment</Name>
@@ -4980,8 +4988,9 @@ Value.Pull as Pull
             <Edge From="13" To="14" Label="Source1" />
             <Edge From="14" To="15" Label="Source5" />
             <Edge From="15" To="16" Label="Source1" />
-            <Edge From="17" To="18" Label="Source1" />
+            <Edge From="16" To="17" Label="Source1" />
             <Edge From="18" To="19" Label="Source1" />
+            <Edge From="19" To="20" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -5232,12 +5241,34 @@ Value.Pull as Pull
             <Expression xsi:type="VisualizerMapping">
               <VisualizerType xsi:type="TypeMapping" TypeArguments="zg:RollingGraphPanelVisualizer" />
             </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>CurrentForce</Name>
+            </Expression>
+            <Expression xsi:type="zg:LineGraphBuilder">
+              <zg:ValueSelector>Value.RightLeft,Value.PushPull</zg:ValueSelector>
+              <zg:SymbolType>None</zg:SymbolType>
+              <zg:LineWidth>2</zg:LineWidth>
+              <zg:CurveSettings>
+                <zg:CurveConfiguration>
+                  <zg:Label>Force</zg:Label>
+                  <zg:Color>Maroon</zg:Color>
+                </zg:CurveConfiguration>
+              </zg:CurveSettings>
+              <zg:Capacity>1000</zg:Capacity>
+              <zg:XMin xsi:nil="true" />
+              <zg:XMax xsi:nil="true" />
+              <zg:YMin xsi:nil="true" />
+              <zg:YMax xsi:nil="true" />
+            </Expression>
+            <Expression xsi:type="VisualizerMapping">
+              <VisualizerType xsi:type="TypeMapping" TypeArguments="zg:LineGraphVisualizer" />
+            </Expression>
             <Expression xsi:type="gui:TableLayoutPanelBuilder">
               <gui:Name>Monitoring</gui:Name>
               <gui:Enabled>true</gui:Enabled>
               <gui:Visible>true</gui:Visible>
-              <gui:ColumnCount>1</gui:ColumnCount>
-              <gui:RowCount>3</gui:RowCount>
+              <gui:ColumnCount>2</gui:ColumnCount>
+              <gui:RowCount>2</gui:RowCount>
               <gui:ColumnStyles />
               <gui:RowStyles>
                 <gui:RowStyle>
@@ -5279,12 +5310,19 @@ Value.Pull as Pull
               <gui:Enabled>true</gui:Enabled>
               <gui:Visible>true</gui:Visible>
             </Expression>
+            <Expression xsi:type="ui:VisualizerWindow">
+              <ui:Text>Visualizer</ui:Text>
+              <ui:Visible>true</ui:Visible>
+              <ui:Location xsi:nil="true" />
+              <ui:Size xsi:nil="true" />
+              <ui:WindowState xsi:nil="true" />
+            </Expression>
             <Expression xsi:type="WorkflowOutput" />
           </Nodes>
           <Edges>
             <Edge From="0" To="1" Label="Source1" />
             <Edge From="1" To="2" Label="Source1" />
-            <Edge From="2" To="10" Label="Source1" />
+            <Edge From="2" To="13" Label="Source1" />
             <Edge From="3" To="4" Label="Source1" />
             <Edge From="3" To="5" Label="Source2" />
             <Edge From="4" To="5" Label="Source1" />
@@ -5292,14 +5330,18 @@ Value.Pull as Pull
             <Edge From="6" To="7" Label="Source1" />
             <Edge From="7" To="8" Label="Source1" />
             <Edge From="8" To="9" Label="Source1" />
-            <Edge From="9" To="10" Label="Source2" />
+            <Edge From="9" To="13" Label="Source2" />
             <Edge From="10" To="11" Label="Source1" />
-            <Edge From="11" To="16" Label="Source1" />
-            <Edge From="12" To="13" Label="Source1" />
+            <Edge From="11" To="12" Label="Source1" />
+            <Edge From="12" To="13" Label="Source3" />
             <Edge From="13" To="14" Label="Source1" />
-            <Edge From="14" To="15" Label="Source1" />
-            <Edge From="15" To="16" Label="Source2" />
+            <Edge From="14" To="19" Label="Source1" />
+            <Edge From="15" To="16" Label="Source1" />
             <Edge From="16" To="17" Label="Source1" />
+            <Edge From="17" To="18" Label="Source1" />
+            <Edge From="18" To="19" Label="Source2" />
+            <Edge From="19" To="20" Label="Source1" />
+            <Edge From="20" To="21" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
