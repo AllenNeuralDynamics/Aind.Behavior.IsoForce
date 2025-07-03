@@ -11,7 +11,7 @@ from aind_behavior_services.calibration import aind_manipulator
 from aind_behavior_services.rig import AindBehaviorRigModel
 from pydantic import BaseModel, Field
 
-__version__ = "0.1.0"
+from aind_behavior_iso_force import __version__
 
 
 class AindManipulatorAdditionalSettings(BaseModel):

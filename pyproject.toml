@@ -30,10 +30,15 @@ Changelog = "https://github.com/AllenNeuralDynamics/Aind.Behavior.IsoForce/relea
 
 [project.optional-dependencies]
 
-launcher = ["aind_behavior_experiment_launcher[aind-services]>=0.3, <0.4"]
+launcher = ["aind_clabe[aind-services]<0.6"]
+
+data = [
+  "contraqctor<0.5",
+  "pydantic-settings"]
 
 dev = [
     "aind_behavior_iso_force[launcher]",
+    "aind_behavior_iso_force[data]",
     'ruff',
     'codespell'
 ]
@@ -44,7 +49,8 @@ docs = [
     'sphinx-jinja',
     'autodoc_pydantic[erdantic]',
     'myst_parser',
-    'sphinx-jsonschema'
+    'sphinx-jsonschema',
+    "aind_behavior_iso_force[data]",
 ]
 
 [project.scripts]
