@@ -19,7 +19,7 @@ readme = "README.md"
 dynamic = ["version"]
 
 dependencies = [
-  "aind_behavior_services < 0.12",
+  "aind_behavior_services < 0.13",
 ]
 
 [project.urls]
@@ -30,7 +30,7 @@ Changelog = "https://github.com/AllenNeuralDynamics/Aind.Behavior.IsoForce/relea
 
 [project.optional-dependencies]
 
-launcher = ["aind_clabe[aind-services]<0.6"]
+launcher = ["aind_clabe[aind-services]<0.7"]
 
 data = [
   "contraqctor<0.5",

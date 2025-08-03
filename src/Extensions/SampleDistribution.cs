@@ -5,7 +5,7 @@ using System.Reactive.Linq;
 using MathNet.Numerics.Distributions;
 using System.ComponentModel;
 
-namespace AindIsoForceDataSchema.TaskLogic
+namespace AindIsoForceDataSchema
 {
 
     partial class Distribution

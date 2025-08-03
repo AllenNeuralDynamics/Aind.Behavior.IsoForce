@@ -1,34 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.9.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                 xmlns:p1="clr-namespace:AindIsoForceDataSchema.Session;assembly=Extensions"
+                 xmlns:p1="clr-namespace:AindIsoForceDataSchema;assembly=Extensions"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
-                 xmlns:p2="clr-namespace:AindIsoForceDataSchema.Rig;assembly=Extensions"
-                 xmlns:p3="clr-namespace:AindIsoForceDataSchema.TaskLogic;assembly=Extensions"
                  xmlns:harp="clr-namespace:Bonsai.Harp;assembly=Bonsai.Harp"
-                 xmlns:p4="clr-namespace:AllenNeuralDynamics.WhiteRabbit;assembly=AllenNeuralDynamics.WhiteRabbit"
-                 xmlns:p5="clr-namespace:AllenNeuralDynamics.AindManipulator;assembly=AllenNeuralDynamics.AindManipulator"
+                 xmlns:p2="clr-namespace:AllenNeuralDynamics.WhiteRabbit;assembly=AllenNeuralDynamics.WhiteRabbit"
+                 xmlns:p3="clr-namespace:AllenNeuralDynamics.AindManipulator;assembly=AllenNeuralDynamics.AindManipulator"
                  xmlns:beh="clr-namespace:Harp.Behavior;assembly=Harp.Behavior"
                  xmlns:sys="clr-namespace:System;assembly=mscorlib"
                  xmlns:cv="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision"
-                 xmlns:p6="clr-namespace:OpenCV.Net;assembly=OpenCV.Net"
-                 xmlns:p7="clr-namespace:AllenNeuralDynamics.Core;assembly=AllenNeuralDynamics.Core"
+                 xmlns:p4="clr-namespace:OpenCV.Net;assembly=OpenCV.Net"
+                 xmlns:p5="clr-namespace:AllenNeuralDynamics.Core;assembly=AllenNeuralDynamics.Core"
                  xmlns:spk="clr-namespace:Bonsai.Spinnaker;assembly=Bonsai.Spinnaker"
                  xmlns:num="clr-namespace:Bonsai.Numerics;assembly=Bonsai.Numerics"
-                 xmlns:p8="clr-namespace:Bonsai.Numerics.Distributions;assembly=Bonsai.Numerics"
+                 xmlns:p6="clr-namespace:Bonsai.Numerics.Distributions;assembly=Bonsai.Numerics"
                  xmlns:scr="clr-namespace:Bonsai.Scripting.Expressions;assembly=Bonsai.Scripting.Expressions"
-                 xmlns:p9="clr-namespace:AllenNeuralDynamics.VersionControl;assembly=AllenNeuralDynamics.VersionControl"
-                 xmlns:p10="clr-namespace:System.Reactive;assembly=System.Reactive.Core"
-                 xmlns:p11="clr-namespace:AllenNeuralDynamics.AindBehaviorServices.DataTypes;assembly=AllenNeuralDynamics.AindBehaviorServices"
+                 xmlns:p7="clr-namespace:AllenNeuralDynamics.VersionControl;assembly=AllenNeuralDynamics.VersionControl"
+                 xmlns:p8="clr-namespace:System.Reactive;assembly=System.Reactive.Core"
+                 xmlns:p9="clr-namespace:AllenNeuralDynamics.AindBehaviorServices.DataTypes;assembly=AllenNeuralDynamics.AindBehaviorServices"
                  xmlns:bv="clr-namespace:BonVision;assembly=BonVision"
-                 xmlns:p12="clr-namespace:AllenNeuralDynamics.LicketySplit;assembly=AllenNeuralDynamics.LicketySplit"
-                 xmlns:p13="clr-namespace:Harp.LoadCells;assembly=Harp.LoadCells"
-                 xmlns:p14="clr-namespace:;assembly=Extensions"
+                 xmlns:p10="clr-namespace:AllenNeuralDynamics.LicketySplit;assembly=AllenNeuralDynamics.LicketySplit"
+                 xmlns:p11="clr-namespace:Harp.LoadCells;assembly=Harp.LoadCells"
+                 xmlns:p12="clr-namespace:;assembly=Extensions"
                  xmlns:gui="clr-namespace:Bonsai.Gui;assembly=Bonsai.Gui"
                  xmlns:zg="clr-namespace:Bonsai.Gui.ZedGraph;assembly=Bonsai.Gui.ZedGraph"
                  xmlns:ui="clr-namespace:Bonsai.Design;assembly=Bonsai.Design"
                  xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
-                 xmlns:p15="clr-namespace:Bonsai.Vision.Design;assembly=Bonsai.Vision.Design"
+                 xmlns:p13="clr-namespace:Bonsai.Vision.Design;assembly=Bonsai.Vision.Design"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Workflow>
     <Nodes>
@@ -63,8 +61,8 @@
             <Expression xsi:type="SubscribeSubject">
               <Name>RawRigSchema</Name>
             </Expression>
-            <Expression xsi:type="p2:DeserializeFromJson">
-              <p2:Type xsi:type="TypeMapping" TypeArguments="p2:AindIsoForceRig" />
+            <Expression xsi:type="p1:DeserializeFromJson">
+              <p1:Type xsi:type="TypeMapping" TypeArguments="p1:AindIsoForceRig" />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Take">
@@ -77,8 +75,8 @@
             <Expression xsi:type="SubscribeSubject">
               <Name>RawTaskLogicSchema</Name>
             </Expression>
-            <Expression xsi:type="p3:DeserializeFromJson">
-              <p3:Type xsi:type="TypeMapping" TypeArguments="p3:AindIsoForceTaskLogic" />
+            <Expression xsi:type="p1:DeserializeFromJson">
+              <p1:Type xsi:type="TypeMapping" TypeArguments="p1:AindIsoForceTaskLogic" />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Take">
@@ -130,8 +128,8 @@
                       <harp:MessageType>Event</harp:MessageType>
                     </Combinator>
                   </Expression>
-                  <Expression xsi:type="p4:Parse">
-                    <harp:Register xsi:type="p4:TimestampedCounter" />
+                  <Expression xsi:type="p2:Parse">
+                    <harp:Register xsi:type="p2:TimestampedCounter" />
                   </Expression>
                   <Expression xsi:type="MemberSelector">
                     <Selector>Seconds</Selector>
@@ -193,10 +191,12 @@
                     <Selector>Input</Selector>
                   </Expression>
                   <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="p2:SerializeToJson" />
+                    <Combinator xsi:type="p1:SerializeToJson">
+                      <p1:Formatting>None</p1:Formatting>
+                    </Combinator>
                   </Expression>
-                  <Expression xsi:type="p5:DeserializeFromJson">
-                    <p5:Type xsi:type="TypeMapping" TypeArguments="p5:AindManipulatorCalibrationInput" />
+                  <Expression xsi:type="p3:DeserializeFromJson">
+                    <p3:Type xsi:type="TypeMapping" TypeArguments="p3:AindManipulatorCalibrationInput" />
                   </Expression>
                   <Expression xsi:type="SubscribeSubject">
                     <Name>RigSchema</Name>
@@ -428,7 +428,7 @@
                                   <Property Name="Value" Selector="X,Y,Width,Height" />
                                 </PropertyMappings>
                               </Expression>
-                              <Expression xsi:type="PropertySource" TypeArguments="cv:Crop,p6:Rect">
+                              <Expression xsi:type="PropertySource" TypeArguments="cv:Crop,p4:Rect">
                                 <MemberName>RegionOfInterest</MemberName>
                                 <Value>
                                   <X>0</X>
@@ -443,21 +443,21 @@
                                 </PropertyMappings>
                               </Expression>
                               <Expression xsi:type="Combinator">
-                                <Combinator xsi:type="p7:AindSpinnakerCapture">
+                                <Combinator xsi:type="p5:AindSpinnakerCapture">
                                   <spk:Index xsi:nil="true" />
                                   <spk:ColorProcessing>Default</spk:ColorProcessing>
-                                  <p7:ExposureTime>19000</p7:ExposureTime>
-                                  <p7:Gain>0</p7:Gain>
-                                  <p7:Binning>1</p7:Binning>
-                                  <p7:Gamma xsi:nil="true" />
-                                  <p7:PixelFormat>Mono8</p7:PixelFormat>
-                                  <p7:RegionOfInterest>
-                                    <p7:X>0</p7:X>
-                                    <p7:Y>0</p7:Y>
-                                    <p7:Width>0</p7:Width>
-                                    <p7:Height>0</p7:Height>
-                                  </p7:RegionOfInterest>
-                                  <p7:AdcBitDepth xsi:nil="true" />
+                                  <p5:ExposureTime>19000</p5:ExposureTime>
+                                  <p5:Gain>0</p5:Gain>
+                                  <p5:Binning>1</p5:Binning>
+                                  <p5:Gamma xsi:nil="true" />
+                                  <p5:PixelFormat>Mono8</p5:PixelFormat>
+                                  <p5:RegionOfInterest>
+                                    <p5:X>0</p5:X>
+                                    <p5:Y>0</p5:Y>
+                                    <p5:Width>0</p5:Width>
+                                    <p5:Height>0</p5:Height>
+                                  </p5:RegionOfInterest>
+                                  <p5:AdcBitDepth xsi:nil="true" />
                                 </Combinator>
                               </Expression>
                               <Expression xsi:type="SubscribeSubject">
@@ -653,13 +653,13 @@
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="p8:CreateContinuousUniform">
-                <p8:Lower>0</p8:Lower>
-                <p8:Upper>10</p8:Upper>
+              <Combinator xsi:type="p6:CreateContinuousUniform">
+                <p6:Lower>0</p6:Lower>
+                <p6:Upper>10</p6:Upper>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="p8:Sample" />
+              <Combinator xsi:type="p6:Sample" />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Zip" />
@@ -695,8 +695,8 @@
               <Name>RngSeed</Name>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="p9:CreateRepository">
-                <p9:Path>../.</p9:Path>
+              <Combinator xsi:type="p7:CreateRepository">
+                <p7:Path>../.</p7:Path>
               </Combinator>
             </Expression>
             <Expression xsi:type="rx:AsyncSubject">
@@ -750,22 +750,22 @@
         <Name>Initialization</Name>
         <Workflow>
           <Nodes>
-            <Expression xsi:type="rx:BehaviorSubject" TypeArguments="p10:Unit">
+            <Expression xsi:type="rx:BehaviorSubject" TypeArguments="p8:Unit">
               <rx:Name>StartExperiment</rx:Name>
             </Expression>
-            <Expression xsi:type="rx:BehaviorSubject" TypeArguments="p11:SoftwareEvent">
+            <Expression xsi:type="rx:BehaviorSubject" TypeArguments="p9:SoftwareEvent">
               <rx:Name>SoftwareEvents</rx:Name>
             </Expression>
-            <Expression xsi:type="rx:BehaviorSubject" TypeArguments="p11:SoftwareEvent">
+            <Expression xsi:type="rx:BehaviorSubject" TypeArguments="p9:SoftwareEvent">
               <rx:Name>UpdaterEvents</rx:Name>
             </Expression>
-            <Expression xsi:type="rx:BehaviorSubject" TypeArguments="p11:SoftwareEvent">
+            <Expression xsi:type="rx:BehaviorSubject" TypeArguments="p9:SoftwareEvent">
               <rx:Name>RuntimeLogging</rx:Name>
             </Expression>
-            <Expression xsi:type="rx:BehaviorSubject" TypeArguments="p10:Unit">
+            <Expression xsi:type="rx:BehaviorSubject" TypeArguments="p8:Unit">
               <rx:Name>EndExperiment</rx:Name>
             </Expression>
-            <Expression xsi:type="rx:BehaviorSubject" TypeArguments="p10:Unit">
+            <Expression xsi:type="rx:BehaviorSubject" TypeArguments="p8:Unit">
               <rx:Name>StartLogging</rx:Name>
             </Expression>
             <Expression xsi:type="rx:BehaviorSubject" TypeArguments="sys:String">
@@ -825,8 +825,8 @@
               <Name>TrialNumber</Name>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="p7:CreateSoftwareEvent">
-                <p7:EventName>TrialNumber</p7:EventName>
+              <Combinator xsi:type="p5:CreateSoftwareEvent">
+                <p5:EventName>TrialNumber</p5:EventName>
               </Combinator>
             </Expression>
             <Expression xsi:type="MulticastSubject">
@@ -917,7 +917,7 @@
                         <Expression xsi:type="MulticastSubject">
                           <Name>HarpBehaviorCommands</Name>
                         </Expression>
-                        <Expression xsi:type="rx:BehaviorSubject" TypeArguments="p10:Unit">
+                        <Expression xsi:type="rx:BehaviorSubject" TypeArguments="p8:Unit">
                           <rx:Name>TriggerValve</rx:Name>
                         </Expression>
                         <Expression xsi:type="beh:CreateMessage">
@@ -1108,8 +1108,8 @@
                     <Name>GiveReward</Name>
                   </Expression>
                   <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="p7:CreateSoftwareEvent">
-                      <p7:EventName>GiveReward</p7:EventName>
+                    <Combinator xsi:type="p5:CreateSoftwareEvent">
+                      <p5:EventName>GiveReward</p5:EventName>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="MulticastSubject">
@@ -1155,14 +1155,14 @@
                   <Expression xsi:type="SubscribeSubject">
                     <Name>HarpLickometerEvents</Name>
                   </Expression>
-                  <Expression xsi:type="p12:Parse">
-                    <harp:Register xsi:type="p12:TimestampedLickState" />
+                  <Expression xsi:type="p10:Parse">
+                    <harp:Register xsi:type="p10:TimestampedLickState" />
                   </Expression>
                   <Expression xsi:type="MemberSelector">
                     <Selector>Value</Selector>
                   </Expression>
                   <Expression xsi:type="HasFlag">
-                    <Operand xsi:type="WorkflowProperty" TypeArguments="p12:LickChannels">
+                    <Operand xsi:type="WorkflowProperty" TypeArguments="p10:LickChannels">
                       <Value>Channel0</Value>
                     </Operand>
                   </Expression>
@@ -1373,9 +1373,9 @@
                   <Expression xsi:type="SubscribeSubject">
                     <Name>HarpLoadCellsEvents</Name>
                   </Expression>
-                  <Expression xsi:type="p13:FilterRegister">
+                  <Expression xsi:type="p11:FilterRegister">
                     <harp:FilterType>Include</harp:FilterType>
-                    <harp:Register xsi:type="p13:LoadCellData" />
+                    <harp:Register xsi:type="p11:LoadCellData" />
                   </Expression>
                   <Expression xsi:type="harp:Parse">
                     <harp:Register xsi:type="harp:ParseMessagePayload">
@@ -1395,7 +1395,7 @@
                     </PropertyMappings>
                   </Expression>
                   <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="p14:ApplyLoadCellsCalibration" />
+                    <Combinator xsi:type="p12:ApplyLoadCellsCalibration" />
                   </Expression>
                   <Expression xsi:type="rx:PublishSubject">
                     <Name>CalibratedLoadCellData</Name>
@@ -1447,8 +1447,8 @@
                           </PropertyMappings>
                         </Expression>
                         <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="p14:ParseForce">
-                            <p14:ForceOperationControl />
+                          <Combinator xsi:type="p1:ParseForce">
+                            <p1:ForceOperationControl />
                           </Combinator>
                         </Expression>
                         <Expression xsi:type="WorkflowOutput" />
@@ -1638,8 +1638,8 @@
                   <Expression xsi:type="SubscribeSubject">
                     <Name>ActiveBlock</Name>
                   </Expression>
-                  <Expression xsi:type="p3:MatchBlockStatistics">
-                    <p3:Type xsi:type="TypeMapping" TypeArguments="p3:BlockGenerator" />
+                  <Expression xsi:type="p1:MatchBlockStatistics">
+                    <p1:Type xsi:type="TypeMapping" TypeArguments="p1:BlockGenerator" />
                   </Expression>
                   <Expression xsi:type="rx:SelectMany">
                     <Name>BlockGenerator</Name>
@@ -1718,8 +1718,8 @@
                       </Edges>
                     </Workflow>
                   </Expression>
-                  <Expression xsi:type="p3:MatchBlockStatistics">
-                    <p3:Type xsi:type="TypeMapping" TypeArguments="p3:Block" />
+                  <Expression xsi:type="p1:MatchBlockStatistics">
+                    <p1:Type xsi:type="TypeMapping" TypeArguments="p1:Block" />
                   </Expression>
                   <Expression xsi:type="rx:SelectMany">
                     <Name>Block</Name>
@@ -2130,8 +2130,8 @@
                   <Expression xsi:type="SubscribeSubject">
                     <Name>HarpLoadCellsEvents</Name>
                   </Expression>
-                  <Expression xsi:type="p13:Parse">
-                    <harp:Register xsi:type="p13:TimestampedLoadCellData" />
+                  <Expression xsi:type="p11:Parse">
+                    <harp:Register xsi:type="p11:TimestampedLoadCellData" />
                   </Expression>
                   <Expression xsi:type="zg:RollingGraphBuilder">
                     <zg:IndexSelector>Seconds</zg:IndexSelector>
@@ -2388,7 +2388,7 @@
                     <Selector>Value.Image</Selector>
                   </Expression>
                   <Expression xsi:type="VisualizerMapping">
-                    <VisualizerType xsi:type="TypeMapping" TypeArguments="p15:IplImageVisualizer" />
+                    <VisualizerType xsi:type="TypeMapping" TypeArguments="p13:IplImageVisualizer" />
                   </Expression>
                   <Expression xsi:type="SubscribeSubject">
                     <Name>TriggeredCamerasControllerExists</Name>
@@ -2619,7 +2619,7 @@
         <Name>StartCondition</Name>
         <Workflow>
           <Nodes>
-            <Expression xsi:type="rx:BehaviorSubject" TypeArguments="p10:Unit">
+            <Expression xsi:type="rx:BehaviorSubject" TypeArguments="p8:Unit">
               <rx:Name>StartExperimentShortcut</rx:Name>
             </Expression>
             <Expression xsi:type="SubscribeSubject">
