@@ -13,9 +13,9 @@ from contraqctor.contract.harp import (
 from contraqctor.contract.json import ManyPydanticModel, PydanticModel
 from contraqctor.contract.mux import MapFromPaths
 
-from . import __version__, rig, task_logic
-from .rig import AindIsoForceRig
-from .task_logic import AindIsoForceTaskLogic
+from .. import __version__, rig, task_logic
+from ..rig import AindIsoForceRig
+from ..task_logic import AindIsoForceTaskLogic
 
 
 def dataset(
