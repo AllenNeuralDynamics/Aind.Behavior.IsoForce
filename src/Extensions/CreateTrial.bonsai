@@ -4,7 +4,7 @@
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns:p1="clr-namespace:;assembly=Extensions"
                  xmlns:scr="clr-namespace:Bonsai.Scripting.Expressions;assembly=Bonsai.Scripting.Expressions"
-                 xmlns:p2="clr-namespace:AindIsoForceDataSchema.TaskLogic;assembly=Extensions"
+                 xmlns:p2="clr-namespace:AindIsoForceDataSchema;assembly=Extensions"
                  xmlns:p3="clr-namespace:AllenNeuralDynamics.Core;assembly=AllenNeuralDynamics.Core"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Workflow>
@@ -311,9 +311,6 @@
                             </Edges>
                           </Workflow>
                         </Expression>
-                        <Expression xsi:type="IncludeWorkflow" Path="Extensions\CreateSoftwareEventInline.bonsai">
-                          <EventName>CrossingOnset</EventName>
-                        </Expression>
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="rx:Take">
                             <rx:Count>1</rx:Count>
@@ -329,7 +326,6 @@
                         <Edge From="4" To="5" Label="Source1" />
                         <Edge From="5" To="6" Label="Source1" />
                         <Edge From="6" To="7" Label="Source1" />
-                        <Edge From="7" To="8" Label="Source1" />
                       </Edges>
                     </Workflow>
                   </Expression>
@@ -405,9 +401,6 @@
                             </Edges>
                           </Workflow>
                         </Expression>
-                        <Expression xsi:type="IncludeWorkflow" Path="Extensions\CreateSoftwareEventInline.bonsai">
-                          <EventName>CrossingOffset</EventName>
-                        </Expression>
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="rx:Take">
                             <rx:Count>1</rx:Count>
@@ -425,7 +418,6 @@
                         <Edge From="7" To="8" Label="Source1" />
                         <Edge From="8" To="9" Label="Source1" />
                         <Edge From="9" To="10" Label="Source1" />
-                        <Edge From="10" To="11" Label="Source1" />
                       </Edges>
                     </Workflow>
                   </Expression>
@@ -458,7 +450,7 @@
                           <Selector>Start,End</Selector>
                         </Expression>
                         <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="p1:ProcessCrossingOutcome" />
+                          <Combinator xsi:type="p2:ProcessCrossingOutcome" />
                         </Expression>
                         <Expression xsi:type="rx:AsyncSubject">
                           <Name>ProcessedCrossing</Name>

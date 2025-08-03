@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from enum import Enum, IntFlag
-from typing import Annotated, List, Literal, Optional, Self, Union
+from typing import Annotated, Any, Generic, List, Literal, Optional, Self, TypeVar, Union
 
 import aind_behavior_services.task_logic.distributions as distributions
 from aind_behavior_services.task_logic import AindBehaviorTaskLogicModel, TaskParameters
@@ -242,3 +242,40 @@ class AindIsoForceTaskLogic(AindBehaviorTaskLogicModel):
     version: Literal[__version__] = __version__
     name: Literal["AindIsoForce"] = Field(default="AindIsoForce", description="Name of the task logic")
     task_parameters: AindIsoForceTaskParameters = Field(..., description="Parameters of the task logic")
+
+
+## Extra data-types
+
+
+class JoystickForce(BaseModel):
+    left: float = Field(..., description="Force applied to the left axis")
+    right: float = Field(..., description="Force applied to the right axis")
+    push: float = Field(..., description="Force applied to the push axis")
+    pull: float = Field(..., description="Force applied to the pull axis")
+    right_left: float = Field(..., description="Signed force applied to the right and left axes combined")
+    push_pull: float = Field(..., description="Signed force applied to the push and pull axes combined")
+
+
+class ThresholdedJoystickForce(BaseModel):
+    left: bool = Field(..., description="Whether the left force is above the threshold")
+    right: bool = Field(..., description="Whether the right force is above the threshold")
+    push: bool = Field(..., description="Whether the push force is above the threshold")
+    pull: bool = Field(..., description="Whether the pull force is above the threshold")
+    joystick_force: JoystickForce = Field(..., description="Joystick force values that triggered the event")
+
+
+T = TypeVar("T", bound=Any)
+
+
+class Timestamped(BaseModel, Generic[T]):
+    seconds: float
+    value: T
+
+
+class CrossingOutcome(BaseModel):
+    action: Action = Field(..., description="Action that was taken")
+    duration: float = Field(..., description="Duration of the crossing")
+    start: Timestamped[ThresholdedJoystickForce] = Field(..., description="Start of the crossing")
+    end: Timestamped[ThresholdedJoystickForce] = Field(..., description="End of the crossing")
+    is_valid_duration: bool = Field(..., description="Whether the crossing duration is valid")
+    is_reward_action: bool = Field(..., description="Whether the crossing is a reward action")

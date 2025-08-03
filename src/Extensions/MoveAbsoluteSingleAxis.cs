@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Reactive.Linq;
-using AindIsoForceDataSchema.Rig;
+using AindIsoForceDataSchema;
 using Harp.StepperDriver;
 using Bonsai.Harp;
 using YamlDotNet.Serialization.ObjectGraphTraversalStrategies;

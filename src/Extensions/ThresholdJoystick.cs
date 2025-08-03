@@ -4,10 +4,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reactive.Linq;
 using Bonsai.Harp;
-using AindIsoForceDataSchema.TaskLogic;
+using AindIsoForceDataSchema;
 
 [Combinator]
-[Description("")]
+[Description("Thresholds the force applied to the joystick, producing a ThresholdedJoystickForce object.")]
 [WorkflowElementCategory(ElementCategory.Transform)]
 public class ThresholdJoystick
 {
@@ -52,78 +52,5 @@ public class ThresholdJoystick
             };
         });
     }
-}
-
-
-public struct ThresholdedJoystickForce
-{
-    public bool Left;
-    public bool Right;
-    public bool Push;
-    public bool Pull;
-
-    public JoystickForce JoystickForce;
-
-    public bool IsAny
-    {
-        get
-        {
-            return Left || Right || Push || Pull;
-        }
-    }
-
-    public bool this[AindIsoForceDataSchema.TaskLogic.Action index]
-    {
-        get
-        {
-            switch (index)
-            {
-                case AindIsoForceDataSchema.TaskLogic.Action.Left:
-                    return Left;
-                case AindIsoForceDataSchema.TaskLogic.Action.Right:
-                    return Right;
-                case AindIsoForceDataSchema.TaskLogic.Action.Push:
-                    return Push;
-                case AindIsoForceDataSchema.TaskLogic.Action.Pull:
-                    return Pull;
-                case AindIsoForceDataSchema.TaskLogic.Action.None:
-                    return false;
-                case AindIsoForceDataSchema.TaskLogic.Action.RightLeft:
-                    return Left || Right;
-                case AindIsoForceDataSchema.TaskLogic.Action.PushPull:
-                    return Push || Pull;
-                default:
-                    return false;
-            }
-        }
-    }
-
-    public AindIsoForceDataSchema.TaskLogic.Action TriggeredAction
-    {
-        get
-        {
-            if (Left)
-            {
-                return AindIsoForceDataSchema.TaskLogic.Action.Left;
-            }
-            else if (Right)
-            {
-                return AindIsoForceDataSchema.TaskLogic.Action.Right;
-            }
-            else if (Push)
-            {
-                return AindIsoForceDataSchema.TaskLogic.Action.Push;
-            }
-            else if (Pull)
-            {
-                return AindIsoForceDataSchema.TaskLogic.Action.Pull;
-            }
-            else
-            {
-                return AindIsoForceDataSchema.TaskLogic.Action.None;
-            }
-        }
-    }
-
 }
 

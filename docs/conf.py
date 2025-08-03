@@ -9,6 +9,7 @@ import sys
 import erdantic as erd
 from pydantic import BaseModel
 
+import aind_behavior_iso_force.data_contract
 import aind_behavior_iso_force.task_logic
 
 sys.path.insert(0, os.path.abspath("../src/DataSchemas"))
@@ -79,12 +80,18 @@ def linkcode_resolve(domain, info):
 
 
 # -- Class diagram generation
+_static_path = "_static"
 
 
-def export_model_diagram(model: BaseModel, root: str = "_static") -> None:
+def export_model_diagram(model: BaseModel, root: str = _static_path) -> None:
     diagram = erd.create(model)
     diagram.draw(f"{root}/{model.__name__}.svg")
 
 
-_diagram_root = "_static"
-export_model_diagram(aind_behavior_iso_force.task_logic.AindIsoForceTaskLogic, _diagram_root)
+export_model_diagram(aind_behavior_iso_force.task_logic.AindIsoForceTaskLogic, _static_path)
+
+
+# -- Dataset rendering
+
+with open(f"{_static_path}/dataset.txt", "w", encoding="utf-8") as f:
+    f.write(aind_behavior_iso_force.data_contract.render_dataset())

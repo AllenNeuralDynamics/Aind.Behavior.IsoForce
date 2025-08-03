@@ -5,34 +5,36 @@ using System.Linq;
 using System.Reactive.Linq;
 using Bonsai.Harp;
 
-[Combinator]
-[Description("From two timestamped thresholded joystick forces, produces a crossing outcome with the action and duration.")]
-[WorkflowElementCategory(ElementCategory.Transform)]
-public class ProcessCrossingOutcome
+namespace AindIsoForceDataSchema
 {
-    public IObservable<CrossingOutcome> Process(IObservable<Tuple<Timestamped<ThresholdedJoystickForce>, Timestamped<ThresholdedJoystickForce>>> source)
+    [Combinator]
+    [Description("From two timestamped thresholded joystick forces, produces a crossing outcome with the action and duration.")]
+    [WorkflowElementCategory(ElementCategory.Transform)]
+    public class ProcessCrossingOutcome
     {
-        return source.Select(value =>
+        public IObservable<CrossingOutcome> Process(IObservable<Tuple<Timestamped<ThresholdedJoystickForce>, Timestamped<ThresholdedJoystickForce>>> source)
         {
-            var start = value.Item1;
-            var end = value.Item2;
-
-            return new CrossingOutcome()
+            return source.Select(value =>
             {
-                Start = start,
-                End = end,
-                Action = start.Value.TriggeredAction,
-                Duration = end.Seconds - start.Seconds
-            };
-        });
+                var start = value.Item1;
+                var end = value.Item2;
+
+                return new CrossingOutcome()
+                {
+                    Start = new TimestampedThresholdedJoystickForce()
+                    {
+                        Value = start.Value,
+                        Seconds = start.Seconds
+                    },
+                    End = new TimestampedThresholdedJoystickForce()
+                    {
+                        Value = end.Value,
+                        Seconds = end.Seconds
+                    },
+                    Action = start.Value.TriggeredAction,
+                    Duration = end.Seconds - start.Seconds
+                };
+            });
+        }
     }
-}
-
-
-public class CrossingOutcome
-{
-    public AindIsoForceDataSchema.TaskLogic.Action Action { get; set; }
-    public double Duration  { get; set; }
-    public Timestamped<ThresholdedJoystickForce> Start  { get; set; }
-    public Timestamped<ThresholdedJoystickForce> End  { get; set;}
 }

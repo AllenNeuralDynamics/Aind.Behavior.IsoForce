@@ -1,0 +1,16 @@
+# In order to get picked up, move this file to the root of the project or ./local
+
+clabe:
+  data_dir: C:/Data
+
+watchdog:
+  project_name: "ProjectName"
+  destination: "\\\\allen\\aind\\scratch\\iso-force\\data"
+  delete_modalities_source_after_success: true
+  upload_job_configs:
+    - modality: behavior_videos
+      source: "This will get replaced later"
+      compress_raw_data: true
+
+default_behavior_picker:
+  config_library_dir: "C:/git/AllenNeuralDynamics/Aind.Behavior.IsoForce/src/config_library"
