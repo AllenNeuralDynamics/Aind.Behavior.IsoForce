@@ -1,7 +1,4 @@
 # Import core types
-from __future__ import annotations
-
-# Import core types
 from typing import Literal, Optional
 
 import aind_behavior_services.calibration.load_cells as lcc
@@ -11,7 +8,7 @@ from aind_behavior_services.calibration import aind_manipulator
 from aind_behavior_services.rig import AindBehaviorRigModel
 from pydantic import BaseModel, Field
 
-from aind_behavior_iso_force import __version__
+from aind_behavior_iso_force import __semver__
 
 
 class AindManipulatorAdditionalSettings(BaseModel):
@@ -33,7 +30,7 @@ class RigCalibration(BaseModel):
 
 
 class AindIsoForceRig(AindBehaviorRigModel):
-    version: Literal[__version__] = __version__
+    version: Literal[__semver__] = __semver__
     triggered_camera_controller: rig.cameras.CameraController[rig.cameras.SpinnakerCamera] = Field(
         ..., description="Required camera controller to triggered cameras."
     )

@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools", "setuptools-scm"]
-build-backend = "setuptools.build_meta"
+requires = ["uv_build>=0.8.22"]
+build-backend = "uv_build"
 
 [project]
 name = "aind-behavior-iso-force"
@@ -15,11 +15,12 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: Microsoft :: Windows",
 ]
-readme = "README.md"
-dynamic = ["version"]
+version = "0.0.0rc0"
+readme = {file = "README.md", content-type = "text/markdown"}
 
 dependencies = [
-  "aind_behavior_services < 0.13",
+  "aind_behavior_services>=0.12, <0.13",
+  "pydantic-settings"
 ]
 
 [project.urls]
@@ -30,11 +31,13 @@ Changelog = "https://github.com/AllenNeuralDynamics/Aind.Behavior.IsoForce/relea
 
 [project.optional-dependencies]
 
-launcher = ["aind_clabe[aind-services]<0.7"]
+launcher = ["aind-clabe[aind-services] >= 0.8.2 ,<0.9.0"]
 
 data = [
-  "contraqctor<0.5",
+  "contraqctor<0.6",
   "pydantic-settings"]
+
+[dependency-groups]
 
 dev = [
     "aind_behavior_iso_force[launcher]",
@@ -44,25 +47,18 @@ dev = [
 ]
 
 docs = [
-    'Sphinx<7.3',
+    'Sphinx',
     'furo',
     'sphinx-jinja',
     'autodoc_pydantic[erdantic]',
     'myst_parser',
     'sphinx-jsonschema',
-    "aind_behavior_iso_force[data]",
+    "aind_behavior_iso_force[data]",  # Necessary for the data contract rendering
 ]
 
 [project.scripts]
-clabe = "aind_behavior_iso_force.launcher:main"
-regenerate = "aind_behavior_iso_force.regenerate:main"
+iso-force = "aind_behavior_iso_force.cli:main"
 
-[tool.setuptools.packages.find]
-where = ["src"]
-
-[tool.setuptools.dynamic]
-version = {attr = "aind_behavior_iso_force.__version__"}
-readme = {file = "README.md", content-type = "text/markdown"}
 
 [tool.ruff]
 line-length = 120
@@ -75,5 +71,9 @@ mccabe = { max-complexity = 14 }
 pydocstyle = { convention = 'google' }
 
 [tool.codespell]
-skip = '.git,*.pdf,*.svg,./bonsai,*.bonsai,./docs/_build,uv.lock'
+skip = '.git,*.pdf,*.svg,./bonsai,*.bonsai,./docs/_build,uv.lock,*.Generated.cs'
 ignore-words-list = 'nd'
+
+[tool.uv]
+default-groups = ['dev']
+required-version = '>=0.8.4'

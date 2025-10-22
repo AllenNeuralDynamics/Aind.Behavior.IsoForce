@@ -10,6 +10,7 @@ import erdantic as erd
 from pydantic import BaseModel
 
 import aind_behavior_iso_force.data_contract
+import aind_behavior_iso_force.data_contract as contract
 import aind_behavior_iso_force.task_logic
 
 sys.path.insert(0, os.path.abspath("../src/DataSchemas"))
@@ -23,7 +24,7 @@ SOURCE_ROOT = "https://github.com/AllenNeuralDynamics/Aind.Behavior.IsoForce/tre
 project = "AIND IsoForce"
 copyright = "2024, Allen Institute for Neural Dynamics"
 author = "Bruno Cruz"
-release = aind_behavior_iso_force.__version__
+release = aind_behavior_iso_force.__semver__
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -90,8 +91,5 @@ def export_model_diagram(model: BaseModel, root: str = _static_path) -> None:
 
 export_model_diagram(aind_behavior_iso_force.task_logic.AindIsoForceTaskLogic, _static_path)
 
-
-# -- Dataset rendering
-
-with open(f"{_static_path}/dataset.txt", "w", encoding="utf-8") as f:
-    f.write(aind_behavior_iso_force.data_contract.render_dataset())
+with open(f"{_static_path}/dataset.html", "w", encoding="utf-8") as f:
+    f.write(contract.render_dataset())

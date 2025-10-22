@@ -2,10 +2,9 @@
 <WorkflowBuilder Version="2.9.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
-                 xmlns:p1="clr-namespace:;assembly=Extensions"
+                 xmlns:p1="clr-namespace:AindIsoForceDataSchema;assembly=Extensions"
                  xmlns:scr="clr-namespace:Bonsai.Scripting.Expressions;assembly=Bonsai.Scripting.Expressions"
-                 xmlns:p2="clr-namespace:AindIsoForceDataSchema;assembly=Extensions"
-                 xmlns:p3="clr-namespace:AllenNeuralDynamics.Core;assembly=AllenNeuralDynamics.Core"
+                 xmlns:p2="clr-namespace:AllenNeuralDynamics.Core;assembly=AllenNeuralDynamics.Core"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Workflow>
     <Nodes>
@@ -102,7 +101,7 @@
                     </PropertyMappings>
                   </Expression>
                   <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="p1:ThresholdJoystick" />
+                    <Combinator xsi:type="p1:ApplyThresholdJoystick" />
                   </Expression>
                   <Expression xsi:type="MemberSelector">
                     <Selector>Value.IsAny</Selector>
@@ -291,7 +290,7 @@
                           </PropertyMappings>
                         </Expression>
                         <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="p1:ThresholdJoystick" />
+                          <Combinator xsi:type="p1:ApplyThresholdJoystick" />
                         </Expression>
                         <Expression xsi:type="rx:Condition">
                           <Name>IsAny</Name>
@@ -359,7 +358,7 @@
                           </PropertyMappings>
                         </Expression>
                         <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="p1:ThresholdJoystick" />
+                          <Combinator xsi:type="p1:ApplyThresholdJoystick" />
                         </Expression>
                         <Expression xsi:type="rx:Condition">
                           <Name>WaitForOffset</Name>
@@ -383,7 +382,7 @@
                                 </PropertyMappings>
                               </Expression>
                               <Expression xsi:type="Index">
-                                <Operand xsi:type="WorkflowProperty" TypeArguments="p2:Action">
+                                <Operand xsi:type="WorkflowProperty" TypeArguments="p1:Action">
                                   <Value>None</Value>
                                 </Operand>
                               </Expression>
@@ -450,7 +449,7 @@
                           <Selector>Start,End</Selector>
                         </Expression>
                         <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="p2:ProcessCrossingOutcome" />
+                          <Combinator xsi:type="p1:ProcessCrossingOutcome" />
                         </Expression>
                         <Expression xsi:type="rx:AsyncSubject">
                           <Name>ProcessedCrossing</Name>
@@ -625,8 +624,8 @@ Item3 as IsRewardedAction)</scr:Expression>
                   <Expression xsi:type="SubscribeSubject">
                     <Name>thisPeriod</Name>
                   </Expression>
-                  <Expression xsi:type="p2:MatchRewardPeriod">
-                    <p2:Type xsi:type="TypeMapping" TypeArguments="p2:OperantReward" />
+                  <Expression xsi:type="p1:MatchRewardPeriod">
+                    <p1:Type xsi:type="TypeMapping" TypeArguments="p1:OperantReward" />
                   </Expression>
                   <Expression xsi:type="rx:CreateObservable">
                     <Name>OperantReward</Name>
@@ -651,7 +650,7 @@ Item3 as IsRewardedAction)</scr:Expression>
                         </Expression>
                         <Expression xsi:type="IncludeWorkflow" Path="Extensions\SampleDistributionWithRngSeed.bonsai" />
                         <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="p3:TimeSpanFromSeconds" />
+                          <Combinator xsi:type="p2:TimeSpanFromSeconds" />
                         </Expression>
                         <Expression xsi:type="PropertyMapping">
                           <PropertyMappings>
@@ -734,7 +733,7 @@ Item3 as IsRewardedAction)</scr:Expression>
                                       <scr:Expression>it &gt; 0 ? it : 0</scr:Expression>
                                     </Expression>
                                     <Expression xsi:type="Combinator">
-                                      <Combinator xsi:type="p3:TimeSpanFromSeconds" />
+                                      <Combinator xsi:type="p2:TimeSpanFromSeconds" />
                                     </Expression>
                                     <Expression xsi:type="PropertyMapping">
                                       <PropertyMappings>
@@ -852,8 +851,8 @@ Item3 as IsRewardedAction)</scr:Expression>
                   <Expression xsi:type="SubscribeSubject">
                     <Name>thisPeriod</Name>
                   </Expression>
-                  <Expression xsi:type="p2:MatchRewardPeriod">
-                    <p2:Type xsi:type="TypeMapping" TypeArguments="p2:Reward" />
+                  <Expression xsi:type="p1:MatchRewardPeriod">
+                    <p1:Type xsi:type="TypeMapping" TypeArguments="p1:Reward" />
                   </Expression>
                   <Expression xsi:type="rx:CreateObservable">
                     <Name>PavlovianReward</Name>
@@ -882,7 +881,7 @@ Item3 as IsRewardedAction)</scr:Expression>
                           <scr:Expression>it &gt; 0 ? it : 0</scr:Expression>
                         </Expression>
                         <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="p3:TimeSpanFromSeconds" />
+                          <Combinator xsi:type="p2:TimeSpanFromSeconds" />
                         </Expression>
                         <Expression xsi:type="PropertyMapping">
                           <PropertyMappings>
@@ -1057,7 +1056,7 @@ Item3 as IsRewardedAction)</scr:Expression>
                     <scr:Expression>it &gt; 0 ? it : 0</scr:Expression>
                   </Expression>
                   <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="p3:TimeSpanFromSeconds" />
+                    <Combinator xsi:type="p2:TimeSpanFromSeconds" />
                   </Expression>
                   <Expression xsi:type="PropertyMapping">
                     <PropertyMappings>
