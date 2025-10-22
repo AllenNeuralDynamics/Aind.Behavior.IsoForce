@@ -15,7 +15,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: Microsoft :: Windows",
 ]
-version = "0.0.0rc0"
+version = "0.0.0"
 readme = {file = "README.md", content-type = "text/markdown"}
 
 dependencies = [
