@@ -13,7 +13,7 @@ from contraqctor.contract.harp import (
 from contraqctor.contract.json import ManyPydanticModel, PydanticModel
 from contraqctor.contract.mux import MapFromPaths
 
-from .. import __version__, rig, task_logic
+from .. import __semver__, rig, task_logic
 from ..rig import AindIsoForceRig
 from ..task_logic import AindIsoForceTaskLogic
 
@@ -22,7 +22,7 @@ def dataset(
     root_path: Path,
     name: str = "IsoForceDataset",
     description: str = "A IsoForce dataset",
-    version: str = __version__,
+    version: str = __semver__,
 ) -> Dataset:
     """
     Creates a Dataset object for the IsoForce experiment.
