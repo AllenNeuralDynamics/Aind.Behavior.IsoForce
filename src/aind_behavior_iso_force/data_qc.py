@@ -8,6 +8,7 @@ import pydantic_settings
 from contraqctor import contract, qc
 from contraqctor.contract.harp import HarpDevice
 
+from . import __semver__
 from .data_contract import dataset
 from .rig import AindIsoForceRig
 
@@ -79,15 +80,17 @@ def make_qc_runner(dataset: contract.Dataset) -> qc.Runner:
     return _runner
 
 
-class _QCCli(pydantic_settings.BaseSettings, cli_prog_name="data-qc", cli_kebab_case=True):
+class DataQcCli(pydantic_settings.BaseSettings, cli_prog_name="data-qc", cli_kebab_case=True):
     data_path: pydantic_settings.CliPositionalArg[os.PathLike] = pydantic.Field(
         description="Path to the session data directory."
     )
+    version: str = pydantic.Field(default=__semver__, description="Version of the dataset.")
+
+    def cli_cmd(self):
+        vr_dataset = dataset(Path(self.data_path), self.version)
+        runner = make_qc_runner(vr_dataset)
+        runner.run_all_with_progress()
 
 
 if __name__ == "__main__":
-    cli = pydantic_settings.CliApp()
-    parsed_args = cli.run(_QCCli)
-    iso_force_dataset = dataset(Path(parsed_args.data_path))
-    runner = make_qc_runner(iso_force_dataset)
-    results = runner.run_all_with_progress()
+    cli = pydantic_settings.CliApp().run(DataQcCli)
