@@ -73,6 +73,7 @@ jobs:
         run: uv run iso-force regenerate
 
       - name: Check for uncommitted changes
+        shell: bash
         run: |
           git config --global core.safecrlf false
           git diff --exit-code || (echo "Untracked changes found" && exit 1)
