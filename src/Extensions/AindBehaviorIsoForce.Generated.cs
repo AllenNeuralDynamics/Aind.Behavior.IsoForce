@@ -12,7 +12,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Defines the action types
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     public enum Action
     {
     
@@ -39,7 +39,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class AindBehaviorSessionModel
@@ -73,9 +73,10 @@ namespace AindIsoForceDataSchema
     
         public AindBehaviorSessionModel()
         {
-            _aindBehaviorServicesPkgVersion = "0.12.0";
-            _version = "0.3.1";
+            _aindBehaviorServicesPkgVersion = "0.12.3";
+            _version = "0.12.3";
             _experimenter = new System.Collections.Generic.List<string>();
+            _experimentVersion = "";
             _allowDirtyRepo = false;
             _skipHardwareValidation = false;
         }
@@ -126,7 +127,7 @@ namespace AindIsoForceDataSchema
         /// <summary>
         /// Name of the experiment
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("experiment", Required=Newtonsoft.Json.Required.Always)]
+        [Newtonsoft.Json.JsonPropertyAttribute("experiment")]
         [System.ComponentModel.DescriptionAttribute("Name of the experiment")]
         public string Experiment
         {
@@ -194,10 +195,11 @@ namespace AindIsoForceDataSchema
         }
     
         /// <summary>
-        /// Name of the session. This will be used to create a folder in the root path.
+        /// Name of the session. This will be used to create a folder in the root path. If not provided, it will be generated using subject and date.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session_name")]
-        [System.ComponentModel.DescriptionAttribute("Name of the session. This will be used to create a folder in the root path.")]
+        [System.ComponentModel.DescriptionAttribute("Name of the session. This will be used to create a folder in the root path. If no" +
+            "t provided, it will be generated using subject and date.")]
         public string SessionName
         {
             get
@@ -230,7 +232,7 @@ namespace AindIsoForceDataSchema
         /// <summary>
         /// Version of the experiment
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("experiment_version", Required=Newtonsoft.Json.Required.Always)]
+        [Newtonsoft.Json.JsonPropertyAttribute("experiment_version")]
         [System.ComponentModel.DescriptionAttribute("Version of the experiment")]
         public string ExperimentVersion
         {
@@ -355,7 +357,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class AindIsoForceRig
@@ -387,8 +389,8 @@ namespace AindIsoForceDataSchema
     
         public AindIsoForceRig()
         {
-            _aindBehaviorServicesPkgVersion = "0.12.0";
-            _version = "0.1.0";
+            _aindBehaviorServicesPkgVersion = "0.12.3";
+            _version = "0.0.0-rc0";
             _triggeredCameraController = new CameraControllerSpinnakerCamera();
             _harpBehavior = new HarpBehavior();
             _harpLickometer = new HarpLicketySplit();
@@ -660,7 +662,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class AindIsoForceTaskLogic
@@ -681,7 +683,7 @@ namespace AindIsoForceDataSchema
             _name = "AindIsoForce";
             _description = "";
             _taskParameters = new AindIsoForceTaskParameters();
-            _version = "0.1.0";
+            _version = "0.0.0-rc0";
         }
     
         protected AindIsoForceTaskLogic(AindIsoForceTaskLogic other)
@@ -810,7 +812,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class AindIsoForceTaskParameters
@@ -826,7 +828,7 @@ namespace AindIsoForceDataSchema
     
         public AindIsoForceTaskParameters()
         {
-            _aindBehaviorServicesPkgVersion = "0.12.0";
+            _aindBehaviorServicesPkgVersion = "0.12.3";
             _environment = new Environment();
             _operationControl = new OperationControl();
         }
@@ -943,7 +945,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Additional settings for the manipulator device
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Additional settings for the manipulator device")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -1014,7 +1016,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Aind manipulator calibration class
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Aind manipulator calibration class")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -1172,7 +1174,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class AindManipulatorCalibrationInput
@@ -1292,7 +1294,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class AindManipulatorCalibrationOutput
@@ -1339,7 +1341,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Overrides the default settings for the manipulator device by spec'ing additional_settings field
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Overrides the default settings for the manipulator device by spec\'ing additional_" +
         "settings field")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -1528,7 +1530,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Motor axis available
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     public enum Axis
     {
     
@@ -1552,7 +1554,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Axis configuration
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Axis configuration")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -1751,7 +1753,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class BaseModel
@@ -1795,7 +1797,15 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// A beta probability distribution.
+    ///
+    ///Continuous distribution bounded between 0 and 1. Commonly used
+    ///for modeling probabilities and proportions.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("A beta probability distribution.\n\nContinuous distribution bounded between 0 and 1" +
+        ". Commonly used\nfor modeling probabilities and proportions.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class BetaDistribution : Distribution
@@ -1898,7 +1908,13 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// Parameters for a beta distribution.
+    ///
+    ///Defined by alpha and beta shape parameters.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("Parameters for a beta distribution.\n\nDefined by alpha and beta shape parameters.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class BetaDistributionParameters
@@ -2004,7 +2020,15 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// A binomial probability distribution.
+    ///
+    ///Models the number of successes in a fixed number of independent
+    ///Bernoulli trials with constant success probability.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("A binomial probability distribution.\n\nModels the number of successes in a fixed n" +
+        "umber of independent\nBernoulli trials with constant success probability.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class BinomialDistribution : Distribution
@@ -2107,7 +2131,14 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// Parameters for a binomial distribution.
+    ///
+    ///Defined by number of trials (n) and success probability (p).
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("Parameters for a binomial distribution.\n\nDefined by number of trials (n) and succ" +
+        "ess probability (p).")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class BinomialDistributionParameters
@@ -2213,7 +2244,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class Block : BlockStatistics
@@ -2317,7 +2348,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class BlockGenerator : BlockStatistics
@@ -2399,7 +2430,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "mode")]
     [JsonInheritanceAttribute("Block", typeof(Block))]
     [JsonInheritanceAttribute("BlockGenerator", typeof(BlockGenerator))]
@@ -2446,7 +2477,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class CameraControllerSpinnakerCamera
@@ -2618,7 +2649,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class ConnectedClockOutput
@@ -2704,7 +2735,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class CrossingOutcome
@@ -2879,7 +2910,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "family")]
     [JsonInheritanceAttribute("Scalar", typeof(Scalar))]
     [JsonInheritanceAttribute("Beta", typeof(BetaDistribution))]
@@ -2934,7 +2965,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class Environment
@@ -3046,7 +3077,15 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// An exponential probability distribution.
+    ///
+    ///Models time between events in a Poisson process. Commonly used
+    ///for wait times and inter-event intervals.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("An exponential probability distribution.\n\nModels time between events in a Poisson" +
+        " process. Commonly used\nfor wait times and inter-event intervals.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class ExponentialDistribution : Distribution
@@ -3149,7 +3188,14 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// Parameters for an exponential distribution.
+    ///
+    ///Defined by the rate parameter (inverse of mean).
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("Parameters for an exponential distribution.\n\nDefined by the rate parameter (inver" +
+        "se of mean).")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class ExponentialDistributionParameters
@@ -3233,7 +3279,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class ForceOperationControl
@@ -3369,7 +3415,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class ForceThreshold
@@ -3501,7 +3547,15 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// A gamma probability distribution.
+    ///
+    ///Generalizes the exponential distribution. Used for modeling
+    ///positive continuous variables with right-skewed distributions.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("A gamma probability distribution.\n\nGeneralizes the exponential distribution. Used" +
+        " for modeling\npositive continuous variables with right-skewed distributions.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class GammaDistribution : Distribution
@@ -3604,7 +3658,14 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// Parameters for a gamma distribution.
+    ///
+    ///Defined by shape (k) and rate (θ⁻¹) parameters.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("Parameters for a gamma distribution.\n\nDefined by shape (k) and rate (θ⁻¹) paramet" +
+        "ers.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class GammaDistributionParameters
@@ -3710,7 +3771,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class HarpBehavior
@@ -3897,7 +3958,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class HarpEnvironmentSensor
@@ -4084,7 +4145,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class HarpLicketySplit
@@ -4271,7 +4332,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class HarpWhiteRabbit
@@ -4481,7 +4542,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class JoystickForce
@@ -4651,7 +4712,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class LoadCellCalibrationInput
@@ -4754,7 +4815,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class LoadCellCalibrationOutput
@@ -4896,7 +4957,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class LoadCellInput
@@ -4983,7 +5044,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class LoadCells
@@ -5169,7 +5230,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Load cells calibration class
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Load cells calibration class")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -5327,7 +5388,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class LoadCellsCalibrationInput
@@ -5390,7 +5451,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class LoadCellsCalibrationOutput
@@ -5453,7 +5514,16 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// A log-normal probability distribution.
+    ///
+    ///Distribution where the logarithm of the variable is normally distributed.
+    ///Always produces positive values and is right-skewed.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("A log-normal probability distribution.\n\nDistribution where the logarithm of the v" +
+        "ariable is normally distributed.\nAlways produces positive values and is right-sk" +
+        "ewed.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class LogNormalDistribution : Distribution
@@ -5556,7 +5626,14 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// Parameters for a log-normal distribution.
+    ///
+    ///Defined by the mean and standard deviation of the underlying normal distribution.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("Parameters for a log-normal distribution.\n\nDefined by the mean and standard devia" +
+        "tion of the underlying normal distribution.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class LogNormalDistributionParameters
@@ -5662,7 +5739,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class ManipulatorPosition
@@ -5774,7 +5851,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class MeasuredOffset
@@ -5860,7 +5937,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class MeasuredWeight
@@ -5949,7 +6026,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Input for water valve calibration class
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Input for water valve calibration class")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -6080,7 +6157,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     public enum MicrostepResolution
     {
     
@@ -6098,7 +6175,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     public enum MotorOperationMode
     {
     
@@ -6110,7 +6187,16 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// A normal (Gaussian) probability distribution.
+    ///
+    ///Bell-shaped distribution symmetric around the mean, commonly used
+    ///for modeling naturally occurring random variables.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("A normal (Gaussian) probability distribution.\n\nBell-shaped distribution symmetric" +
+        " around the mean, commonly used\nfor modeling naturally occurring random variable" +
+        "s.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class NormalDistribution : Distribution
@@ -6213,7 +6299,14 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// Parameters for a normal (Gaussian) distribution.
+    ///
+    ///Defined by mean (center) and standard deviation (spread).
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("Parameters for a normal (Gaussian) distribution.\n\nDefined by mean (center) and st" +
+        "andard deviation (spread).")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class NormalDistributionParameters
@@ -6319,7 +6412,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class OperantReward : RewardPeriod
@@ -6424,7 +6517,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class OperationControl
@@ -6491,7 +6584,16 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// A custom probability density function distribution.
+    ///
+    ///Allows defining arbitrary discrete distributions by specifying
+    ///probability values and their corresponding indices.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("A custom probability density function distribution.\n\nAllows defining arbitrary di" +
+        "screte distributions by specifying\nprobability values and their corresponding in" +
+        "dices.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class PdfDistribution : Distribution
@@ -6594,7 +6696,16 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// Parameters for a custom probability density function distribution.
+    ///
+    ///Defined by explicit probability values and their corresponding indices.
+    ///Probabilities are automatically normalized to sum to 1.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("Parameters for a custom probability density function distribution.\n\nDefined by ex" +
+        "plicit probability values and their corresponding indices.\nProbabilities are aut" +
+        "omatically normalized to sum to 1.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class PdfDistributionParameters
@@ -6702,7 +6813,16 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// A Poisson probability distribution.
+    ///
+    ///Models the number of events occurring in a fixed interval of time or space
+    ///when events occur independently at a constant rate.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("A Poisson probability distribution.\n\nModels the number of events occurring in a f" +
+        "ixed interval of time or space\nwhen events occur independently at a constant rat" +
+        "e.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class PoissonDistribution : Distribution
@@ -6805,7 +6925,14 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// Parameters for a Poisson distribution.
+    ///
+    ///Defined by the rate parameter (average number of events).
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("Parameters for a Poisson distribution.\n\nDefined by the rate parameter (average nu" +
+        "mber of events).")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class PoissonDistributionParameters
@@ -6892,7 +7019,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Defines a quiescence settings
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Defines a quiescence settings")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -6983,7 +7110,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class Rect
@@ -7118,7 +7245,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Defines a response period
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Defines a response period")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -7252,7 +7379,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class Reward : RewardPeriod
@@ -7334,7 +7461,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "reward_type")]
     [JsonInheritanceAttribute("Pavlovian", typeof(Reward))]
     [JsonInheritanceAttribute("Operant", typeof(OperantReward))]
@@ -7381,7 +7508,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class RigCalibration
@@ -7448,7 +7575,14 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// A scalar distribution that returns a constant value.
+    ///
+    ///Useful for fixed parameters that don't vary across trials or samples.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("A scalar distribution that returns a constant value.\n\nUseful for fixed parameters" +
+        " that don\'t vary across trials or samples.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class Scalar : Distribution
@@ -7543,7 +7677,14 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// Parameters for a scalar (constant) distribution.
+    ///
+    ///Represents a deterministic value that always returns the same number.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("Parameters for a scalar (constant) distribution.\n\nRepresents a deterministic valu" +
+        "e that always returns the same number.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class ScalarDistributionParameter
@@ -7627,7 +7768,16 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// Parameters for scaling and offsetting sampled distribution values.
+    ///Scaling is applied as (value * scale + offset).
+    ///
+    ///Applies linear transformation: result = (value * scale) + offset.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("Parameters for scaling and offsetting sampled distribution values.\nScaling is app" +
+        "lied as (value * scale + offset).\n\nApplies linear transformation: result = (valu" +
+        "e * scale) + offset.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class ScalingParameters
@@ -7715,7 +7865,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class SpinnakerCamera
@@ -8069,7 +8219,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     public enum SpinnakerCameraAdcBitDepth
     {
     
@@ -8084,7 +8234,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     public enum SpinnakerCameraPixelFormat
     {
     
@@ -8522,7 +8672,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class ThresholdedJoystickForce
@@ -8673,7 +8823,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class TimestampedThresholdedJoystickForce
@@ -8756,7 +8906,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Defines a trial
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Defines a trial")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -8892,13 +9042,33 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// Parameters for truncating a distribution to a specified range. Truncation should
+    ///be applied after sampling and scaling.
+    ///
+    ///The truncation_mode determines how out-of-bounds values are handled:
+    ///- "exclude": Resample until a value within [min, max] is obtained.
+    ///If after a certain number of attempts no valid value is found, it
+    ///will use the average of sampled values and pick the closest bound.
+    ///- "clamp": Clamp values to the nearest bound within [min, max].
+    ///Used to constrain sampled values within minimum and maximum bounds.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute(@"Parameters for truncating a distribution to a specified range. Truncation should
+    be applied after sampling and scaling.
+
+    The truncation_mode determines how out-of-bounds values are handled:
+    - ""exclude"": Resample until a value within [min, max] is obtained.
+    If after a certain number of attempts no valid value is found, it
+    will use the average of sampled values and pick the closest bound.
+    - ""clamp"": Clamp values to the nearest bound within [min, max].
+    Used to constrain sampled values within minimum and maximum bounds.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class TruncationParameters
     {
     
-        private bool _isTruncated;
+        private TruncationParametersTruncationMode _truncationMode;
     
         private double _min;
     
@@ -8906,32 +9076,33 @@ namespace AindIsoForceDataSchema
     
         public TruncationParameters()
         {
-            _isTruncated = false;
+            _truncationMode = AindIsoForceDataSchema.TruncationParametersTruncationMode.Exclude;
             _min = 0D;
             _max = 0D;
         }
     
         protected TruncationParameters(TruncationParameters other)
         {
-            _isTruncated = other._isTruncated;
+            _truncationMode = other._truncationMode;
             _min = other._min;
             _max = other._max;
         }
     
         /// <summary>
-        /// Whether the distribution is truncated
+        /// Mode of truncation to apply
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("is_truncated")]
-        [System.ComponentModel.DescriptionAttribute("Whether the distribution is truncated")]
-        public bool IsTruncated
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [Newtonsoft.Json.JsonPropertyAttribute("truncation_mode")]
+        [System.ComponentModel.DescriptionAttribute("Mode of truncation to apply")]
+        public TruncationParametersTruncationMode TruncationMode
         {
             get
             {
-                return _isTruncated;
+                return _truncationMode;
             }
             set
             {
-                _isTruncated = value;
+                _truncationMode = value;
             }
         }
     
@@ -8981,7 +9152,7 @@ namespace AindIsoForceDataSchema
     
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("IsTruncated = " + _isTruncated + ", ");
+            stringBuilder.Append("TruncationMode = " + _truncationMode + ", ");
             stringBuilder.Append("Min = " + _min + ", ");
             stringBuilder.Append("Max = " + _max);
             return true;
@@ -9002,7 +9173,14 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// A uniform probability distribution.
+    ///
+    ///All values between min and max have equal probability of being sampled.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("A uniform probability distribution.\n\nAll values between min and max have equal pr" +
+        "obability of being sampled.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class UniformDistribution : Distribution
@@ -9105,7 +9283,14 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// Parameters for a uniform distribution.
+    ///
+    ///Defined by minimum and maximum bounds of the distribution.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("Parameters for a uniform distribution.\n\nDefined by minimum and maximum bounds of " +
+        "the distribution.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class UniformDistributionParameters
@@ -9211,7 +9396,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "video_writer_type")]
     [JsonInheritanceAttribute("FFMPEG", typeof(VideoWriterFfmpeg))]
     [JsonInheritanceAttribute("OPENCV", typeof(VideoWriterOpenCv))]
@@ -9258,7 +9443,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class VideoWriterFfmpeg : VideoWriter
@@ -9382,7 +9567,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class VideoWriterOpenCv : VideoWriter
@@ -9487,7 +9672,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Water valve calibration class
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Water valve calibration class")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -9645,7 +9830,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class WaterValveCalibrationInput
@@ -9715,7 +9900,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Output for water valve calibration class
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Output for water valve calibration class")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -9869,7 +10054,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "family")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -9914,7 +10099,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "family")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -9959,7 +10144,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "family")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -10004,7 +10189,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "family")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -10049,7 +10234,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "family")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -10094,7 +10279,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "family")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -10139,7 +10324,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class TruncationParameters2
@@ -10183,7 +10368,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class ScalingParameters2
@@ -10227,7 +10412,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SpinnakerCameraColorProcessing
     {
@@ -10237,6 +10422,19 @@ namespace AindIsoForceDataSchema
     
         [System.Runtime.Serialization.EnumMemberAttribute(Value="NoColorProcessing")]
         NoColorProcessing = 1,
+    }
+
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum TruncationParametersTruncationMode
+    {
+    
+        [System.Runtime.Serialization.EnumMemberAttribute(Value="exclude")]
+        Exclude = 0,
+    
+        [System.Runtime.Serialization.EnumMemberAttribute(Value="clamp")]
+        Clamp = 1,
     }
 
 
@@ -10377,7 +10575,7 @@ namespace AindIsoForceDataSchema
         }
     }
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Block>))]
@@ -10418,7 +10616,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Scalar>))]
@@ -10467,7 +10665,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Reward>))]
@@ -10508,7 +10706,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<VideoWriterFfmpeg>))]
@@ -10549,7 +10747,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     public partial class MatchInterTrialInterval : Bonsai.Expressions.SingleArgumentExpressionBuilder
@@ -10588,7 +10786,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     public partial class MatchDuration : Bonsai.Expressions.SingleArgumentExpressionBuilder
@@ -10627,7 +10825,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     public partial class MatchForceDuration : Bonsai.Expressions.SingleArgumentExpressionBuilder
@@ -10666,7 +10864,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     public partial class MatchAmount : Bonsai.Expressions.SingleArgumentExpressionBuilder
@@ -10705,7 +10903,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     public partial class MatchDelay : Bonsai.Expressions.SingleArgumentExpressionBuilder
@@ -10744,7 +10942,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     public partial class MatchTimeToCollect : Bonsai.Expressions.SingleArgumentExpressionBuilder
@@ -10786,7 +10984,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Serializes a sequence of data model objects into JSON strings.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Serializes a sequence of data model objects into JSON strings.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Transform)]
     [Bonsai.CombinatorAttribute()]
@@ -11231,7 +11429,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Deserializes a sequence of JSON strings into data model objects.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Deserializes a sequence of JSON strings into data model objects.")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Transform)]

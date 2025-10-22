@@ -4,53 +4,53 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reactive.Linq;
 using Bonsai.Harp;
-using AindIsoForceDataSchema;
 
-[Combinator]
-[Description("Thresholds the force applied to the joystick, producing a ThresholdedJoystickForce object.")]
-[WorkflowElementCategory(ElementCategory.Transform)]
-public class ThresholdJoystick
+namespace AindIsoForceDataSchema
 {
-
-    private ForceThreshold threshold;
-    public ForceThreshold Threshold
+    [Combinator]
+    [Description("Thresholds the force applied to the joystick, producing a ThresholdedJoystickForce object.")]
+    [WorkflowElementCategory(ElementCategory.Transform)]
+    public class ApplyThresholdJoystick
     {
-        get { return threshold; }
-        set { threshold = value; }
-    }
-    
-    public IObservable<Timestamped<ThresholdedJoystickForce>> Process(IObservable<Timestamped<JoystickForce>> source)
-    {
-        return Process(source.Select(value => value.Value)).Zip(source, (force, timestamp) =>
+        private ForceThreshold threshold;
+        public ForceThreshold Threshold
         {
-            return Timestamped.Create(force, timestamp.Seconds);
-        });
-    }
+            get { return threshold; }
+            set { threshold = value; }
+        }
 
-
-    public IObservable<ThresholdedJoystickForce> Process(IObservable<JoystickForce> source)
-    {
-        return source.Select(value =>
+        public IObservable<Timestamped<ThresholdedJoystickForce>> Process(IObservable<Timestamped<JoystickForce>> source)
         {
-            if (threshold == null)
+            return Process(source.Select(value => value.Value)).Zip(source, (force, timestamp) =>
             {
-                throw new InvalidOperationException("Threshold property value is null.");
-            }
+                return Timestamped.Create(force, timestamp.Seconds);
+            });
+        }
 
-            var left = threshold.Left.HasValue ? value.Left > threshold.Left.Value : false;
-            var right = threshold.Right.HasValue ? value.Right > threshold.Right.Value : false;
-            var push = threshold.Push.HasValue ? value.Push > threshold.Push.Value : false;
-            var pull = threshold.Pull.HasValue ? value.Pull > threshold.Pull.Value : false;
 
-            return new ThresholdedJoystickForce()
+        public IObservable<ThresholdedJoystickForce> Process(IObservable<JoystickForce> source)
+        {
+            return source.Select(value =>
             {
-                Left = left,
-                Right = right,
-                Push = push,
-                Pull = pull,
-                JoystickForce = value
-            };
-        });
+                if (threshold == null)
+                {
+                    throw new InvalidOperationException("Threshold property value is null.");
+                }
+
+                var left = threshold.Left.HasValue ? value.Left > threshold.Left.Value : false;
+                var right = threshold.Right.HasValue ? value.Right > threshold.Right.Value : false;
+                var push = threshold.Push.HasValue ? value.Push > threshold.Push.Value : false;
+                var pull = threshold.Pull.HasValue ? value.Pull > threshold.Pull.Value : false;
+
+                return new ThresholdedJoystickForce()
+                {
+                    Left = left,
+                    Right = right,
+                    Push = push,
+                    Pull = pull,
+                    JoystickForce = value
+                };
+            });
+        }
     }
 }
-

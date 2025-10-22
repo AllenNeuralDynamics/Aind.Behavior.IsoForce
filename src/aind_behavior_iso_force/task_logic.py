@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from enum import Enum, IntFlag
 from typing import Annotated, Any, Generic, List, Literal, Optional, Self, TypeVar, Union
 
@@ -8,7 +6,7 @@ from aind_behavior_services.task_logic import AindBehaviorTaskLogicModel, TaskPa
 from pydantic import BaseModel, Field, model_validator
 from typing_extensions import TypeAliasType
 
-from aind_behavior_iso_force import __version__
+from aind_behavior_iso_force import __semver__
 
 from .rig import lcc
 
@@ -42,7 +40,7 @@ def uniform_distribution_value(min: float, max: float) -> distributions.UniformD
     )
 
 
-def normal_distribution_value(mean: float, std: float) -> distributions.Normal:
+def normal_distribution_value(mean: float, std: float) -> distributions.NormalDistribution:
     """
     Helper function to create a normal distribution for a given range.
 
@@ -239,7 +237,7 @@ class AindIsoForceTaskParameters(TaskParameters):
 
 
 class AindIsoForceTaskLogic(AindBehaviorTaskLogicModel):
-    version: Literal[__version__] = __version__
+    version: Literal[__semver__] = __semver__
     name: Literal["AindIsoForce"] = Field(default="AindIsoForce", description="Name of the task logic")
     task_parameters: AindIsoForceTaskParameters = Field(..., description="Parameters of the task logic")
 

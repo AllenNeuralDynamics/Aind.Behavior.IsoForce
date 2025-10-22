@@ -6,7 +6,6 @@ using System.Reactive.Linq;
 using AindIsoForceDataSchema;
 using Harp.StepperDriver;
 using Bonsai.Harp;
-using YamlDotNet.Serialization.ObjectGraphTraversalStrategies;
 
 [Combinator]
 [Description("")]
