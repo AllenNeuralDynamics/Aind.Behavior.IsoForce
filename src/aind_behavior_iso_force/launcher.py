@@ -7,7 +7,6 @@ from clabe.apps import (
     AindBehaviorServicesBonsaiApp,
     BonsaiAppSettings,
 )
-from clabe.data_transfer.robocopy import RobocopyService, RobocopySettings
 from clabe.launcher import Launcher, LauncherCliArgs
 from clabe.pickers import DefaultBehaviorPicker, DefaultBehaviorPickerSettings
 from pydantic_settings import CliApp
@@ -45,11 +44,11 @@ async def experiment(launcher: Launcher) -> None:
     bonsai_app = AindBehaviorServicesBonsaiApp(BonsaiAppSettings(workflow=Path(r"./src/main.bonsai")))
 
     bonsai_app.add_app_settings(launcher, rig=rig, session=session, task_logic=task_logic)
-    bonsai_app.get_result(allow_stderr=True)
+    bonsai_app.run().get_result(allow_stderr=True)
 
     # Copy everything
     launcher.copy_logs()
-    RobocopyService(source=launcher.session_directory, settings=RobocopySettings()).transfer()
+    # RobocopyService(source=launcher.session_directory, settings=RobocopySettings()).transfer()
     return
 
 

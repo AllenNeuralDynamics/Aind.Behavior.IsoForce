@@ -46,9 +46,9 @@ def mock_rig() -> AindIsoForceRig:
         input=AindManipulatorCalibrationInput(
             full_step_to_mm=(ManipulatorPosition(x=0.010, y1=0.010, y2=0.010, z=0.010)),
             axis_configuration=[
-                AxisConfiguration(axis=Axis.Y1, min_limit=-0.01, max_limit=25),
-                AxisConfiguration(axis=Axis.X, min_limit=-0.01, max_limit=25),
-                AxisConfiguration(axis=Axis.Z, min_limit=-0.01, max_limit=25),
+                AxisConfiguration(axis=Axis.Y1, min_limit=-1, max_limit=15000),
+                AxisConfiguration(axis=Axis.X, min_limit=-1, max_limit=15000),
+                AxisConfiguration(axis=Axis.Z, min_limit=-1, max_limit=15000),
             ],
             homing_order=[Axis.Y1, Axis.X, Axis.Z],
             initial_position=ManipulatorPosition(y1=0, y2=0, x=0, z=0),
@@ -64,7 +64,7 @@ def mock_rig() -> AindIsoForceRig:
     water_valve_calibration = WaterValveCalibration(
         input=water_valve_input, output=water_valve_input.calibrate_output(), date=datetime.datetime.now()
     )
-    water_valve_calibration.output = WaterValveCalibrationOutput(slope=1, offset=0)  # For testing purposes
+    water_valve_calibration.output = WaterValveCalibrationOutput(slope=00.01, offset=0)  # For testing purposes
 
     video_writer = rig.cameras.VideoWriterFfmpeg(frame_rate=120, container_extension="mp4")
 
@@ -73,24 +73,26 @@ def mock_rig() -> AindIsoForceRig:
         input=lcc.LoadCellsCalibrationInput(),
         date=datetime.datetime.now(),
     )
-
     return AindIsoForceRig(
         rig_name="test_rig",
         triggered_camera_controller=rig.cameras.CameraController[rig.cameras.SpinnakerCamera](
             frame_rate=120,
             cameras={
-                "FaceCamera": rig.cameras.SpinnakerCamera(
-                    serial_number="SerialNumber", binning=1, exposure=5000, gain=0, video_writer=video_writer
-                ),
-                "SideCamera": rig.cameras.SpinnakerCamera(
-                    serial_number="SerialNumber", binning=1, exposure=5000, gain=0, video_writer=video_writer
+                "MyCamera0": rig.cameras.SpinnakerCamera(
+                    serial_number="23373889",
+                    binning=1,
+                    exposure=5000,
+                    gain=0,
+                    video_writer=video_writer,
+                    adc_bit_depth=rig.cameras.SpinnakerCameraAdcBitDepth.ADC10BIT,
+                    pixel_format=rig.cameras.SpinnakerCameraPixelFormat.MONO8,
                 ),
             },
         ),
-        harp_behavior=rig.harp.HarpBehavior(port_name="COM3"),
-        harp_lickometer=rig.harp.HarpLicketySplit(port_name="COM5"),
-        harp_clock_generator=rig.harp.HarpWhiteRabbit(port_name="COM6"),
-        harp_load_cells=lcc.LoadCells(port_name="COM7", calibration=load_cells_calibration),
+        harp_load_cells=lcc.LoadCells(port_name="COM8", calibration=load_cells_calibration),
+        harp_behavior=rig.harp.HarpBehavior(port_name="COM7"),
+        harp_lickometer=rig.harp.HarpLicketySplit(port_name="COM11"),
+        harp_clock_generator=rig.harp.HarpWhiteRabbit(port_name="COM10"),
         manipulator=AindManipulatorDevice(port_name="COM9", calibration=manipulator_calibration),
         calibration=RigCalibration(water_valve=water_valve_calibration),
     )
@@ -108,12 +110,15 @@ def mock_task_logic() -> tl.AindIsoForceTaskLogic:
         )
     )
     trial_template = tl.Trial(
-        inter_trial_interval=tl.uniform_distribution_value(min=0.5, max=1.5),
-        quiescence_period=tl.QuiescencePeriod(duration=tl.scalar_value(0.0), force_threshold=tl.ForceThreshold()),
+        inter_trial_interval=tl.uniform_distribution_value(min=4, max=8),
+        quiescence_period=tl.QuiescencePeriod(
+            duration=tl.scalar_value(0.0), force_threshold=tl.ForceThreshold(push=2000, pull=2000)
+        ),
         response_period=tl.ResponsePeriod(
-            duration=tl.scalar_value(1.0),
-            force_threshold=tl.ForceThreshold(pull=5000, push=5000),
+            duration=tl.scalar_value(600.0),
+            force_threshold=tl.ForceThreshold(pull=3050, push=2800),
             rewarded_action=tl.Action.PUSH,
+            force_duration=tl.scalar_value(0.2),
         ),
         reward_period=tl.Reward(amount=tl.scalar_value(1.0), delay=tl.scalar_value(0)),
     )
