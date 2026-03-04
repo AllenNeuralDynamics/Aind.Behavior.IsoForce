@@ -74,7 +74,7 @@ namespace AindIsoForceDataSchema
         public AindIsoForceRig()
         {
             _aindBehaviorServicesPkgVersion = "0.13.2";
-            _version = "0.0.0-rc0";
+            _version = "0.1.0-rc0";
             _triggeredCameraController = new CameraControllerSpinnakerCamera();
             _harpBehavior = new HarpBehavior();
             _harpLickometer = new HarpLicketySplit();
@@ -386,7 +386,7 @@ namespace AindIsoForceDataSchema
             _name = "AindIsoForce";
             _description = "";
             _taskParameters = new AindIsoForceTaskParameters();
-            _version = "0.0.0-rc0";
+            _version = "0.1.0-rc0";
         }
     
         protected AindIsoForceTaskLogic(AindIsoForceTaskLogic other)
