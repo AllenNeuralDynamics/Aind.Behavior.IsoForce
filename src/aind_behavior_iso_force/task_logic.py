@@ -131,9 +131,11 @@ class ResponsePeriod(BaseModel):
 
     @model_validator(mode="after")
     def _validate_rewarded_action_vs_threshold(self) -> Self:
-        if self.rewarded_action != Action.NONE:
-            if self.force_threshold.from_action(self.rewarded_action) is None:
-                raise ValueError("Force threshold must be set for the rewarded action.")
+        for action in (
+            self.rewarded_action
+        ):  # In python 3.11+, iterating over an IntFlag yields the individual flags that are set
+            if self.force_threshold.from_action(action) is None:
+                raise ValueError(f"Force threshold must be set for rewarded action: {action.name}.")
         return self
 
 

@@ -103,7 +103,7 @@ def mock_task_logic() -> tl.AindIsoForceTaskLogic:
         response_period=tl.ResponsePeriod(
             duration=tl.scalar_value(600.0),
             force_threshold=tl.ForceThreshold(pull=3050, push=2800),
-            rewarded_action=tl.Action.PUSH,
+            rewarded_action=tl.Action.PUSH | tl.Action.PULL,
             force_duration=tl.scalar_value(0.2),
         ),
         reward_period=tl.Reward(amount=tl.scalar_value(1.0), delay=tl.scalar_value(0)),
