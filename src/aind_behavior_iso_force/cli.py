@@ -5,8 +5,6 @@ from pydantic_settings import BaseSettings, CliApp, CliSubCommand
 
 from aind_behavior_iso_force import __semver__, regenerate
 from aind_behavior_iso_force.data_qc import DataQcCli
-from aind_behavior_iso_force.launcher import ClabeCli
-
 
 class VersionCli(RootModel):
     root: t.Any
@@ -29,9 +27,6 @@ class IsoForceCli(BaseSettings, cli_prog_name="iso-force", cli_kebab_case=True):
     data_qc: CliSubCommand[DataQcCli] = Field(description="Run data quality checks.")
     regenerate: CliSubCommand[DslRegenerateCli] = Field(
         description="Regenerate the IsoForce dsl dependencies.",
-    )
-    clabe: CliSubCommand[ClabeCli] = Field(
-        description="Run the Clabe CLI.",
     )
 
     def cli_cmd(self):

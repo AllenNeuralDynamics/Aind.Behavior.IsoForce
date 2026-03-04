@@ -12,7 +12,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Defines the action types
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     public enum Action
     {
     
@@ -39,325 +39,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class AindBehaviorSessionModel
-    {
-    
-        private string _aindBehaviorServicesPkgVersion;
-    
-        private string _version;
-    
-        private string _experiment;
-    
-        private System.Collections.Generic.List<string> _experimenter;
-    
-        private System.DateTimeOffset _date;
-    
-        private string _rootPath;
-    
-        private string _sessionName;
-    
-        private string _subject;
-    
-        private string _experimentVersion;
-    
-        private string _notes;
-    
-        private string _commitHash;
-    
-        private bool _allowDirtyRepo;
-    
-        private bool _skipHardwareValidation;
-    
-        public AindBehaviorSessionModel()
-        {
-            _aindBehaviorServicesPkgVersion = "0.12.3";
-            _version = "0.12.3";
-            _experimenter = new System.Collections.Generic.List<string>();
-            _experimentVersion = "";
-            _allowDirtyRepo = false;
-            _skipHardwareValidation = false;
-        }
-    
-        protected AindBehaviorSessionModel(AindBehaviorSessionModel other)
-        {
-            _aindBehaviorServicesPkgVersion = other._aindBehaviorServicesPkgVersion;
-            _version = other._version;
-            _experiment = other._experiment;
-            _experimenter = other._experimenter;
-            _date = other._date;
-            _rootPath = other._rootPath;
-            _sessionName = other._sessionName;
-            _subject = other._subject;
-            _experimentVersion = other._experimentVersion;
-            _notes = other._notes;
-            _commitHash = other._commitHash;
-            _allowDirtyRepo = other._allowDirtyRepo;
-            _skipHardwareValidation = other._skipHardwareValidation;
-        }
-    
-        [Newtonsoft.Json.JsonPropertyAttribute("aind_behavior_services_pkg_version")]
-        public string AindBehaviorServicesPkgVersion
-        {
-            get
-            {
-                return _aindBehaviorServicesPkgVersion;
-            }
-            set
-            {
-                _aindBehaviorServicesPkgVersion = value;
-            }
-        }
-    
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public string Version
-        {
-            get
-            {
-                return _version;
-            }
-            set
-            {
-                _version = value;
-            }
-        }
-    
-        /// <summary>
-        /// Name of the experiment
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("experiment")]
-        [System.ComponentModel.DescriptionAttribute("Name of the experiment")]
-        public string Experiment
-        {
-            get
-            {
-                return _experiment;
-            }
-            set
-            {
-                _experiment = value;
-            }
-        }
-    
-        /// <summary>
-        /// Name of the experimenter
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("experimenter")]
-        [System.ComponentModel.DescriptionAttribute("Name of the experimenter")]
-        public System.Collections.Generic.List<string> Experimenter
-        {
-            get
-            {
-                return _experimenter;
-            }
-            set
-            {
-                _experimenter = value;
-            }
-        }
-    
-        /// <summary>
-        /// Date of the experiment
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("date")]
-        [System.ComponentModel.DescriptionAttribute("Date of the experiment")]
-        public System.DateTimeOffset Date
-        {
-            get
-            {
-                return _date;
-            }
-            set
-            {
-                _date = value;
-            }
-        }
-    
-        /// <summary>
-        /// Root path where data will be logged
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("root_path", Required=Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DescriptionAttribute("Root path where data will be logged")]
-        public string RootPath
-        {
-            get
-            {
-                return _rootPath;
-            }
-            set
-            {
-                _rootPath = value;
-            }
-        }
-    
-        /// <summary>
-        /// Name of the session. This will be used to create a folder in the root path. If not provided, it will be generated using subject and date.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("session_name")]
-        [System.ComponentModel.DescriptionAttribute("Name of the session. This will be used to create a folder in the root path. If no" +
-            "t provided, it will be generated using subject and date.")]
-        public string SessionName
-        {
-            get
-            {
-                return _sessionName;
-            }
-            set
-            {
-                _sessionName = value;
-            }
-        }
-    
-        /// <summary>
-        /// Name of the subject
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subject", Required=Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DescriptionAttribute("Name of the subject")]
-        public string Subject
-        {
-            get
-            {
-                return _subject;
-            }
-            set
-            {
-                _subject = value;
-            }
-        }
-    
-        /// <summary>
-        /// Version of the experiment
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("experiment_version")]
-        [System.ComponentModel.DescriptionAttribute("Version of the experiment")]
-        public string ExperimentVersion
-        {
-            get
-            {
-                return _experimentVersion;
-            }
-            set
-            {
-                _experimentVersion = value;
-            }
-        }
-    
-        /// <summary>
-        /// Notes about the experiment
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notes")]
-        [System.ComponentModel.DescriptionAttribute("Notes about the experiment")]
-        public string Notes
-        {
-            get
-            {
-                return _notes;
-            }
-            set
-            {
-                _notes = value;
-            }
-        }
-    
-        /// <summary>
-        /// Commit hash of the repository
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("commit_hash")]
-        [System.ComponentModel.DescriptionAttribute("Commit hash of the repository")]
-        public string CommitHash
-        {
-            get
-            {
-                return _commitHash;
-            }
-            set
-            {
-                _commitHash = value;
-            }
-        }
-    
-        /// <summary>
-        /// Allow running from a dirty repository
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allow_dirty_repo")]
-        [System.ComponentModel.DescriptionAttribute("Allow running from a dirty repository")]
-        public bool AllowDirtyRepo
-        {
-            get
-            {
-                return _allowDirtyRepo;
-            }
-            set
-            {
-                _allowDirtyRepo = value;
-            }
-        }
-    
-        /// <summary>
-        /// Skip hardware validation
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("skip_hardware_validation")]
-        [System.ComponentModel.DescriptionAttribute("Skip hardware validation")]
-        public bool SkipHardwareValidation
-        {
-            get
-            {
-                return _skipHardwareValidation;
-            }
-            set
-            {
-                _skipHardwareValidation = value;
-            }
-        }
-    
-        public System.IObservable<AindBehaviorSessionModel> Generate()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new AindBehaviorSessionModel(this)));
-        }
-    
-        public System.IObservable<AindBehaviorSessionModel> Generate<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new AindBehaviorSessionModel(this));
-        }
-    
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            stringBuilder.Append("AindBehaviorServicesPkgVersion = " + _aindBehaviorServicesPkgVersion + ", ");
-            stringBuilder.Append("Version = " + _version + ", ");
-            stringBuilder.Append("Experiment = " + _experiment + ", ");
-            stringBuilder.Append("Experimenter = " + _experimenter + ", ");
-            stringBuilder.Append("Date = " + _date + ", ");
-            stringBuilder.Append("RootPath = " + _rootPath + ", ");
-            stringBuilder.Append("SessionName = " + _sessionName + ", ");
-            stringBuilder.Append("Subject = " + _subject + ", ");
-            stringBuilder.Append("ExperimentVersion = " + _experimentVersion + ", ");
-            stringBuilder.Append("Notes = " + _notes + ", ");
-            stringBuilder.Append("CommitHash = " + _commitHash + ", ");
-            stringBuilder.Append("AllowDirtyRepo = " + _allowDirtyRepo + ", ");
-            stringBuilder.Append("SkipHardwareValidation = " + _skipHardwareValidation);
-            return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class AindIsoForceRig
@@ -370,6 +52,8 @@ namespace AindIsoForceDataSchema
         private string _computerName;
     
         private string _rigName;
+    
+        private string _dataDirectory;
     
         private CameraControllerSpinnakerCamera _triggeredCameraController;
     
@@ -389,7 +73,7 @@ namespace AindIsoForceDataSchema
     
         public AindIsoForceRig()
         {
-            _aindBehaviorServicesPkgVersion = "0.12.3";
+            _aindBehaviorServicesPkgVersion = "0.13.2";
             _version = "0.0.0-rc0";
             _triggeredCameraController = new CameraControllerSpinnakerCamera();
             _harpBehavior = new HarpBehavior();
@@ -406,6 +90,7 @@ namespace AindIsoForceDataSchema
             _version = other._version;
             _computerName = other._computerName;
             _rigName = other._rigName;
+            _dataDirectory = other._dataDirectory;
             _triggeredCameraController = other._triggeredCameraController;
             _harpBehavior = other._harpBehavior;
             _harpLickometer = other._harpLickometer;
@@ -445,7 +130,7 @@ namespace AindIsoForceDataSchema
         /// <summary>
         /// Computer name
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("computer_name")]
+        [Newtonsoft.Json.JsonPropertyAttribute("computer_name", Required=Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DescriptionAttribute("Computer name")]
         public string ComputerName
         {
@@ -473,6 +158,23 @@ namespace AindIsoForceDataSchema
             set
             {
                 _rigName = value;
+            }
+        }
+    
+        /// <summary>
+        /// Directory where data will be saved to
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data_directory", Required=Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DescriptionAttribute("Directory where data will be saved to")]
+        public string DataDirectory
+        {
+            get
+            {
+                return _dataDirectory;
+            }
+            set
+            {
+                _dataDirectory = value;
             }
         }
     
@@ -636,6 +338,7 @@ namespace AindIsoForceDataSchema
             stringBuilder.Append("Version = " + _version + ", ");
             stringBuilder.Append("ComputerName = " + _computerName + ", ");
             stringBuilder.Append("RigName = " + _rigName + ", ");
+            stringBuilder.Append("DataDirectory = " + _dataDirectory + ", ");
             stringBuilder.Append("TriggeredCameraController = " + _triggeredCameraController + ", ");
             stringBuilder.Append("HarpBehavior = " + _harpBehavior + ", ");
             stringBuilder.Append("HarpLickometer = " + _harpLickometer + ", ");
@@ -662,7 +365,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class AindIsoForceTaskLogic
@@ -812,7 +515,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class AindIsoForceTaskParameters
@@ -828,7 +531,7 @@ namespace AindIsoForceDataSchema
     
         public AindIsoForceTaskParameters()
         {
-            _aindBehaviorServicesPkgVersion = "0.12.3";
+            _aindBehaviorServicesPkgVersion = "0.13.2";
             _environment = new Environment();
             _operationControl = new OperationControl();
         }
@@ -844,7 +547,6 @@ namespace AindIsoForceDataSchema
         /// <summary>
         /// Seed of the random number generator
         /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("rng_seed")]
         [System.ComponentModel.DescriptionAttribute("Seed of the random number generator")]
         public double? RngSeed
@@ -943,173 +645,41 @@ namespace AindIsoForceDataSchema
 
 
     /// <summary>
-    /// Additional settings for the manipulator device
+    /// AindManipulator calibration class
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
-    [System.ComponentModel.DescriptionAttribute("Additional settings for the manipulator device")]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class AindManipulatorAdditionalSettings
-    {
-    
-        private Axis _spoutAxis;
-    
-        public AindManipulatorAdditionalSettings()
-        {
-            _spoutAxis = AindIsoForceDataSchema.Axis.Y1;
-        }
-    
-        protected AindManipulatorAdditionalSettings(AindManipulatorAdditionalSettings other)
-        {
-            _spoutAxis = other._spoutAxis;
-        }
-    
-        /// <summary>
-        /// Spout axis
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("spout_axis")]
-        [System.ComponentModel.DescriptionAttribute("Spout axis")]
-        public Axis SpoutAxis
-        {
-            get
-            {
-                return _spoutAxis;
-            }
-            set
-            {
-                _spoutAxis = value;
-            }
-        }
-    
-        public System.IObservable<AindManipulatorAdditionalSettings> Generate()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new AindManipulatorAdditionalSettings(this)));
-        }
-    
-        public System.IObservable<AindManipulatorAdditionalSettings> Generate<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new AindManipulatorAdditionalSettings(this));
-        }
-    
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            stringBuilder.Append("SpoutAxis = " + _spoutAxis);
-            return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
-    }
-
-
-    /// <summary>
-    /// Aind manipulator calibration class
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
-    [System.ComponentModel.DescriptionAttribute("Aind manipulator calibration class")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("AindManipulator calibration class")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class AindManipulatorCalibration
     {
     
-        private string _deviceName;
-    
-        private AindManipulatorCalibrationInput _input;
-    
-        private AindManipulatorCalibrationOutput _output;
-    
-        private System.DateTimeOffset? _date;
-    
         private string _description;
     
-        private string _notes;
+        private ManipulatorPosition _fullStepToMm;
+    
+        private System.Collections.Generic.List<AxisConfiguration> _axisConfiguration;
+    
+        private System.Collections.Generic.List<Axis> _homingOrder;
+    
+        private ManipulatorPosition _initialPosition;
     
         public AindManipulatorCalibration()
         {
-            _deviceName = "AindManipulator";
-            _input = new AindManipulatorCalibrationInput();
-            _output = new AindManipulatorCalibrationOutput();
-            _description = "Calibration of the load cells system";
+            _description = "AindManipulator calibration and settings";
+            _fullStepToMm = new ManipulatorPosition();
+            _axisConfiguration = new System.Collections.Generic.List<AxisConfiguration>();
+            _homingOrder = new System.Collections.Generic.List<Axis>();
+            _initialPosition = new ManipulatorPosition();
         }
     
         protected AindManipulatorCalibration(AindManipulatorCalibration other)
         {
-            _deviceName = other._deviceName;
-            _input = other._input;
-            _output = other._output;
-            _date = other._date;
             _description = other._description;
-            _notes = other._notes;
-        }
-    
-        /// <summary>
-        /// Must match a device name in rig/instrument
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("device_name")]
-        [System.ComponentModel.DescriptionAttribute("Must match a device name in rig/instrument")]
-        public string DeviceName
-        {
-            get
-            {
-                return _deviceName;
-            }
-            set
-            {
-                _deviceName = value;
-            }
-        }
-    
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("input", Required=Newtonsoft.Json.Required.Always)]
-        public AindManipulatorCalibrationInput Input
-        {
-            get
-            {
-                return _input;
-            }
-            set
-            {
-                _input = value;
-            }
-        }
-    
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("output", Required=Newtonsoft.Json.Required.Always)]
-        public AindManipulatorCalibrationOutput Output
-        {
-            get
-            {
-                return _output;
-            }
-            set
-            {
-                _output = value;
-            }
-        }
-    
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("date")]
-        public System.DateTimeOffset? Date
-        {
-            get
-            {
-                return _date;
-            }
-            set
-            {
-                _date = value;
-            }
+            _fullStepToMm = other._fullStepToMm;
+            _axisConfiguration = other._axisConfiguration;
+            _homingOrder = other._homingOrder;
+            _initialPosition = other._initialPosition;
         }
     
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -1123,85 +693,6 @@ namespace AindIsoForceDataSchema
             {
                 _description = value;
             }
-        }
-    
-        [Newtonsoft.Json.JsonPropertyAttribute("notes")]
-        public string Notes
-        {
-            get
-            {
-                return _notes;
-            }
-            set
-            {
-                _notes = value;
-            }
-        }
-    
-        public System.IObservable<AindManipulatorCalibration> Generate()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new AindManipulatorCalibration(this)));
-        }
-    
-        public System.IObservable<AindManipulatorCalibration> Generate<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new AindManipulatorCalibration(this));
-        }
-    
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            stringBuilder.Append("DeviceName = " + _deviceName + ", ");
-            stringBuilder.Append("Input = " + _input + ", ");
-            stringBuilder.Append("Output = " + _output + ", ");
-            stringBuilder.Append("Date = " + _date + ", ");
-            stringBuilder.Append("Description = " + _description + ", ");
-            stringBuilder.Append("Notes = " + _notes);
-            return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class AindManipulatorCalibrationInput
-    {
-    
-        private ManipulatorPosition _fullStepToMm;
-    
-        private System.Collections.Generic.List<AxisConfiguration> _axisConfiguration;
-    
-        private System.Collections.Generic.List<Axis> _homingOrder;
-    
-        private ManipulatorPosition _initialPosition;
-    
-        public AindManipulatorCalibrationInput()
-        {
-            _fullStepToMm = new ManipulatorPosition();
-            _axisConfiguration = new System.Collections.Generic.List<AxisConfiguration>();
-            _homingOrder = new System.Collections.Generic.List<Axis>();
-            _initialPosition = new ManipulatorPosition();
-        }
-    
-        protected AindManipulatorCalibrationInput(AindManipulatorCalibrationInput other)
-        {
-            _fullStepToMm = other._fullStepToMm;
-            _axisConfiguration = other._axisConfiguration;
-            _homingOrder = other._homingOrder;
-            _initialPosition = other._initialPosition;
         }
     
         [System.Xml.Serialization.XmlIgnoreAttribute()]
@@ -1260,18 +751,19 @@ namespace AindIsoForceDataSchema
             }
         }
     
-        public System.IObservable<AindManipulatorCalibrationInput> Generate()
+        public System.IObservable<AindManipulatorCalibration> Generate()
         {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new AindManipulatorCalibrationInput(this)));
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new AindManipulatorCalibration(this)));
         }
     
-        public System.IObservable<AindManipulatorCalibrationInput> Generate<TSource>(System.IObservable<TSource> source)
+        public System.IObservable<AindManipulatorCalibration> Generate<TSource>(System.IObservable<TSource> source)
         {
-            return System.Reactive.Linq.Observable.Select(source, _ => new AindManipulatorCalibrationInput(this));
+            return System.Reactive.Linq.Observable.Select(source, _ => new AindManipulatorCalibration(this));
         }
     
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
+            stringBuilder.Append("Description = " + _description + ", ");
             stringBuilder.Append("FullStepToMm = " + _fullStepToMm + ", ");
             stringBuilder.Append("AxisConfiguration = " + _axisConfiguration + ", ");
             stringBuilder.Append("HomingOrder = " + _homingOrder + ", ");
@@ -1294,54 +786,10 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class AindManipulatorCalibrationOutput
-    {
-    
-        public AindManipulatorCalibrationOutput()
-        {
-        }
-    
-        protected AindManipulatorCalibrationOutput(AindManipulatorCalibrationOutput other)
-        {
-        }
-    
-        public System.IObservable<AindManipulatorCalibrationOutput> Generate()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new AindManipulatorCalibrationOutput(this)));
-        }
-    
-        public System.IObservable<AindManipulatorCalibrationOutput> Generate<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new AindManipulatorCalibrationOutput(this));
-        }
-    
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            return false;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
-    }
-
-
     /// <summary>
     /// Overrides the default settings for the manipulator device by spec'ing additional_settings field
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Overrides the default settings for the manipulator device by spec\'ing additional_" +
         "settings field")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -1351,10 +799,6 @@ namespace AindIsoForceDataSchema
     
         private string _deviceType;
     
-        private string _deviceName;
-    
-        private AindManipulatorAdditionalSettings _additionalSettings;
-    
         private AindManipulatorCalibration _calibration;
     
         private int _whoAmI;
@@ -1363,22 +807,24 @@ namespace AindIsoForceDataSchema
     
         private string _portName;
     
+        private Axis _spoutAxis;
+    
         public AindManipulatorDevice()
         {
             _deviceType = "StepperDriver";
-            _additionalSettings = new AindManipulatorAdditionalSettings();
+            _calibration = new AindManipulatorCalibration();
             _whoAmI = 1130;
+            _spoutAxis = Axis.Y1;
         }
     
         protected AindManipulatorDevice(AindManipulatorDevice other)
         {
             _deviceType = other._deviceType;
-            _deviceName = other._deviceName;
-            _additionalSettings = other._additionalSettings;
             _calibration = other._calibration;
             _whoAmI = other._whoAmI;
             _serialNumber = other._serialNumber;
             _portName = other._portName;
+            _spoutAxis = other._spoutAxis;
         }
     
         [Newtonsoft.Json.JsonPropertyAttribute("device_type")]
@@ -1395,42 +841,11 @@ namespace AindIsoForceDataSchema
         }
     
         /// <summary>
-        /// Device name
+        /// Calibration for the device.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("device_name")]
-        [System.ComponentModel.DescriptionAttribute("Device name")]
-        public string DeviceName
-        {
-            get
-            {
-                return _deviceName;
-            }
-            set
-            {
-                _deviceName = value;
-            }
-        }
-    
-        /// <summary>
-        /// Additional settings
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("additional_settings")]
-        [System.ComponentModel.DescriptionAttribute("Additional settings")]
-        public AindManipulatorAdditionalSettings AdditionalSettings
-        {
-            get
-            {
-                return _additionalSettings;
-            }
-            set
-            {
-                _additionalSettings = value;
-            }
-        }
-    
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("calibration")]
+        [System.ComponentModel.DescriptionAttribute("Calibration for the device.")]
         public AindManipulatorCalibration Calibration
         {
             get
@@ -1490,6 +905,23 @@ namespace AindIsoForceDataSchema
             }
         }
     
+        /// <summary>
+        /// Spout axis
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spout_axis")]
+        [System.ComponentModel.DescriptionAttribute("Spout axis")]
+        public Axis SpoutAxis
+        {
+            get
+            {
+                return _spoutAxis;
+            }
+            set
+            {
+                _spoutAxis = value;
+            }
+        }
+    
         public System.IObservable<AindManipulatorDevice> Generate()
         {
             return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new AindManipulatorDevice(this)));
@@ -1503,12 +935,11 @@ namespace AindIsoForceDataSchema
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
             stringBuilder.Append("DeviceType = " + _deviceType + ", ");
-            stringBuilder.Append("DeviceName = " + _deviceName + ", ");
-            stringBuilder.Append("AdditionalSettings = " + _additionalSettings + ", ");
             stringBuilder.Append("Calibration = " + _calibration + ", ");
             stringBuilder.Append("WhoAmI = " + _whoAmI + ", ");
             stringBuilder.Append("SerialNumber = " + _serialNumber + ", ");
-            stringBuilder.Append("PortName = " + _portName);
+            stringBuilder.Append("PortName = " + _portName + ", ");
+            stringBuilder.Append("SpoutAxis = " + _spoutAxis);
             return true;
         }
     
@@ -1530,7 +961,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Motor axis available
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     public enum Axis
     {
     
@@ -1554,7 +985,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Axis configuration
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Axis configuration")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -1581,9 +1012,9 @@ namespace AindIsoForceDataSchema
         {
             _stepAccelerationInterval = 100;
             _stepInterval = 100;
-            _microstepResolution = AindIsoForceDataSchema.MicrostepResolution.Microstep8;
+            _microstepResolution = MicrostepResolution.Microstep8;
             _maximumStepInterval = 2000;
-            _motorOperationMode = AindIsoForceDataSchema.MotorOperationMode.Quiet;
+            _motorOperationMode = MotorOperationMode.Quiet;
             _maxLimit = 25D;
             _minLimit = -0.01D;
         }
@@ -1600,7 +1031,6 @@ namespace AindIsoForceDataSchema
             _minLimit = other._minLimit;
         }
     
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("axis", Required=Newtonsoft.Json.Required.Always)]
         public Axis Axis
         {
@@ -1648,7 +1078,6 @@ namespace AindIsoForceDataSchema
             }
         }
     
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("microstep_resolution")]
         public MicrostepResolution MicrostepResolution
         {
@@ -1675,7 +1104,6 @@ namespace AindIsoForceDataSchema
             }
         }
     
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("motor_operation_mode")]
         public MotorOperationMode MotorOperationMode
         {
@@ -1753,7 +1181,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class BaseModel
@@ -1803,7 +1231,7 @@ namespace AindIsoForceDataSchema
     ///Continuous distribution bounded between 0 and 1. Commonly used
     ///for modeling probabilities and proportions.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("A beta probability distribution.\n\nContinuous distribution bounded between 0 and 1" +
         ". Commonly used\nfor modeling probabilities and proportions.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -1913,7 +1341,7 @@ namespace AindIsoForceDataSchema
     ///
     ///Defined by alpha and beta shape parameters.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for a beta distribution.\n\nDefined by alpha and beta shape parameters.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -2026,7 +1454,7 @@ namespace AindIsoForceDataSchema
     ///Models the number of successes in a fixed number of independent
     ///Bernoulli trials with constant success probability.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("A binomial probability distribution.\n\nModels the number of successes in a fixed n" +
         "umber of independent\nBernoulli trials with constant success probability.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -2136,7 +1564,7 @@ namespace AindIsoForceDataSchema
     ///
     ///Defined by number of trials (n) and success probability (p).
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for a binomial distribution.\n\nDefined by number of trials (n) and succ" +
         "ess probability (p).")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -2244,7 +1672,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class Block : BlockStatistics
@@ -2260,6 +1688,7 @@ namespace AindIsoForceDataSchema
         {
             _trials = new System.Collections.Generic.List<Trial>();
             _shuffle = false;
+            _repeatCount = 0;
         }
     
         protected Block(Block other) : 
@@ -2308,7 +1737,6 @@ namespace AindIsoForceDataSchema
         /// <summary>
         /// Number of times to repeat the block. If null, the block will be repeated indefinitely
         /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("repeat_count")]
         [System.ComponentModel.DescriptionAttribute("Number of times to repeat the block. If null, the block will be repeated indefini" +
             "tely")]
@@ -2348,7 +1776,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class BlockGenerator : BlockStatistics
@@ -2430,7 +1858,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "mode")]
     [JsonInheritanceAttribute("Block", typeof(Block))]
     [JsonInheritanceAttribute("BlockGenerator", typeof(BlockGenerator))]
@@ -2477,17 +1905,13 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class CameraControllerSpinnakerCamera
     {
     
         private string _deviceType;
-    
-        private string _deviceName;
-    
-        private BaseModel _additionalSettings;
     
         private BaseModel _calibration;
     
@@ -2499,13 +1923,12 @@ namespace AindIsoForceDataSchema
         {
             _deviceType = "CameraController";
             _cameras = new System.Collections.Generic.Dictionary<string, SpinnakerCamera>();
+            _frameRate = 30;
         }
     
         protected CameraControllerSpinnakerCamera(CameraControllerSpinnakerCamera other)
         {
             _deviceType = other._deviceType;
-            _deviceName = other._deviceName;
-            _additionalSettings = other._additionalSettings;
             _calibration = other._calibration;
             _cameras = other._cameras;
             _frameRate = other._frameRate;
@@ -2525,46 +1948,11 @@ namespace AindIsoForceDataSchema
         }
     
         /// <summary>
-        /// Device name
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("device_name")]
-        [System.ComponentModel.DescriptionAttribute("Device name")]
-        public string DeviceName
-        {
-            get
-            {
-                return _deviceName;
-            }
-            set
-            {
-                _deviceName = value;
-            }
-        }
-    
-        /// <summary>
-        /// Additional settings
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("additional_settings")]
-        [System.ComponentModel.DescriptionAttribute("Additional settings")]
-        public BaseModel AdditionalSettings
-        {
-            get
-            {
-                return _additionalSettings;
-            }
-            set
-            {
-                _additionalSettings = value;
-            }
-        }
-    
-        /// <summary>
-        /// Calibration
+        /// Calibration for the device.
         /// </summary>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("calibration")]
-        [System.ComponentModel.DescriptionAttribute("Calibration")]
+        [System.ComponentModel.DescriptionAttribute("Calibration for the device.")]
         public BaseModel Calibration
         {
             get
@@ -2598,7 +1986,6 @@ namespace AindIsoForceDataSchema
         /// <summary>
         /// Frame rate of the trigger to all cameras
         /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("frame_rate")]
         [System.ComponentModel.DescriptionAttribute("Frame rate of the trigger to all cameras")]
         public int? FrameRate
@@ -2626,8 +2013,6 @@ namespace AindIsoForceDataSchema
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
             stringBuilder.Append("DeviceType = " + _deviceType + ", ");
-            stringBuilder.Append("DeviceName = " + _deviceName + ", ");
-            stringBuilder.Append("AdditionalSettings = " + _additionalSettings + ", ");
             stringBuilder.Append("Calibration = " + _calibration + ", ");
             stringBuilder.Append("Cameras = " + _cameras + ", ");
             stringBuilder.Append("FrameRate = " + _frameRate);
@@ -2649,7 +2034,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class ConnectedClockOutput
@@ -2735,7 +2120,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class CrossingOutcome
@@ -2772,7 +2157,6 @@ namespace AindIsoForceDataSchema
         /// <summary>
         /// Action that was taken
         /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("action", Required=Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DescriptionAttribute("Action that was taken")]
         public Action Action
@@ -2910,7 +2294,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "family")]
     [JsonInheritanceAttribute("Scalar", typeof(Scalar))]
     [JsonInheritanceAttribute("Beta", typeof(BetaDistribution))]
@@ -2965,7 +2349,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class Environment
@@ -2981,6 +2365,7 @@ namespace AindIsoForceDataSchema
         {
             _blockStatistics = new System.Collections.Generic.List<BlockStatistics>();
             _shuffle = false;
+            _repeatCount = 0;
         }
     
         protected Environment(Environment other)
@@ -3028,7 +2413,6 @@ namespace AindIsoForceDataSchema
         /// <summary>
         /// Number of times to repeat the environment. If null, the environment will be repeated indefinitely
         /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("repeat_count")]
         [System.ComponentModel.DescriptionAttribute("Number of times to repeat the environment. If null, the environment will be repea" +
             "ted indefinitely")]
@@ -3083,7 +2467,7 @@ namespace AindIsoForceDataSchema
     ///Models time between events in a Poisson process. Commonly used
     ///for wait times and inter-event intervals.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("An exponential probability distribution.\n\nModels time between events in a Poisson" +
         " process. Commonly used\nfor wait times and inter-event intervals.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -3193,7 +2577,7 @@ namespace AindIsoForceDataSchema
     ///
     ///Defined by the rate parameter (inverse of mean).
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for an exponential distribution.\n\nDefined by the rate parameter (inver" +
         "se of mean).")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -3279,7 +2663,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class ForceOperationControl
@@ -3415,7 +2799,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class ForceThreshold
@@ -3444,7 +2828,6 @@ namespace AindIsoForceDataSchema
         /// <summary>
         /// Left force threshold
         /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("left")]
         [System.ComponentModel.DescriptionAttribute("Left force threshold")]
         public double? Left
@@ -3462,7 +2845,6 @@ namespace AindIsoForceDataSchema
         /// <summary>
         /// Right force threshold
         /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("right")]
         [System.ComponentModel.DescriptionAttribute("Right force threshold")]
         public double? Right
@@ -3480,7 +2862,6 @@ namespace AindIsoForceDataSchema
         /// <summary>
         /// Push force threshold
         /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("push")]
         [System.ComponentModel.DescriptionAttribute("Push force threshold")]
         public double? Push
@@ -3498,7 +2879,6 @@ namespace AindIsoForceDataSchema
         /// <summary>
         /// Pull force threshold
         /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("pull")]
         [System.ComponentModel.DescriptionAttribute("Pull force threshold")]
         public double? Pull
@@ -3553,7 +2933,7 @@ namespace AindIsoForceDataSchema
     ///Generalizes the exponential distribution. Used for modeling
     ///positive continuous variables with right-skewed distributions.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("A gamma probability distribution.\n\nGeneralizes the exponential distribution. Used" +
         " for modeling\npositive continuous variables with right-skewed distributions.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -3663,7 +3043,7 @@ namespace AindIsoForceDataSchema
     ///
     ///Defined by shape (k) and rate (θ⁻¹) parameters.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for a gamma distribution.\n\nDefined by shape (k) and rate (θ⁻¹) paramet" +
         "ers.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -3771,17 +3151,13 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class HarpBehavior
     {
     
         private string _deviceType;
-    
-        private string _deviceName;
-    
-        private BaseModel _additionalSettings;
     
         private BaseModel _calibration;
     
@@ -3800,8 +3176,6 @@ namespace AindIsoForceDataSchema
         protected HarpBehavior(HarpBehavior other)
         {
             _deviceType = other._deviceType;
-            _deviceName = other._deviceName;
-            _additionalSettings = other._additionalSettings;
             _calibration = other._calibration;
             _whoAmI = other._whoAmI;
             _serialNumber = other._serialNumber;
@@ -3822,46 +3196,11 @@ namespace AindIsoForceDataSchema
         }
     
         /// <summary>
-        /// Device name
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("device_name")]
-        [System.ComponentModel.DescriptionAttribute("Device name")]
-        public string DeviceName
-        {
-            get
-            {
-                return _deviceName;
-            }
-            set
-            {
-                _deviceName = value;
-            }
-        }
-    
-        /// <summary>
-        /// Additional settings
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("additional_settings")]
-        [System.ComponentModel.DescriptionAttribute("Additional settings")]
-        public BaseModel AdditionalSettings
-        {
-            get
-            {
-                return _additionalSettings;
-            }
-            set
-            {
-                _additionalSettings = value;
-            }
-        }
-    
-        /// <summary>
-        /// Calibration
+        /// Calibration for the device.
         /// </summary>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("calibration")]
-        [System.ComponentModel.DescriptionAttribute("Calibration")]
+        [System.ComponentModel.DescriptionAttribute("Calibration for the device.")]
         public BaseModel Calibration
         {
             get
@@ -3934,8 +3273,6 @@ namespace AindIsoForceDataSchema
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
             stringBuilder.Append("DeviceType = " + _deviceType + ", ");
-            stringBuilder.Append("DeviceName = " + _deviceName + ", ");
-            stringBuilder.Append("AdditionalSettings = " + _additionalSettings + ", ");
             stringBuilder.Append("Calibration = " + _calibration + ", ");
             stringBuilder.Append("WhoAmI = " + _whoAmI + ", ");
             stringBuilder.Append("SerialNumber = " + _serialNumber + ", ");
@@ -3958,17 +3295,13 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class HarpEnvironmentSensor
     {
     
         private string _deviceType;
-    
-        private string _deviceName;
-    
-        private BaseModel _additionalSettings;
     
         private BaseModel _calibration;
     
@@ -3987,8 +3320,6 @@ namespace AindIsoForceDataSchema
         protected HarpEnvironmentSensor(HarpEnvironmentSensor other)
         {
             _deviceType = other._deviceType;
-            _deviceName = other._deviceName;
-            _additionalSettings = other._additionalSettings;
             _calibration = other._calibration;
             _whoAmI = other._whoAmI;
             _serialNumber = other._serialNumber;
@@ -4009,46 +3340,11 @@ namespace AindIsoForceDataSchema
         }
     
         /// <summary>
-        /// Device name
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("device_name")]
-        [System.ComponentModel.DescriptionAttribute("Device name")]
-        public string DeviceName
-        {
-            get
-            {
-                return _deviceName;
-            }
-            set
-            {
-                _deviceName = value;
-            }
-        }
-    
-        /// <summary>
-        /// Additional settings
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("additional_settings")]
-        [System.ComponentModel.DescriptionAttribute("Additional settings")]
-        public BaseModel AdditionalSettings
-        {
-            get
-            {
-                return _additionalSettings;
-            }
-            set
-            {
-                _additionalSettings = value;
-            }
-        }
-    
-        /// <summary>
-        /// Calibration
+        /// Calibration for the device.
         /// </summary>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("calibration")]
-        [System.ComponentModel.DescriptionAttribute("Calibration")]
+        [System.ComponentModel.DescriptionAttribute("Calibration for the device.")]
         public BaseModel Calibration
         {
             get
@@ -4121,8 +3417,6 @@ namespace AindIsoForceDataSchema
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
             stringBuilder.Append("DeviceType = " + _deviceType + ", ");
-            stringBuilder.Append("DeviceName = " + _deviceName + ", ");
-            stringBuilder.Append("AdditionalSettings = " + _additionalSettings + ", ");
             stringBuilder.Append("Calibration = " + _calibration + ", ");
             stringBuilder.Append("WhoAmI = " + _whoAmI + ", ");
             stringBuilder.Append("SerialNumber = " + _serialNumber + ", ");
@@ -4145,17 +3439,13 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class HarpLicketySplit
     {
     
         private string _deviceType;
-    
-        private string _deviceName;
-    
-        private BaseModel _additionalSettings;
     
         private BaseModel _calibration;
     
@@ -4174,8 +3464,6 @@ namespace AindIsoForceDataSchema
         protected HarpLicketySplit(HarpLicketySplit other)
         {
             _deviceType = other._deviceType;
-            _deviceName = other._deviceName;
-            _additionalSettings = other._additionalSettings;
             _calibration = other._calibration;
             _whoAmI = other._whoAmI;
             _serialNumber = other._serialNumber;
@@ -4196,46 +3484,11 @@ namespace AindIsoForceDataSchema
         }
     
         /// <summary>
-        /// Device name
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("device_name")]
-        [System.ComponentModel.DescriptionAttribute("Device name")]
-        public string DeviceName
-        {
-            get
-            {
-                return _deviceName;
-            }
-            set
-            {
-                _deviceName = value;
-            }
-        }
-    
-        /// <summary>
-        /// Additional settings
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("additional_settings")]
-        [System.ComponentModel.DescriptionAttribute("Additional settings")]
-        public BaseModel AdditionalSettings
-        {
-            get
-            {
-                return _additionalSettings;
-            }
-            set
-            {
-                _additionalSettings = value;
-            }
-        }
-    
-        /// <summary>
-        /// Calibration
+        /// Calibration for the device.
         /// </summary>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("calibration")]
-        [System.ComponentModel.DescriptionAttribute("Calibration")]
+        [System.ComponentModel.DescriptionAttribute("Calibration for the device.")]
         public BaseModel Calibration
         {
             get
@@ -4308,8 +3561,6 @@ namespace AindIsoForceDataSchema
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
             stringBuilder.Append("DeviceType = " + _deviceType + ", ");
-            stringBuilder.Append("DeviceName = " + _deviceName + ", ");
-            stringBuilder.Append("AdditionalSettings = " + _additionalSettings + ", ");
             stringBuilder.Append("Calibration = " + _calibration + ", ");
             stringBuilder.Append("WhoAmI = " + _whoAmI + ", ");
             stringBuilder.Append("SerialNumber = " + _serialNumber + ", ");
@@ -4332,17 +3583,13 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class HarpWhiteRabbit
     {
     
         private string _deviceType;
-    
-        private string _deviceName;
-    
-        private BaseModel _additionalSettings;
     
         private BaseModel _calibration;
     
@@ -4364,8 +3611,6 @@ namespace AindIsoForceDataSchema
         protected HarpWhiteRabbit(HarpWhiteRabbit other)
         {
             _deviceType = other._deviceType;
-            _deviceName = other._deviceName;
-            _additionalSettings = other._additionalSettings;
             _calibration = other._calibration;
             _whoAmI = other._whoAmI;
             _serialNumber = other._serialNumber;
@@ -4387,46 +3632,11 @@ namespace AindIsoForceDataSchema
         }
     
         /// <summary>
-        /// Device name
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("device_name")]
-        [System.ComponentModel.DescriptionAttribute("Device name")]
-        public string DeviceName
-        {
-            get
-            {
-                return _deviceName;
-            }
-            set
-            {
-                _deviceName = value;
-            }
-        }
-    
-        /// <summary>
-        /// Additional settings
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("additional_settings")]
-        [System.ComponentModel.DescriptionAttribute("Additional settings")]
-        public BaseModel AdditionalSettings
-        {
-            get
-            {
-                return _additionalSettings;
-            }
-            set
-            {
-                _additionalSettings = value;
-            }
-        }
-    
-        /// <summary>
-        /// Calibration
+        /// Calibration for the device.
         /// </summary>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("calibration")]
-        [System.ComponentModel.DescriptionAttribute("Calibration")]
+        [System.ComponentModel.DescriptionAttribute("Calibration for the device.")]
         public BaseModel Calibration
         {
             get
@@ -4517,8 +3727,6 @@ namespace AindIsoForceDataSchema
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
             stringBuilder.Append("DeviceType = " + _deviceType + ", ");
-            stringBuilder.Append("DeviceName = " + _deviceName + ", ");
-            stringBuilder.Append("AdditionalSettings = " + _additionalSettings + ", ");
             stringBuilder.Append("Calibration = " + _calibration + ", ");
             stringBuilder.Append("WhoAmI = " + _whoAmI + ", ");
             stringBuilder.Append("SerialNumber = " + _serialNumber + ", ");
@@ -4542,7 +3750,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class JoystickForce
@@ -4712,113 +3920,17 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// Load cell channel calibration
+    ///Calibration will be applied as:
+    ///    weight (g) = slope * (adc_units_corrected_by_offset_resistor - adc_units_baseline)
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("Load cell channel calibration\nCalibration will be applied as:\n    weight (g) = sl" +
+        "ope * (adc_units_corrected_by_offset_resistor - adc_units_baseline)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class LoadCellCalibrationInput
-    {
-    
-        private int _channel;
-    
-        private System.Collections.Generic.List<MeasuredOffset> _offsetMeasurement;
-    
-        private System.Collections.Generic.List<MeasuredWeight> _weightMeasurement;
-    
-        public LoadCellCalibrationInput()
-        {
-            _offsetMeasurement = new System.Collections.Generic.List<MeasuredOffset>();
-            _weightMeasurement = new System.Collections.Generic.List<MeasuredWeight>();
-        }
-    
-        protected LoadCellCalibrationInput(LoadCellCalibrationInput other)
-        {
-            _channel = other._channel;
-            _offsetMeasurement = other._offsetMeasurement;
-            _weightMeasurement = other._weightMeasurement;
-        }
-    
-        /// <summary>
-        /// Load cell channel number available
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("channel", Required=Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DescriptionAttribute("Load cell channel number available")]
-        public int Channel
-        {
-            get
-            {
-                return _channel;
-            }
-            set
-            {
-                _channel = value;
-            }
-        }
-    
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("offset_measurement")]
-        public System.Collections.Generic.List<MeasuredOffset> OffsetMeasurement
-        {
-            get
-            {
-                return _offsetMeasurement;
-            }
-            set
-            {
-                _offsetMeasurement = value;
-            }
-        }
-    
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("weight_measurement")]
-        public System.Collections.Generic.List<MeasuredWeight> WeightMeasurement
-        {
-            get
-            {
-                return _weightMeasurement;
-            }
-            set
-            {
-                _weightMeasurement = value;
-            }
-        }
-    
-        public System.IObservable<LoadCellCalibrationInput> Generate()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new LoadCellCalibrationInput(this)));
-        }
-    
-        public System.IObservable<LoadCellCalibrationInput> Generate<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new LoadCellCalibrationInput(this));
-        }
-    
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            stringBuilder.Append("Channel = " + _channel + ", ");
-            stringBuilder.Append("OffsetMeasurement = " + _offsetMeasurement + ", ");
-            stringBuilder.Append("WeightMeasurement = " + _weightMeasurement);
-            return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class LoadCellCalibrationOutput
+    public partial class LoadCellChannelCalibration
     {
     
         private int _channel;
@@ -4829,23 +3941,19 @@ namespace AindIsoForceDataSchema
     
         private double _slope;
     
-        private System.Collections.Generic.List<MeasuredWeight> _weightLookup;
-    
-        public LoadCellCalibrationOutput()
+        public LoadCellChannelCalibration()
         {
             _offset = 0;
             _baseline = 0D;
             _slope = 1D;
-            _weightLookup = new System.Collections.Generic.List<MeasuredWeight>();
         }
     
-        protected LoadCellCalibrationOutput(LoadCellCalibrationOutput other)
+        protected LoadCellChannelCalibration(LoadCellChannelCalibration other)
         {
             _channel = other._channel;
             _offset = other._offset;
             _baseline = other._baseline;
             _slope = other._slope;
-            _weightLookup = other._weightLookup;
         }
     
         /// <summary>
@@ -4908,28 +4016,14 @@ namespace AindIsoForceDataSchema
             }
         }
     
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("weight_lookup")]
-        public System.Collections.Generic.List<MeasuredWeight> WeightLookup
+        public System.IObservable<LoadCellChannelCalibration> Generate()
         {
-            get
-            {
-                return _weightLookup;
-            }
-            set
-            {
-                _weightLookup = value;
-            }
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new LoadCellChannelCalibration(this)));
         }
     
-        public System.IObservable<LoadCellCalibrationOutput> Generate()
+        public System.IObservable<LoadCellChannelCalibration> Generate<TSource>(System.IObservable<TSource> source)
         {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new LoadCellCalibrationOutput(this)));
-        }
-    
-        public System.IObservable<LoadCellCalibrationOutput> Generate<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new LoadCellCalibrationOutput(this));
+            return System.Reactive.Linq.Observable.Select(source, _ => new LoadCellChannelCalibration(this));
         }
     
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
@@ -4937,8 +4031,7 @@ namespace AindIsoForceDataSchema
             stringBuilder.Append("Channel = " + _channel + ", ");
             stringBuilder.Append("Offset = " + _offset + ", ");
             stringBuilder.Append("Baseline = " + _baseline + ", ");
-            stringBuilder.Append("Slope = " + _slope + ", ");
-            stringBuilder.Append("WeightLookup = " + _weightLookup);
+            stringBuilder.Append("Slope = " + _slope);
             return true;
         }
     
@@ -4957,7 +4050,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class LoadCellInput
@@ -5044,17 +4137,17 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// Load cells device
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("Load cells device")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class LoadCells
     {
     
         private string _deviceType;
-    
-        private string _deviceName;
-    
-        private BaseModel _additionalSettings;
     
         private LoadCellsCalibration _calibration;
     
@@ -5067,14 +4160,13 @@ namespace AindIsoForceDataSchema
         public LoadCells()
         {
             _deviceType = "LoadCells";
+            _calibration = new LoadCellsCalibration();
             _whoAmI = 1232;
         }
     
         protected LoadCells(LoadCells other)
         {
             _deviceType = other._deviceType;
-            _deviceName = other._deviceName;
-            _additionalSettings = other._additionalSettings;
             _calibration = other._calibration;
             _whoAmI = other._whoAmI;
             _serialNumber = other._serialNumber;
@@ -5095,42 +4187,11 @@ namespace AindIsoForceDataSchema
         }
     
         /// <summary>
-        /// Device name
+        /// Calibration for the device.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("device_name")]
-        [System.ComponentModel.DescriptionAttribute("Device name")]
-        public string DeviceName
-        {
-            get
-            {
-                return _deviceName;
-            }
-            set
-            {
-                _deviceName = value;
-            }
-        }
-    
-        /// <summary>
-        /// Additional settings
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("additional_settings")]
-        [System.ComponentModel.DescriptionAttribute("Additional settings")]
-        public BaseModel AdditionalSettings
-        {
-            get
-            {
-                return _additionalSettings;
-            }
-            set
-            {
-                _additionalSettings = value;
-            }
-        }
-    
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("calibration")]
+        [System.ComponentModel.DescriptionAttribute("Calibration for the device.")]
         public LoadCellsCalibration Calibration
         {
             get
@@ -5203,8 +4264,6 @@ namespace AindIsoForceDataSchema
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
             stringBuilder.Append("DeviceType = " + _deviceType + ", ");
-            stringBuilder.Append("DeviceName = " + _deviceName + ", ");
-            stringBuilder.Append("AdditionalSettings = " + _additionalSettings + ", ");
             stringBuilder.Append("Calibration = " + _calibration + ", ");
             stringBuilder.Append("WhoAmI = " + _whoAmI + ", ");
             stringBuilder.Append("SerialNumber = " + _serialNumber + ", ");
@@ -5228,92 +4287,36 @@ namespace AindIsoForceDataSchema
 
 
     /// <summary>
-    /// Load cells calibration class
+    /// Load cells calibration
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
-    [System.ComponentModel.DescriptionAttribute("Load cells calibration class")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("Load cells calibration")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class LoadCellsCalibration
     {
     
-        private string _deviceName;
-    
-        private LoadCellsCalibrationInput _input;
-    
-        private LoadCellsCalibrationOutput _output;
-    
         private System.DateTimeOffset? _date;
     
-        private string _description;
-    
-        private string _notes;
+        private System.Collections.Generic.List<LoadCellChannelCalibration> _channels;
     
         public LoadCellsCalibration()
         {
-            _deviceName = "LoadCells";
-            _input = new LoadCellsCalibrationInput();
-            _output = new LoadCellsCalibrationOutput();
-            _description = "Calibration of the load cells system";
+            _channels = new System.Collections.Generic.List<LoadCellChannelCalibration>();
         }
     
         protected LoadCellsCalibration(LoadCellsCalibration other)
         {
-            _deviceName = other._deviceName;
-            _input = other._input;
-            _output = other._output;
             _date = other._date;
-            _description = other._description;
-            _notes = other._notes;
+            _channels = other._channels;
         }
     
         /// <summary>
-        /// Must match a device name in rig/instrument
+        /// Date of the calibration
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("device_name")]
-        [System.ComponentModel.DescriptionAttribute("Must match a device name in rig/instrument")]
-        public string DeviceName
-        {
-            get
-            {
-                return _deviceName;
-            }
-            set
-            {
-                _deviceName = value;
-            }
-        }
-    
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("input", Required=Newtonsoft.Json.Required.Always)]
-        public LoadCellsCalibrationInput Input
-        {
-            get
-            {
-                return _input;
-            }
-            set
-            {
-                _input = value;
-            }
-        }
-    
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("output", Required=Newtonsoft.Json.Required.Always)]
-        public LoadCellsCalibrationOutput Output
-        {
-            get
-            {
-                return _output;
-            }
-            set
-            {
-                _output = value;
-            }
-        }
-    
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        [System.ComponentModel.DescriptionAttribute("Date of the calibration")]
         public System.DateTimeOffset? Date
         {
             get
@@ -5326,29 +4329,17 @@ namespace AindIsoForceDataSchema
             }
         }
     
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public string Description
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [Newtonsoft.Json.JsonPropertyAttribute("channels")]
+        public System.Collections.Generic.List<LoadCellChannelCalibration> Channels
         {
             get
             {
-                return _description;
+                return _channels;
             }
             set
             {
-                _description = value;
-            }
-        }
-    
-        [Newtonsoft.Json.JsonPropertyAttribute("notes")]
-        public string Notes
-        {
-            get
-            {
-                return _notes;
-            }
-            set
-            {
-                _notes = value;
+                _channels = value;
             }
         }
     
@@ -5364,137 +4355,7 @@ namespace AindIsoForceDataSchema
     
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("DeviceName = " + _deviceName + ", ");
-            stringBuilder.Append("Input = " + _input + ", ");
-            stringBuilder.Append("Output = " + _output + ", ");
             stringBuilder.Append("Date = " + _date + ", ");
-            stringBuilder.Append("Description = " + _description + ", ");
-            stringBuilder.Append("Notes = " + _notes);
-            return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class LoadCellsCalibrationInput
-    {
-    
-        private System.Collections.Generic.List<LoadCellCalibrationInput> _channels;
-    
-        public LoadCellsCalibrationInput()
-        {
-            _channels = new System.Collections.Generic.List<LoadCellCalibrationInput>();
-        }
-    
-        protected LoadCellsCalibrationInput(LoadCellsCalibrationInput other)
-        {
-            _channels = other._channels;
-        }
-    
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("channels")]
-        public System.Collections.Generic.List<LoadCellCalibrationInput> Channels
-        {
-            get
-            {
-                return _channels;
-            }
-            set
-            {
-                _channels = value;
-            }
-        }
-    
-        public System.IObservable<LoadCellsCalibrationInput> Generate()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new LoadCellsCalibrationInput(this)));
-        }
-    
-        public System.IObservable<LoadCellsCalibrationInput> Generate<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new LoadCellsCalibrationInput(this));
-        }
-    
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            stringBuilder.Append("Channels = " + _channels);
-            return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class LoadCellsCalibrationOutput
-    {
-    
-        private System.Collections.Generic.List<LoadCellCalibrationOutput> _channels;
-    
-        public LoadCellsCalibrationOutput()
-        {
-            _channels = new System.Collections.Generic.List<LoadCellCalibrationOutput>();
-        }
-    
-        protected LoadCellsCalibrationOutput(LoadCellsCalibrationOutput other)
-        {
-            _channels = other._channels;
-        }
-    
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("channels")]
-        public System.Collections.Generic.List<LoadCellCalibrationOutput> Channels
-        {
-            get
-            {
-                return _channels;
-            }
-            set
-            {
-                _channels = value;
-            }
-        }
-    
-        public System.IObservable<LoadCellsCalibrationOutput> Generate()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new LoadCellsCalibrationOutput(this)));
-        }
-    
-        public System.IObservable<LoadCellsCalibrationOutput> Generate<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new LoadCellsCalibrationOutput(this));
-        }
-    
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
             stringBuilder.Append("Channels = " + _channels);
             return true;
         }
@@ -5520,7 +4381,7 @@ namespace AindIsoForceDataSchema
     ///Distribution where the logarithm of the variable is normally distributed.
     ///Always produces positive values and is right-skewed.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("A log-normal probability distribution.\n\nDistribution where the logarithm of the v" +
         "ariable is normally distributed.\nAlways produces positive values and is right-sk" +
         "ewed.")]
@@ -5631,7 +4492,7 @@ namespace AindIsoForceDataSchema
     ///
     ///Defined by the mean and standard deviation of the underlying normal distribution.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for a log-normal distribution.\n\nDefined by the mean and standard devia" +
         "tion of the underlying normal distribution.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -5739,7 +4600,11 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// Represents a position in the manipulator coordinate system
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("Represents a position in the manipulator coordinate system")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class ManipulatorPosition
@@ -5851,182 +4716,10 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class MeasuredOffset
-    {
-    
-        private int _offset;
-    
-        private double _baseline;
-    
-        public MeasuredOffset()
-        {
-        }
-    
-        protected MeasuredOffset(MeasuredOffset other)
-        {
-            _offset = other._offset;
-            _baseline = other._baseline;
-        }
-    
-        /// <summary>
-        /// The applied offset resistor value[-255, 255]
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("offset", Required=Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DescriptionAttribute("The applied offset resistor value[-255, 255]")]
-        public int Offset
-        {
-            get
-            {
-                return _offset;
-            }
-            set
-            {
-                _offset = value;
-            }
-        }
-    
-        /// <summary>
-        /// The measured baseline value
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("baseline", Required=Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DescriptionAttribute("The measured baseline value")]
-        public double Baseline
-        {
-            get
-            {
-                return _baseline;
-            }
-            set
-            {
-                _baseline = value;
-            }
-        }
-    
-        public System.IObservable<MeasuredOffset> Generate()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new MeasuredOffset(this)));
-        }
-    
-        public System.IObservable<MeasuredOffset> Generate<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new MeasuredOffset(this));
-        }
-    
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            stringBuilder.Append("Offset = " + _offset + ", ");
-            stringBuilder.Append("Baseline = " + _baseline);
-            return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class MeasuredWeight
-    {
-    
-        private double _weight;
-    
-        private double _baseline;
-    
-        public MeasuredWeight()
-        {
-        }
-    
-        protected MeasuredWeight(MeasuredWeight other)
-        {
-            _weight = other._weight;
-            _baseline = other._baseline;
-        }
-    
-        /// <summary>
-        /// The applied weight in grams
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("weight", Required=Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DescriptionAttribute("The applied weight in grams")]
-        public double Weight
-        {
-            get
-            {
-                return _weight;
-            }
-            set
-            {
-                _weight = value;
-            }
-        }
-    
-        /// <summary>
-        /// The measured baseline value
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("baseline", Required=Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DescriptionAttribute("The measured baseline value")]
-        public double Baseline
-        {
-            get
-            {
-                return _baseline;
-            }
-            set
-            {
-                _baseline = value;
-            }
-        }
-    
-        public System.IObservable<MeasuredWeight> Generate()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new MeasuredWeight(this)));
-        }
-    
-        public System.IObservable<MeasuredWeight> Generate<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new MeasuredWeight(this));
-        }
-    
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            stringBuilder.Append("Weight = " + _weight + ", ");
-            stringBuilder.Append("Baseline = " + _baseline);
-            return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
-    }
-
-
     /// <summary>
     /// Input for water valve calibration class
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Input for water valve calibration class")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -6157,7 +4850,10 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// Microstep resolution available
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     public enum MicrostepResolution
     {
     
@@ -6175,7 +4871,10 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// Motor operation mode
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     public enum MotorOperationMode
     {
     
@@ -6193,7 +4892,7 @@ namespace AindIsoForceDataSchema
     ///Bell-shaped distribution symmetric around the mean, commonly used
     ///for modeling naturally occurring random variables.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("A normal (Gaussian) probability distribution.\n\nBell-shaped distribution symmetric" +
         " around the mean, commonly used\nfor modeling naturally occurring random variable" +
         "s.")]
@@ -6304,7 +5003,7 @@ namespace AindIsoForceDataSchema
     ///
     ///Defined by mean (center) and standard deviation (spread).
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for a normal (Gaussian) distribution.\n\nDefined by mean (center) and st" +
         "andard deviation (spread).")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -6412,7 +5111,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class OperantReward : RewardPeriod
@@ -6517,7 +5216,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class OperationControl
@@ -6590,7 +5289,7 @@ namespace AindIsoForceDataSchema
     ///Allows defining arbitrary discrete distributions by specifying
     ///probability values and their corresponding indices.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("A custom probability density function distribution.\n\nAllows defining arbitrary di" +
         "screte distributions by specifying\nprobability values and their corresponding in" +
         "dices.")]
@@ -6702,7 +5401,7 @@ namespace AindIsoForceDataSchema
     ///Defined by explicit probability values and their corresponding indices.
     ///Probabilities are automatically normalized to sum to 1.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for a custom probability density function distribution.\n\nDefined by ex" +
         "plicit probability values and their corresponding indices.\nProbabilities are aut" +
         "omatically normalized to sum to 1.")]
@@ -6819,7 +5518,7 @@ namespace AindIsoForceDataSchema
     ///Models the number of events occurring in a fixed interval of time or space
     ///when events occur independently at a constant rate.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("A Poisson probability distribution.\n\nModels the number of events occurring in a f" +
         "ixed interval of time or space\nwhen events occur independently at a constant rat" +
         "e.")]
@@ -6930,7 +5629,7 @@ namespace AindIsoForceDataSchema
     ///
     ///Defined by the rate parameter (average number of events).
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for a Poisson distribution.\n\nDefined by the rate parameter (average nu" +
         "mber of events).")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -7019,7 +5718,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Defines a quiescence settings
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Defines a quiescence settings")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -7110,7 +5809,11 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// Represents a rectangle defined by its top-left corner, width, and height.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("Represents a rectangle defined by its top-left corner, width, and height.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class Rect
@@ -7245,7 +5948,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Defines a response period
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Defines a response period")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -7264,7 +5967,7 @@ namespace AindIsoForceDataSchema
         {
             _duration = new Distribution();
             _forceThreshold = new ForceThreshold();
-            _rewardedAction = AindIsoForceDataSchema.Action.None;
+            _rewardedAction = Action.None;
             _forceDuration = new Distribution();
         }
     
@@ -7313,7 +6016,6 @@ namespace AindIsoForceDataSchema
             }
         }
     
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("rewarded_action")]
         public Action RewardedAction
         {
@@ -7379,7 +6081,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class Reward : RewardPeriod
@@ -7461,7 +6163,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "reward_type")]
     [JsonInheritanceAttribute("Pavlovian", typeof(Reward))]
     [JsonInheritanceAttribute("Operant", typeof(OperantReward))]
@@ -7508,7 +6210,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class RigCalibration
@@ -7580,7 +6282,7 @@ namespace AindIsoForceDataSchema
     ///
     ///Useful for fixed parameters that don't vary across trials or samples.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("A scalar distribution that returns a constant value.\n\nUseful for fixed parameters" +
         " that don\'t vary across trials or samples.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -7682,7 +6384,7 @@ namespace AindIsoForceDataSchema
     ///
     ///Represents a deterministic value that always returns the same number.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for a scalar (constant) distribution.\n\nRepresents a deterministic valu" +
         "e that always returns the same number.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -7774,7 +6476,7 @@ namespace AindIsoForceDataSchema
     ///
     ///Applies linear transformation: result = (value * scale) + offset.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for scaling and offsetting sampled distribution values.\nScaling is app" +
         "lied as (value * scale + offset).\n\nApplies linear transformation: result = (valu" +
         "e * scale) + offset.")]
@@ -7865,17 +6567,308 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
+    [Bonsai.CombinatorAttribute(MethodName="Generate")]
+    public partial class Session
+    {
+    
+        private string _aindBehaviorServicesPkgVersion;
+    
+        private string _version;
+    
+        private string _experiment;
+    
+        private System.Collections.Generic.List<string> _experimenter;
+    
+        private System.DateTimeOffset _date;
+    
+        private string _sessionName;
+    
+        private string _subject;
+    
+        private string _notes;
+    
+        private string _commitHash;
+    
+        private bool _allowDirtyRepo;
+    
+        private bool _skipHardwareValidation;
+    
+        public Session()
+        {
+            _aindBehaviorServicesPkgVersion = "0.13.2";
+            _version = "0.13.2";
+            _experimenter = new System.Collections.Generic.List<string>();
+            _allowDirtyRepo = false;
+            _skipHardwareValidation = false;
+        }
+    
+        protected Session(Session other)
+        {
+            _aindBehaviorServicesPkgVersion = other._aindBehaviorServicesPkgVersion;
+            _version = other._version;
+            _experiment = other._experiment;
+            _experimenter = other._experimenter;
+            _date = other._date;
+            _sessionName = other._sessionName;
+            _subject = other._subject;
+            _notes = other._notes;
+            _commitHash = other._commitHash;
+            _allowDirtyRepo = other._allowDirtyRepo;
+            _skipHardwareValidation = other._skipHardwareValidation;
+        }
+    
+        [Newtonsoft.Json.JsonPropertyAttribute("aind_behavior_services_pkg_version")]
+        public string AindBehaviorServicesPkgVersion
+        {
+            get
+            {
+                return _aindBehaviorServicesPkgVersion;
+            }
+            set
+            {
+                _aindBehaviorServicesPkgVersion = value;
+            }
+        }
+    
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public string Version
+        {
+            get
+            {
+                return _version;
+            }
+            set
+            {
+                _version = value;
+            }
+        }
+    
+        /// <summary>
+        /// Name of the experiment
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("experiment")]
+        [System.ComponentModel.DescriptionAttribute("Name of the experiment")]
+        public string Experiment
+        {
+            get
+            {
+                return _experiment;
+            }
+            set
+            {
+                _experiment = value;
+            }
+        }
+    
+        /// <summary>
+        /// Name of the experimenter
+        /// </summary>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [Newtonsoft.Json.JsonPropertyAttribute("experimenter")]
+        [System.ComponentModel.DescriptionAttribute("Name of the experimenter")]
+        public System.Collections.Generic.List<string> Experimenter
+        {
+            get
+            {
+                return _experimenter;
+            }
+            set
+            {
+                _experimenter = value;
+            }
+        }
+    
+        /// <summary>
+        /// Date of the experiment
+        /// </summary>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        [System.ComponentModel.DescriptionAttribute("Date of the experiment")]
+        public System.DateTimeOffset Date
+        {
+            get
+            {
+                return _date;
+            }
+            set
+            {
+                _date = value;
+            }
+        }
+    
+        [Newtonsoft.Json.JsonIgnoreAttribute()]
+        [System.ComponentModel.BrowsableAttribute(false)]
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.Xml.Serialization.XmlElementAttribute("Date")]
+        public string DateXml
+        {
+            get
+            {
+                return _date.ToString("o");
+            }
+            set
+            {
+                _date = System.DateTimeOffset.Parse(value);
+            }
+        }
+    
+        /// <summary>
+        /// Name of the session. This will be used to create a folder in the root path. If not provided, it will be generated using subject and date.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("session_name")]
+        [System.ComponentModel.DescriptionAttribute("Name of the session. This will be used to create a folder in the root path. If no" +
+            "t provided, it will be generated using subject and date.")]
+        public string SessionName
+        {
+            get
+            {
+                return _sessionName;
+            }
+            set
+            {
+                _sessionName = value;
+            }
+        }
+    
+        /// <summary>
+        /// Name of the subject
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject", Required=Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DescriptionAttribute("Name of the subject")]
+        public string Subject
+        {
+            get
+            {
+                return _subject;
+            }
+            set
+            {
+                _subject = value;
+            }
+        }
+    
+        /// <summary>
+        /// Notes about the experiment
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notes")]
+        [System.ComponentModel.DescriptionAttribute("Notes about the experiment")]
+        public string Notes
+        {
+            get
+            {
+                return _notes;
+            }
+            set
+            {
+                _notes = value;
+            }
+        }
+    
+        /// <summary>
+        /// Commit hash of the repository
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commit_hash")]
+        [System.ComponentModel.DescriptionAttribute("Commit hash of the repository")]
+        public string CommitHash
+        {
+            get
+            {
+                return _commitHash;
+            }
+            set
+            {
+                _commitHash = value;
+            }
+        }
+    
+        /// <summary>
+        /// Allow running from a dirty repository
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allow_dirty_repo")]
+        [System.ComponentModel.DescriptionAttribute("Allow running from a dirty repository")]
+        public bool AllowDirtyRepo
+        {
+            get
+            {
+                return _allowDirtyRepo;
+            }
+            set
+            {
+                _allowDirtyRepo = value;
+            }
+        }
+    
+        /// <summary>
+        /// Skip hardware validation
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skip_hardware_validation")]
+        [System.ComponentModel.DescriptionAttribute("Skip hardware validation")]
+        public bool SkipHardwareValidation
+        {
+            get
+            {
+                return _skipHardwareValidation;
+            }
+            set
+            {
+                _skipHardwareValidation = value;
+            }
+        }
+    
+        public System.IObservable<Session> Generate()
+        {
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new Session(this)));
+        }
+    
+        public System.IObservable<Session> Generate<TSource>(System.IObservable<TSource> source)
+        {
+            return System.Reactive.Linq.Observable.Select(source, _ => new Session(this));
+        }
+    
+        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        {
+            stringBuilder.Append("AindBehaviorServicesPkgVersion = " + _aindBehaviorServicesPkgVersion + ", ");
+            stringBuilder.Append("Version = " + _version + ", ");
+            stringBuilder.Append("Experiment = " + _experiment + ", ");
+            stringBuilder.Append("Experimenter = " + _experimenter + ", ");
+            stringBuilder.Append("Date = " + _date + ", ");
+            stringBuilder.Append("SessionName = " + _sessionName + ", ");
+            stringBuilder.Append("Subject = " + _subject + ", ");
+            stringBuilder.Append("Notes = " + _notes + ", ");
+            stringBuilder.Append("CommitHash = " + _commitHash + ", ");
+            stringBuilder.Append("AllowDirtyRepo = " + _allowDirtyRepo + ", ");
+            stringBuilder.Append("SkipHardwareValidation = " + _skipHardwareValidation);
+            return true;
+        }
+    
+        public override string ToString()
+        {
+            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+            stringBuilder.Append(GetType().Name);
+            stringBuilder.Append(" { ");
+            if (PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(" ");
+            }
+            stringBuilder.Append("}");
+            return stringBuilder.ToString();
+        }
+    }
+
+
+    /// <summary>
+    /// Spinnaker camera device configuration.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("Spinnaker camera device configuration.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class SpinnakerCamera
     {
     
         private string _deviceType;
-    
-        private string _deviceName;
-    
-        private BaseModel _additionalSettings;
     
         private BaseModel _calibration;
     
@@ -7903,19 +6896,17 @@ namespace AindIsoForceDataSchema
         {
             _deviceType = "SpinnakerCamera";
             _binning = 1;
-            _colorProcessing = AindIsoForceDataSchema.SpinnakerCameraColorProcessing.Default;
+            _colorProcessing = SpinnakerCameraColorProcessing.Default;
             _exposure = 1000;
             _gain = 0D;
-            _adcBitDepth = AindIsoForceDataSchema.SpinnakerCameraAdcBitDepth.Adc8bit;
-            _pixelFormat = AindIsoForceDataSchema.SpinnakerCameraPixelFormat.Mono8;
+            _adcBitDepth = SpinnakerCameraAdcBitDepth.Adc8bit;
+            _pixelFormat = SpinnakerCameraPixelFormat.Mono8;
             _regionOfInterest = new Rect();
         }
     
         protected SpinnakerCamera(SpinnakerCamera other)
         {
             _deviceType = other._deviceType;
-            _deviceName = other._deviceName;
-            _additionalSettings = other._additionalSettings;
             _calibration = other._calibration;
             _serialNumber = other._serialNumber;
             _binning = other._binning;
@@ -7929,11 +6920,7 @@ namespace AindIsoForceDataSchema
             _videoWriter = other._videoWriter;
         }
     
-        /// <summary>
-        /// Device type
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("device_type")]
-        [System.ComponentModel.DescriptionAttribute("Device type")]
         public string DeviceType
         {
             get
@@ -7947,46 +6934,11 @@ namespace AindIsoForceDataSchema
         }
     
         /// <summary>
-        /// Device name
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("device_name")]
-        [System.ComponentModel.DescriptionAttribute("Device name")]
-        public string DeviceName
-        {
-            get
-            {
-                return _deviceName;
-            }
-            set
-            {
-                _deviceName = value;
-            }
-        }
-    
-        /// <summary>
-        /// Additional settings
-        /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("additional_settings")]
-        [System.ComponentModel.DescriptionAttribute("Additional settings")]
-        public BaseModel AdditionalSettings
-        {
-            get
-            {
-                return _additionalSettings;
-            }
-            set
-            {
-                _additionalSettings = value;
-            }
-        }
-    
-        /// <summary>
-        /// Calibration
+        /// Calibration for the device.
         /// </summary>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("calibration")]
-        [System.ComponentModel.DescriptionAttribute("Calibration")]
+        [System.ComponentModel.DescriptionAttribute("Calibration for the device.")]
         public BaseModel Calibration
         {
             get
@@ -8036,7 +6988,6 @@ namespace AindIsoForceDataSchema
         /// <summary>
         /// Color processing
         /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("color_processing")]
         [System.ComponentModel.DescriptionAttribute("Color processing")]
         public SpinnakerCameraColorProcessing ColorProcessing
@@ -8088,7 +7039,6 @@ namespace AindIsoForceDataSchema
         /// <summary>
         /// Gamma. If None, will disable gamma correction.
         /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("gamma")]
         [System.ComponentModel.DescriptionAttribute("Gamma. If None, will disable gamma correction.")]
         public double? Gamma
@@ -8106,7 +7056,6 @@ namespace AindIsoForceDataSchema
         /// <summary>
         /// ADC bit depth. If None will be left as default.
         /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("adc_bit_depth")]
         [System.ComponentModel.DescriptionAttribute("ADC bit depth. If None will be left as default.")]
         public SpinnakerCameraAdcBitDepth? AdcBitDepth
@@ -8124,7 +7073,6 @@ namespace AindIsoForceDataSchema
         /// <summary>
         /// Pixel format. If None will be left as default.
         /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("pixel_format")]
         [System.ComponentModel.DescriptionAttribute("Pixel format. If None will be left as default.")]
         public SpinnakerCameraPixelFormat? PixelFormat
@@ -8188,8 +7136,6 @@ namespace AindIsoForceDataSchema
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
             stringBuilder.Append("DeviceType = " + _deviceType + ", ");
-            stringBuilder.Append("DeviceName = " + _deviceName + ", ");
-            stringBuilder.Append("AdditionalSettings = " + _additionalSettings + ", ");
             stringBuilder.Append("Calibration = " + _calibration + ", ");
             stringBuilder.Append("SerialNumber = " + _serialNumber + ", ");
             stringBuilder.Append("Binning = " + _binning + ", ");
@@ -8219,7 +7165,10 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// ADC bit depth options for Spinnaker cameras.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     public enum SpinnakerCameraAdcBitDepth
     {
     
@@ -8234,7 +7183,10 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// Pixel format options for Spinnaker cameras.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     public enum SpinnakerCameraPixelFormat
     {
     
@@ -8672,7 +7624,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class ThresholdedJoystickForce
@@ -8823,7 +7775,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class TimestampedThresholdedJoystickForce
@@ -8906,7 +7858,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Defines a trial
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Defines a trial")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -9053,7 +8005,7 @@ namespace AindIsoForceDataSchema
     ///- "clamp": Clamp values to the nearest bound within [min, max].
     ///Used to constrain sampled values within minimum and maximum bounds.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute(@"Parameters for truncating a distribution to a specified range. Truncation should
     be applied after sampling and scaling.
 
@@ -9076,7 +8028,7 @@ namespace AindIsoForceDataSchema
     
         public TruncationParameters()
         {
-            _truncationMode = AindIsoForceDataSchema.TruncationParametersTruncationMode.Exclude;
+            _truncationMode = TruncationParametersTruncationMode.Exclude;
             _min = 0D;
             _max = 0D;
         }
@@ -9091,7 +8043,6 @@ namespace AindIsoForceDataSchema
         /// <summary>
         /// Mode of truncation to apply
         /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("truncation_mode")]
         [System.ComponentModel.DescriptionAttribute("Mode of truncation to apply")]
         public TruncationParametersTruncationMode TruncationMode
@@ -9178,7 +8129,7 @@ namespace AindIsoForceDataSchema
     ///
     ///All values between min and max have equal probability of being sampled.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("A uniform probability distribution.\n\nAll values between min and max have equal pr" +
         "obability of being sampled.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -9288,7 +8239,7 @@ namespace AindIsoForceDataSchema
     ///
     ///Defined by minimum and maximum bounds of the distribution.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for a uniform distribution.\n\nDefined by minimum and maximum bounds of " +
         "the distribution.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -9396,10 +8347,14 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// FFMPEG video writer configuration.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "video_writer_type")]
     [JsonInheritanceAttribute("FFMPEG", typeof(VideoWriterFfmpeg))]
     [JsonInheritanceAttribute("OPENCV", typeof(VideoWriterOpenCv))]
+    [System.ComponentModel.DescriptionAttribute("FFMPEG video writer configuration.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class VideoWriter
@@ -9443,7 +8398,11 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// FFMPEG video writer configuration.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("FFMPEG video writer configuration.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class VideoWriterFfmpeg : VideoWriter
@@ -9460,8 +8419,8 @@ namespace AindIsoForceDataSchema
         public VideoWriterFfmpeg()
         {
             _frameRate = 30;
-            _containerExtension = "mp4";
-            _outputArguments = "-vf \"scale=out_color_matrix=bt709:out_range=full,format=bgr24,scale=out_range=full\" -c:v h264_nvenc -pix_fmt yuv420p -color_range full -colorspace bt709 -color_trc linear -tune hq -preset p4 -rc vbr -cq 12 -b:v 0M -metadata author=\"Allen Institute for Neural Dynamics\" -maxrate 700M -bufsize 350M";
+            _containerExtension = "mkv";
+            _outputArguments = "-vf \"scale=out_range=full,setparams=range=full:colorspace=bt709:color_primaries=bt709:color_trc=linear\" -c:v h264_nvenc -pix_fmt yuv420p -color_range full -colorspace bt709 -color_trc linear -tune hq -preset p3 -rc vbr -cq 18 -b:v 0M -metadata author=\"Allen Institute for Neural Dynamics\" -maxrate 700M -bufsize 350M -f matroska -write_crc32 0";
             _inputArguments = "-colorspace bt709 -color_primaries bt709 -color_range full -color_trc linear";
         }
     
@@ -9567,7 +8526,11 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    /// <summary>
+    /// OpenCV video writer configuration.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("OpenCV video writer configuration.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class VideoWriterOpenCv : VideoWriter
@@ -9670,92 +8633,51 @@ namespace AindIsoForceDataSchema
 
 
     /// <summary>
-    /// Water valve calibration class
+    /// Represents a water valve calibration.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
-    [System.ComponentModel.DescriptionAttribute("Water valve calibration class")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DescriptionAttribute("Represents a water valve calibration.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class WaterValveCalibration
     {
     
-        private string _deviceName;
-    
-        private WaterValveCalibrationInput _input;
-    
-        private WaterValveCalibrationOutput _output;
-    
         private System.DateTimeOffset? _date;
     
-        private string _description;
+        private System.Collections.Generic.List<Measurement> _measurements;
     
-        private string _notes;
+        private System.Collections.Generic.Dictionary<string, double> _intervalAverage;
+    
+        private double _slope;
+    
+        private double _offset;
+    
+        private double? _r2;
+    
+        private System.Collections.Generic.List<double> _validDomain;
     
         public WaterValveCalibration()
         {
-            _deviceName = "WaterValve";
-            _input = new WaterValveCalibrationInput();
-            _output = new WaterValveCalibrationOutput();
-            _description = "Calibration of the water valve delivery system";
+            _measurements = new System.Collections.Generic.List<Measurement>();
         }
     
         protected WaterValveCalibration(WaterValveCalibration other)
         {
-            _deviceName = other._deviceName;
-            _input = other._input;
-            _output = other._output;
             _date = other._date;
-            _description = other._description;
-            _notes = other._notes;
+            _measurements = other._measurements;
+            _intervalAverage = other._intervalAverage;
+            _slope = other._slope;
+            _offset = other._offset;
+            _r2 = other._r2;
+            _validDomain = other._validDomain;
         }
     
         /// <summary>
-        /// Name of the device being calibrated
+        /// Date of the calibration
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("device_name")]
-        [System.ComponentModel.DescriptionAttribute("Name of the device being calibrated")]
-        public string DeviceName
-        {
-            get
-            {
-                return _deviceName;
-            }
-            set
-            {
-                _deviceName = value;
-            }
-        }
-    
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("input", Required=Newtonsoft.Json.Required.Always)]
-        public WaterValveCalibrationInput Input
-        {
-            get
-            {
-                return _input;
-            }
-            set
-            {
-                _input = value;
-            }
-        }
-    
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("output", Required=Newtonsoft.Json.Required.Always)]
-        public WaterValveCalibrationOutput Output
-        {
-            get
-            {
-                return _output;
-            }
-            set
-            {
-                _output = value;
-            }
-        }
-    
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        [System.ComponentModel.DescriptionAttribute("Date of the calibration")]
         public System.DateTimeOffset? Date
         {
             get
@@ -9766,86 +8688,6 @@ namespace AindIsoForceDataSchema
             {
                 _date = value;
             }
-        }
-    
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public string Description
-        {
-            get
-            {
-                return _description;
-            }
-            set
-            {
-                _description = value;
-            }
-        }
-    
-        [Newtonsoft.Json.JsonPropertyAttribute("notes")]
-        public string Notes
-        {
-            get
-            {
-                return _notes;
-            }
-            set
-            {
-                _notes = value;
-            }
-        }
-    
-        public System.IObservable<WaterValveCalibration> Generate()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new WaterValveCalibration(this)));
-        }
-    
-        public System.IObservable<WaterValveCalibration> Generate<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new WaterValveCalibration(this));
-        }
-    
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            stringBuilder.Append("DeviceName = " + _deviceName + ", ");
-            stringBuilder.Append("Input = " + _input + ", ");
-            stringBuilder.Append("Output = " + _output + ", ");
-            stringBuilder.Append("Date = " + _date + ", ");
-            stringBuilder.Append("Description = " + _description + ", ");
-            stringBuilder.Append("Notes = " + _notes);
-            return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class WaterValveCalibrationInput
-    {
-    
-        private System.Collections.Generic.List<Measurement> _measurements;
-    
-        public WaterValveCalibrationInput()
-        {
-            _measurements = new System.Collections.Generic.List<Measurement>();
-        }
-    
-        protected WaterValveCalibrationInput(WaterValveCalibrationInput other)
-        {
-            _measurements = other._measurements;
         }
     
         /// <summary>
@@ -9864,70 +8706,6 @@ namespace AindIsoForceDataSchema
             {
                 _measurements = value;
             }
-        }
-    
-        public System.IObservable<WaterValveCalibrationInput> Generate()
-        {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new WaterValveCalibrationInput(this)));
-        }
-    
-        public System.IObservable<WaterValveCalibrationInput> Generate<TSource>(System.IObservable<TSource> source)
-        {
-            return System.Reactive.Linq.Observable.Select(source, _ => new WaterValveCalibrationInput(this));
-        }
-    
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
-        {
-            stringBuilder.Append("Measurements = " + _measurements);
-            return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
-    }
-
-
-    /// <summary>
-    /// Output for water valve calibration class
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
-    [System.ComponentModel.DescriptionAttribute("Output for water valve calibration class")]
-    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
-    [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class WaterValveCalibrationOutput
-    {
-    
-        private System.Collections.Generic.Dictionary<string, double> _intervalAverage;
-    
-        private double _slope;
-    
-        private double _offset;
-    
-        private double? _r2;
-    
-        private System.Collections.Generic.List<double> _validDomain;
-    
-        public WaterValveCalibrationOutput()
-        {
-        }
-    
-        protected WaterValveCalibrationOutput(WaterValveCalibrationOutput other)
-        {
-            _intervalAverage = other._intervalAverage;
-            _slope = other._slope;
-            _offset = other._offset;
-            _r2 = other._r2;
-            _validDomain = other._validDomain;
         }
     
         /// <summary>
@@ -9986,7 +8764,6 @@ namespace AindIsoForceDataSchema
         /// <summary>
         /// R2 metric from the linear model.
         /// </summary>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
         [Newtonsoft.Json.JsonPropertyAttribute("r2")]
         [System.ComponentModel.DescriptionAttribute("R2 metric from the linear model.")]
         public double? R2
@@ -10019,18 +8796,20 @@ namespace AindIsoForceDataSchema
             }
         }
     
-        public System.IObservable<WaterValveCalibrationOutput> Generate()
+        public System.IObservable<WaterValveCalibration> Generate()
         {
-            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new WaterValveCalibrationOutput(this)));
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new WaterValveCalibration(this)));
         }
     
-        public System.IObservable<WaterValveCalibrationOutput> Generate<TSource>(System.IObservable<TSource> source)
+        public System.IObservable<WaterValveCalibration> Generate<TSource>(System.IObservable<TSource> source)
         {
-            return System.Reactive.Linq.Observable.Select(source, _ => new WaterValveCalibrationOutput(this));
+            return System.Reactive.Linq.Observable.Select(source, _ => new WaterValveCalibration(this));
         }
     
         protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
+            stringBuilder.Append("Date = " + _date + ", ");
+            stringBuilder.Append("Measurements = " + _measurements + ", ");
             stringBuilder.Append("IntervalAverage = " + _intervalAverage + ", ");
             stringBuilder.Append("Slope = " + _slope + ", ");
             stringBuilder.Append("Offset = " + _offset + ", ");
@@ -10054,7 +8833,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "family")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -10099,7 +8878,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "family")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -10144,7 +8923,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "family")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -10189,7 +8968,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "family")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -10234,7 +9013,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "family")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -10279,7 +9058,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "family")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
@@ -10324,7 +9103,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class TruncationParameters2
@@ -10368,7 +9147,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
     public partial class ScalingParameters2
@@ -10412,7 +9191,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SpinnakerCameraColorProcessing
     {
@@ -10425,7 +9204,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TruncationParametersTruncationMode
     {
@@ -10575,7 +9354,7 @@ namespace AindIsoForceDataSchema
         }
     }
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Block>))]
@@ -10616,7 +9395,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Scalar>))]
@@ -10665,7 +9444,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Reward>))]
@@ -10706,7 +9485,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<VideoWriterFfmpeg>))]
@@ -10747,7 +9526,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     public partial class MatchInterTrialInterval : Bonsai.Expressions.SingleArgumentExpressionBuilder
@@ -10786,7 +9565,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     public partial class MatchDuration : Bonsai.Expressions.SingleArgumentExpressionBuilder
@@ -10825,7 +9604,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     public partial class MatchForceDuration : Bonsai.Expressions.SingleArgumentExpressionBuilder
@@ -10864,7 +9643,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     public partial class MatchAmount : Bonsai.Expressions.SingleArgumentExpressionBuilder
@@ -10903,7 +9682,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     public partial class MatchDelay : Bonsai.Expressions.SingleArgumentExpressionBuilder
@@ -10942,7 +9721,7 @@ namespace AindIsoForceDataSchema
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     public partial class MatchTimeToCollect : Bonsai.Expressions.SingleArgumentExpressionBuilder
@@ -10984,7 +9763,7 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Serializes a sequence of data model objects into JSON strings.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Serializes a sequence of data model objects into JSON strings.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Transform)]
     [Bonsai.CombinatorAttribute()]
@@ -10997,11 +9776,6 @@ namespace AindIsoForceDataSchema
         {
             var formatting = Formatting;
             return System.Reactive.Linq.Observable.Select(source, value => Newtonsoft.Json.JsonConvert.SerializeObject(value, formatting));
-        }
-
-        public System.IObservable<string> Process(System.IObservable<AindBehaviorSessionModel> source)
-        {
-            return Process<AindBehaviorSessionModel>(source);
         }
 
         public System.IObservable<string> Process(System.IObservable<AindIsoForceRig> source)
@@ -11019,24 +9793,9 @@ namespace AindIsoForceDataSchema
             return Process<AindIsoForceTaskParameters>(source);
         }
 
-        public System.IObservable<string> Process(System.IObservable<AindManipulatorAdditionalSettings> source)
-        {
-            return Process<AindManipulatorAdditionalSettings>(source);
-        }
-
         public System.IObservable<string> Process(System.IObservable<AindManipulatorCalibration> source)
         {
             return Process<AindManipulatorCalibration>(source);
-        }
-
-        public System.IObservable<string> Process(System.IObservable<AindManipulatorCalibrationInput> source)
-        {
-            return Process<AindManipulatorCalibrationInput>(source);
-        }
-
-        public System.IObservable<string> Process(System.IObservable<AindManipulatorCalibrationOutput> source)
-        {
-            return Process<AindManipulatorCalibrationOutput>(source);
         }
 
         public System.IObservable<string> Process(System.IObservable<AindManipulatorDevice> source)
@@ -11169,14 +9928,9 @@ namespace AindIsoForceDataSchema
             return Process<JoystickForce>(source);
         }
 
-        public System.IObservable<string> Process(System.IObservable<LoadCellCalibrationInput> source)
+        public System.IObservable<string> Process(System.IObservable<LoadCellChannelCalibration> source)
         {
-            return Process<LoadCellCalibrationInput>(source);
-        }
-
-        public System.IObservable<string> Process(System.IObservable<LoadCellCalibrationOutput> source)
-        {
-            return Process<LoadCellCalibrationOutput>(source);
+            return Process<LoadCellChannelCalibration>(source);
         }
 
         public System.IObservable<string> Process(System.IObservable<LoadCellInput> source)
@@ -11194,16 +9948,6 @@ namespace AindIsoForceDataSchema
             return Process<LoadCellsCalibration>(source);
         }
 
-        public System.IObservable<string> Process(System.IObservable<LoadCellsCalibrationInput> source)
-        {
-            return Process<LoadCellsCalibrationInput>(source);
-        }
-
-        public System.IObservable<string> Process(System.IObservable<LoadCellsCalibrationOutput> source)
-        {
-            return Process<LoadCellsCalibrationOutput>(source);
-        }
-
         public System.IObservable<string> Process(System.IObservable<LogNormalDistribution> source)
         {
             return Process<LogNormalDistribution>(source);
@@ -11217,16 +9961,6 @@ namespace AindIsoForceDataSchema
         public System.IObservable<string> Process(System.IObservable<ManipulatorPosition> source)
         {
             return Process<ManipulatorPosition>(source);
-        }
-
-        public System.IObservable<string> Process(System.IObservable<MeasuredOffset> source)
-        {
-            return Process<MeasuredOffset>(source);
-        }
-
-        public System.IObservable<string> Process(System.IObservable<MeasuredWeight> source)
-        {
-            return Process<MeasuredWeight>(source);
         }
 
         public System.IObservable<string> Process(System.IObservable<Measurement> source)
@@ -11319,6 +10053,11 @@ namespace AindIsoForceDataSchema
             return Process<ScalingParameters>(source);
         }
 
+        public System.IObservable<string> Process(System.IObservable<Session> source)
+        {
+            return Process<Session>(source);
+        }
+
         public System.IObservable<string> Process(System.IObservable<SpinnakerCamera> source)
         {
             return Process<SpinnakerCamera>(source);
@@ -11374,16 +10113,6 @@ namespace AindIsoForceDataSchema
             return Process<WaterValveCalibration>(source);
         }
 
-        public System.IObservable<string> Process(System.IObservable<WaterValveCalibrationInput> source)
-        {
-            return Process<WaterValveCalibrationInput>(source);
-        }
-
-        public System.IObservable<string> Process(System.IObservable<WaterValveCalibrationOutput> source)
-        {
-            return Process<WaterValveCalibrationOutput>(source);
-        }
-
         public System.IObservable<string> Process(System.IObservable<InterTrialInterval> source)
         {
             return Process<InterTrialInterval>(source);
@@ -11429,18 +10158,14 @@ namespace AindIsoForceDataSchema
     /// <summary>
     /// Deserializes a sequence of JSON strings into data model objects.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.6.1.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Deserializes a sequence of JSON strings into data model objects.")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Transform)]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<AindBehaviorSessionModel>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<AindIsoForceRig>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<AindIsoForceTaskLogic>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<AindIsoForceTaskParameters>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<AindManipulatorAdditionalSettings>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<AindManipulatorCalibration>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<AindManipulatorCalibrationInput>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<AindManipulatorCalibrationOutput>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<AindManipulatorDevice>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<AxisConfiguration>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<BaseModel>))]
@@ -11467,18 +10192,13 @@ namespace AindIsoForceDataSchema
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<HarpLicketySplit>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<HarpWhiteRabbit>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<JoystickForce>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<LoadCellCalibrationInput>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<LoadCellCalibrationOutput>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<LoadCellChannelCalibration>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<LoadCellInput>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<LoadCells>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<LoadCellsCalibration>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<LoadCellsCalibrationInput>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<LoadCellsCalibrationOutput>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<LogNormalDistribution>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<LogNormalDistributionParameters>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ManipulatorPosition>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<MeasuredOffset>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<MeasuredWeight>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Measurement>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<NormalDistribution>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<NormalDistributionParameters>))]
@@ -11497,6 +10217,7 @@ namespace AindIsoForceDataSchema
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Scalar>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ScalarDistributionParameter>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ScalingParameters>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Session>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<SpinnakerCamera>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ThresholdedJoystickForce>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<TimestampedThresholdedJoystickForce>))]
@@ -11508,8 +10229,6 @@ namespace AindIsoForceDataSchema
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<VideoWriterFfmpeg>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<VideoWriterOpenCv>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<WaterValveCalibration>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<WaterValveCalibrationInput>))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<WaterValveCalibrationOutput>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<InterTrialInterval>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Duration>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ForceDuration>))]
@@ -11523,7 +10242,7 @@ namespace AindIsoForceDataSchema
     
         public DeserializeFromJson()
         {
-            Type = new Bonsai.Expressions.TypeMapping<AindBehaviorSessionModel>();
+            Type = new Bonsai.Expressions.TypeMapping<AindIsoForceRig>();
         }
 
         public Bonsai.Expressions.TypeMapping Type { get; set; }
