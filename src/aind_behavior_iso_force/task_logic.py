@@ -1,8 +1,7 @@
 from enum import Enum, IntFlag
 from typing import Annotated, Any, Generic, List, Literal, Optional, Self, TypeVar, Union
 
-import aind_behavior_services.task_logic.distributions as distributions
-from aind_behavior_services.task_logic import AindBehaviorTaskLogicModel, TaskParameters
+from aind_behavior_services.task import Task, TaskParameters, distributions
 from pydantic import BaseModel, Field, model_validator
 from typing_extensions import TypeAliasType
 
@@ -132,9 +131,11 @@ class ResponsePeriod(BaseModel):
 
     @model_validator(mode="after")
     def _validate_rewarded_action_vs_threshold(self) -> Self:
-        if self.rewarded_action != Action.NONE:
-            if self.force_threshold.from_action(self.rewarded_action) is None:
-                raise ValueError("Force threshold must be set for the rewarded action.")
+        for action in (
+            self.rewarded_action
+        ):  # In python 3.11+, iterating over an IntFlag yields the individual flags that are set
+            if self.force_threshold.from_action(action) is None:
+                raise ValueError(f"Force threshold must be set for rewarded action: {action.name}.")
         return self
 
 
@@ -149,7 +150,7 @@ class Reward(BaseModel):
 
 
 class OperantReward(Reward):
-    reward_type: Literal["Operant"] = "Operant"
+    reward_type: Literal["Operant"] = "Operant"  # type: ignore[assignment]
     time_to_collect: distributions.Distribution = Field(
         default=scalar_value(0.5), description="Time to collect the reward", validate_default=True
     )
@@ -194,14 +195,14 @@ class BlockGenerator(BaseModel):
     block_size: distributions.Distribution = Field(
         default=uniform_distribution_value(min=50, max=60), validate_default=True, description="Size of the block"
     )
-    trial_template: Trial = Field(..., description="Statistics of the trials in the block")
+    trial_template: Trial = Field(description="Statistics of the trials in the block")
 
 
 BlockStatistics = TypeAliasType("BlockStatistics", Annotated[Union[Block, BlockGenerator], Field(discriminator="mode")])
 
 
 class Environment(BaseModel):
-    block_statistics: List[BlockStatistics] = Field(..., description="Statistics of the environment")
+    block_statistics: List[BlockStatistics] = Field(description="Statistics of the environment")
     shuffle: bool = Field(default=False, description="Whether to shuffle the blocks")
     repeat_count: Optional[int] = Field(
         default=0,
@@ -210,7 +211,7 @@ class Environment(BaseModel):
 
 
 class LoadCellInput(BaseModel):
-    channel: lcc.LoadCellChannel = Field(..., description="Load cell channel number")
+    channel: lcc.LoadCellChannel = Field(description="Load cell channel number")
     is_inverted: bool = Field(default=False, description="Whether the load cell is inverted")
 
 
@@ -230,36 +231,36 @@ class OperationControl(BaseModel):
 
 
 class AindIsoForceTaskParameters(TaskParameters):
-    environment: Environment = Field(..., description="Environment settings")
+    environment: Environment = Field(description="Environment settings")
     operation_control: OperationControl = Field(
         default=OperationControl(), validate_default=True, description="Operation control"
     )
 
 
-class AindIsoForceTaskLogic(AindBehaviorTaskLogicModel):
+class AindIsoForceTaskLogic(Task):
     version: Literal[__semver__] = __semver__
     name: Literal["AindIsoForce"] = Field(default="AindIsoForce", description="Name of the task logic")
-    task_parameters: AindIsoForceTaskParameters = Field(..., description="Parameters of the task logic")
+    task_parameters: AindIsoForceTaskParameters = Field(description="Parameters of the task logic")
 
 
 ## Extra data-types
 
 
 class JoystickForce(BaseModel):
-    left: float = Field(..., description="Force applied to the left axis")
-    right: float = Field(..., description="Force applied to the right axis")
-    push: float = Field(..., description="Force applied to the push axis")
-    pull: float = Field(..., description="Force applied to the pull axis")
-    right_left: float = Field(..., description="Signed force applied to the right and left axes combined")
-    push_pull: float = Field(..., description="Signed force applied to the push and pull axes combined")
+    left: float = Field(description="Force applied to the left axis")
+    right: float = Field(description="Force applied to the right axis")
+    push: float = Field(description="Force applied to the push axis")
+    pull: float = Field(description="Force applied to the pull axis")
+    right_left: float = Field(description="Signed force applied to the right and left axes combined")
+    push_pull: float = Field(description="Signed force applied to the push and pull axes combined")
 
 
 class ThresholdedJoystickForce(BaseModel):
-    left: bool = Field(..., description="Whether the left force is above the threshold")
-    right: bool = Field(..., description="Whether the right force is above the threshold")
-    push: bool = Field(..., description="Whether the push force is above the threshold")
-    pull: bool = Field(..., description="Whether the pull force is above the threshold")
-    joystick_force: JoystickForce = Field(..., description="Joystick force values that triggered the event")
+    left: bool = Field(description="Whether the left force is above the threshold")
+    right: bool = Field(description="Whether the right force is above the threshold")
+    push: bool = Field(description="Whether the push force is above the threshold")
+    pull: bool = Field(description="Whether the pull force is above the threshold")
+    joystick_force: JoystickForce = Field(description="Joystick force values that triggered the event")
 
 
 T = TypeVar("T", bound=Any)
@@ -271,9 +272,9 @@ class Timestamped(BaseModel, Generic[T]):
 
 
 class CrossingOutcome(BaseModel):
-    action: Action = Field(..., description="Action that was taken")
-    duration: float = Field(..., description="Duration of the crossing")
-    start: Timestamped[ThresholdedJoystickForce] = Field(..., description="Start of the crossing")
-    end: Timestamped[ThresholdedJoystickForce] = Field(..., description="End of the crossing")
-    is_valid_duration: bool = Field(..., description="Whether the crossing duration is valid")
-    is_reward_action: bool = Field(..., description="Whether the crossing is a reward action")
+    action: Action = Field(description="Action that was taken")
+    duration: float = Field(description="Duration of the crossing")
+    start: Timestamped[ThresholdedJoystickForce] = Field(description="Start of the crossing")
+    end: Timestamped[ThresholdedJoystickForce] = Field(description="End of the crossing")
+    is_valid_duration: bool = Field(description="Whether the crossing duration is valid")
+    is_reward_action: bool = Field(description="Whether the crossing is a reward action")

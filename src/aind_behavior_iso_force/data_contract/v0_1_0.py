@@ -2,7 +2,8 @@ from pathlib import Path
 from typing import Any, Optional
 
 from aind_behavior_services.data_types import SoftwareEvent
-from aind_behavior_services.session import AindBehaviorSessionModel
+from aind_behavior_services.rig.load_cells import LoadCellsCalibration
+from aind_behavior_services.session import Session
 from contraqctor.contract import Dataset, DataStreamCollection
 from contraqctor.contract.camera import Camera
 from contraqctor.contract.csv import Csv
@@ -13,7 +14,7 @@ from contraqctor.contract.harp import (
 from contraqctor.contract.json import ManyPydanticModel, PydanticModel
 from contraqctor.contract.mux import MapFromPaths
 
-from .. import __semver__, rig, task_logic
+from .. import __semver__, task_logic
 from ..rig import AindIsoForceRig
 from ..task_logic import AindIsoForceTaskLogic
 
@@ -146,7 +147,7 @@ def dataset(
                                 description="Load cells calibration data.",
                                 reader_params=ManyPydanticModel.make_params(
                                     root_path / "behavior/SoftwareEvents/LoadCellsCalibration.json",
-                                    model=SoftwareEvent[rig.lcc.LoadCellCalibrationOutput],
+                                    model=SoftwareEvent[LoadCellsCalibration],
                                     index="Seconds",
                                 ),
                             ),
@@ -308,7 +309,7 @@ def dataset(
                             PydanticModel(
                                 name="Session",
                                 reader_params=PydanticModel.make_params(
-                                    model=AindBehaviorSessionModel,
+                                    model=Session,
                                     path=root_path / "behavior/Logs/session_input.json",
                                 ),
                             ),

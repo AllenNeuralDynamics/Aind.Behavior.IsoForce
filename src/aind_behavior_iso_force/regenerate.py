@@ -2,8 +2,8 @@ from pathlib import Path
 from typing import Union
 
 import pydantic
-from aind_behavior_services.session import AindBehaviorSessionModel
-from aind_behavior_services.utils import BonsaiSgenSerializers, convert_pydantic_to_bonsai
+from aind_behavior_services.schema import BonsaiSgenSerializers, convert_pydantic_to_bonsai
+from aind_behavior_services.session import Session
 
 from .rig import AindIsoForceRig
 from .task_logic import AindIsoForceTaskLogic, CrossingOutcome
@@ -17,7 +17,7 @@ def main():
     models = [
         AindIsoForceTaskLogic,
         AindIsoForceRig,
-        AindBehaviorSessionModel,
+        Session,
         CrossingOutcome,
     ]
     model = pydantic.RootModel[Union[tuple(models)]]
