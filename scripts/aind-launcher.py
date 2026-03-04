@@ -43,7 +43,7 @@ async def iso_force_experiment(launcher: Launcher) -> None:
         temp_directory=launcher.temp_dir,
         rig=rig,
         session=session,
-        task_logic=task_logic,
+        task=task_logic,
     )
     await bonsai_app.run_async()
 

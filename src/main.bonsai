@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.9.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:p1="clr-namespace:AindIsoForceDataSchema;assembly=Extensions"
@@ -29,7 +29,7 @@
   <Workflow>
     <Nodes>
       <Expression xsi:type="ExternalizedMapping">
-        <Property Name="TaskLogicPath" />
+        <Property Name="TaskLogicPath" DisplayName="TaskPath" />
         <Property Name="RigPath" />
         <Property Name="SessionPath" />
       </Expression>
@@ -1953,290 +1953,11 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="rx:SubscribeWhen" />
-      </Expression>
-      <Expression xsi:type="GroupWorkflow">
-        <Name>ControlUserInterface</Name>
-        <Workflow>
-          <Nodes>
-            <Expression xsi:type="ExternalizedMapping">
-              <Property Name="Value" DisplayName="EnableExperimentUI" />
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="BooleanProperty">
-                <Value>true</Value>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="rx:Take">
-                <rx:Count>1</rx:Count>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="rx:BehaviorSubject">
-              <Name>EnableExperimentUI</Name>
-            </Expression>
-            <Expression xsi:type="IncludeWorkflow" Path="AllenNeuralDynamics.AindManipulator:AindManipulatorGui.bonsai" />
-            <Expression xsi:type="VisualizerMapping">
-              <VisualizerType xsi:type="TypeMapping" TypeArguments="gui:TableLayoutPanelVisualizer" />
-            </Expression>
-            <Expression xsi:type="IncludeWorkflow" Path="Extensions\LauncherControl.bonsai" />
-            <Expression xsi:type="VisualizerMapping">
-              <VisualizerType xsi:type="TypeMapping" TypeArguments="gui:TableLayoutPanelVisualizer" />
-            </Expression>
-            <Expression xsi:type="IncludeWorkflow" Path="Extensions\ValveGui.bonsai">
-              <Interval>PT0.5S</Interval>
-              <OpeningTimeMs>100</OpeningTimeMs>
-              <Repeats>200</Repeats>
-            </Expression>
-            <Expression xsi:type="VisualizerMapping">
-              <VisualizerType xsi:type="TypeMapping" TypeArguments="gui:TableLayoutPanelVisualizer" />
-            </Expression>
-            <Expression xsi:type="GroupWorkflow">
-              <Name>HwShortcuts</Name>
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="gui:ButtonBuilder">
-                    <gui:Name>ForceReward</gui:Name>
-                    <gui:Enabled>true</gui:Enabled>
-                    <gui:Visible>true</gui:Visible>
-                    <gui:Text>ForceReward</gui:Text>
-                  </Expression>
-                  <Expression xsi:type="rx:PublishSubject">
-                    <Name>ForceReward</Name>
-                  </Expression>
-                  <Expression xsi:type="VisualizerMapping">
-                    <VisualizerType xsi:type="TypeMapping" TypeArguments="gui:ButtonVisualizer" />
-                  </Expression>
-                  <Expression xsi:type="gui:TableLayoutPanelBuilder">
-                    <gui:Name>HwShortcuts</gui:Name>
-                    <gui:Enabled>true</gui:Enabled>
-                    <gui:Visible>true</gui:Visible>
-                    <gui:Font>Microsoft Sans Serif, 20pt</gui:Font>
-                    <gui:ColumnCount>3</gui:ColumnCount>
-                    <gui:RowCount>3</gui:RowCount>
-                    <gui:ColumnStyles />
-                    <gui:RowStyles />
-                    <gui:CellSpans />
-                  </Expression>
-                  <Expression xsi:type="WorkflowOutput" />
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>ForceReward</Name>
-                  </Expression>
-                  <Expression xsi:type="Annotation">
-                    <Name>DefaultRewardAmount</Name>
-                    <Text><![CDATA[]]></Text>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="FloatProperty">
-                      <Value>3</Value>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:Take">
-                      <rx:Count>1</rx:Count>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="rx:WithLatestFrom" />
-                  </Expression>
-                  <Expression xsi:type="MemberSelector">
-                    <Selector>Item2</Selector>
-                  </Expression>
-                  <Expression xsi:type="MulticastSubject">
-                    <Name>GiveReward</Name>
-                  </Expression>
-                </Nodes>
-                <Edges>
-                  <Edge From="0" To="1" Label="Source1" />
-                  <Edge From="1" To="2" Label="Source1" />
-                  <Edge From="2" To="3" Label="Source1" />
-                  <Edge From="3" To="4" Label="Source1" />
-                  <Edge From="5" To="9" Label="Source1" />
-                  <Edge From="6" To="7" Label="Source1" />
-                  <Edge From="7" To="8" Label="Source1" />
-                  <Edge From="8" To="9" Label="Source2" />
-                  <Edge From="9" To="10" Label="Source1" />
-                  <Edge From="10" To="11" Label="Source1" />
-                </Edges>
-              </Workflow>
-            </Expression>
-            <Expression xsi:type="VisualizerMapping">
-              <VisualizerType xsi:type="TypeMapping" TypeArguments="gui:TableLayoutPanelVisualizer" />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="IntProperty">
                 <Value>0</Value>
               </Combinator>
-            </Expression>
-            <Expression xsi:type="rx:Visualizer">
-              <Name>LoadCellControl</Name>
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>EnableExperimentUI</Name>
-                  </Expression>
-                  <Expression xsi:type="PropertyMapping">
-                    <PropertyMappings>
-                      <Property Name="Enabled" />
-                    </PropertyMappings>
-                  </Expression>
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>CalibratingLoadCells</Name>
-                  </Expression>
-                  <Expression xsi:type="scr:ExpressionTransform">
-                    <scr:Name>Prompt</scr:Name>
-                    <scr:Expression>it ? "Calibrating..." : "Calibrate Load Cells"</scr:Expression>
-                  </Expression>
-                  <Expression xsi:type="PropertyMapping">
-                    <PropertyMappings>
-                      <Property Name="Text" />
-                    </PropertyMappings>
-                  </Expression>
-                  <Expression xsi:type="gui:ButtonBuilder">
-                    <gui:Name>TriggerLoadCellCalibration</gui:Name>
-                    <gui:Enabled>true</gui:Enabled>
-                    <gui:Visible>true</gui:Visible>
-                    <gui:Text>TriggerLoadCellCalibration</gui:Text>
-                  </Expression>
-                  <Expression xsi:type="rx:Sink">
-                    <Workflow>
-                      <Nodes>
-                        <Expression xsi:type="WorkflowInput">
-                          <Name>Source1</Name>
-                        </Expression>
-                        <Expression xsi:type="Unit" />
-                        <Expression xsi:type="MulticastSubject">
-                          <Name>CalibrateLoadCells</Name>
-                        </Expression>
-                        <Expression xsi:type="WorkflowOutput" />
-                      </Nodes>
-                      <Edges>
-                        <Edge From="0" To="1" Label="Source1" />
-                        <Edge From="1" To="2" Label="Source1" />
-                        <Edge From="2" To="3" Label="Source1" />
-                      </Edges>
-                    </Workflow>
-                  </Expression>
-                  <Expression xsi:type="VisualizerMapping">
-                    <VisualizerType xsi:type="TypeMapping" TypeArguments="gui:ButtonVisualizer" />
-                  </Expression>
-                  <Expression xsi:type="gui:TableLayoutPanelBuilder">
-                    <gui:Name>LoadCellCalibration</gui:Name>
-                    <gui:Enabled>true</gui:Enabled>
-                    <gui:Visible>true</gui:Visible>
-                    <gui:ColumnCount>1</gui:ColumnCount>
-                    <gui:RowCount>1</gui:RowCount>
-                    <gui:ColumnStyles />
-                    <gui:RowStyles />
-                    <gui:CellSpans />
-                  </Expression>
-                  <Expression xsi:type="VisualizerMapping" />
-                  <Expression xsi:type="SubscribeSubject">
-                    <Name>HarpLoadCellsEvents</Name>
-                  </Expression>
-                  <Expression xsi:type="p11:Parse">
-                    <harp:Register xsi:type="p11:TimestampedLoadCellData" />
-                  </Expression>
-                  <Expression xsi:type="zg:RollingGraphBuilder">
-                    <zg:IndexSelector>Seconds</zg:IndexSelector>
-                    <zg:ValueSelector>Value.Channel0,Value.Channel1,Value.Channel2,Value.Channel3,Value.Channel4,Value.Channel5,Value.Channel6,Value.Channel7</zg:ValueSelector>
-                    <zg:SymbolType>None</zg:SymbolType>
-                    <zg:LineWidth>1</zg:LineWidth>
-                    <zg:CurveSettings />
-                    <zg:Capacity>5000</zg:Capacity>
-                    <zg:Min xsi:nil="true" />
-                    <zg:Max xsi:nil="true" />
-                  </Expression>
-                  <Expression xsi:type="VisualizerMapping" />
-                  <Expression xsi:type="gui:TableLayoutPanelBuilder">
-                    <gui:Name>Calibration</gui:Name>
-                    <gui:Enabled>true</gui:Enabled>
-                    <gui:Visible>true</gui:Visible>
-                    <gui:ColumnCount>1</gui:ColumnCount>
-                    <gui:RowCount>2</gui:RowCount>
-                    <gui:ColumnStyles />
-                    <gui:RowStyles>
-                      <gui:RowStyle>
-                        <gui:SizeType>Percent</gui:SizeType>
-                        <gui:Height>0.92</gui:Height>
-                      </gui:RowStyle>
-                      <gui:RowStyle>
-                        <gui:SizeType>Percent</gui:SizeType>
-                        <gui:Height>0.08</gui:Height>
-                      </gui:RowStyle>
-                    </gui:RowStyles>
-                    <gui:CellSpans />
-                  </Expression>
-                  <Expression xsi:type="WorkflowOutput" />
-                </Nodes>
-                <Edges>
-                  <Edge From="0" To="1" Label="Source1" />
-                  <Edge From="1" To="5" Label="Source1" />
-                  <Edge From="2" To="3" Label="Source1" />
-                  <Edge From="3" To="4" Label="Source1" />
-                  <Edge From="4" To="5" Label="Source2" />
-                  <Edge From="5" To="6" Label="Source1" />
-                  <Edge From="6" To="7" Label="Source1" />
-                  <Edge From="7" To="8" Label="Source1" />
-                  <Edge From="8" To="9" Label="Source1" />
-                  <Edge From="9" To="14" Label="Source1" />
-                  <Edge From="10" To="11" Label="Source1" />
-                  <Edge From="11" To="12" Label="Source1" />
-                  <Edge From="12" To="13" Label="Source1" />
-                  <Edge From="13" To="14" Label="Source2" />
-                  <Edge From="14" To="15" Label="Source1" />
-                </Edges>
-              </Workflow>
-            </Expression>
-            <Expression xsi:type="VisualizerMapping">
-              <VisualizerType xsi:type="TypeMapping" TypeArguments="gui:TableLayoutPanelVisualizer" />
-            </Expression>
-            <Expression xsi:type="gui:TabControlBuilder">
-              <gui:Name>ControlUserInterface</gui:Name>
-              <gui:Enabled>true</gui:Enabled>
-              <gui:Visible>true</gui:Visible>
-              <gui:Font>Microsoft Sans Serif, 10pt</gui:Font>
-            </Expression>
-            <Expression xsi:type="ui:VisualizerWindow">
-              <ui:Text>ControlUI</ui:Text>
-              <ui:Visible>true</ui:Visible>
-              <ui:Location xsi:nil="true" />
-              <ui:Size xsi:nil="true" />
-              <ui:WindowState xsi:nil="true" />
-            </Expression>
-            <Expression xsi:type="WorkflowOutput" />
-            <Expression xsi:type="SubscribeSubject">
-              <Name>StartExperiment</Name>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="BooleanProperty">
-                <Value>false</Value>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="MulticastSubject">
-              <Name>EnableExperimentUI</Name>
-            </Expression>
-          </Nodes>
-          <Edges>
-            <Edge From="0" To="1" Label="Source1" />
-            <Edge From="1" To="2" Label="Source1" />
-            <Edge From="2" To="3" Label="Source1" />
-            <Edge From="4" To="5" Label="Source1" />
-            <Edge From="5" To="15" Label="Source1" />
-            <Edge From="6" To="7" Label="Source1" />
-            <Edge From="7" To="15" Label="Source2" />
-            <Edge From="8" To="9" Label="Source1" />
-            <Edge From="9" To="15" Label="Source3" />
-            <Edge From="10" To="11" Label="Source1" />
-            <Edge From="11" To="15" Label="Source4" />
-            <Edge From="12" To="13" Label="Source1" />
-            <Edge From="13" To="14" Label="Source1" />
-            <Edge From="14" To="15" Label="Source5" />
-            <Edge From="15" To="16" Label="Source1" />
-            <Edge From="16" To="17" Label="Source1" />
-            <Edge From="18" To="19" Label="Source1" />
-            <Edge From="19" To="20" Label="Source1" />
-          </Edges>
-        </Workflow>
       </Expression>
       <Expression xsi:type="IncludeWorkflow" Path="Extensions\Visualizers.bonsai" />
       <Expression xsi:type="GroupWorkflow">
@@ -2335,6 +2056,7 @@
       <Edge From="16" To="17" Label="Source2" />
       <Edge From="17" To="19" Label="Source1" />
       <Edge From="18" To="19" Label="Source2" />
+      <Edge From="20" To="21" Label="Source1" />
       <Edge From="23" To="24" Label="Source1" />
       <Edge From="24" To="25" Label="Source1" />
       <Edge From="25" To="26" Label="Source1" />
