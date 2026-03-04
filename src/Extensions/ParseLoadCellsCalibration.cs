@@ -1,4 +1,4 @@
-using Bonsai;
+﻿﻿using Bonsai;
 using System;
 using System.ComponentModel;
 using System.Collections.Generic;
@@ -49,14 +49,19 @@ public class ParseLoadCellsCalibration
             return calibrations;
         });
     }
-
-    public IObservable<LoadCellsCalibrations> Process(IObservable<IEnumerable<LoadCellCalibrationOutput>> source)
+    public IObservable<LoadCellsCalibrations> Process(IObservable<IEnumerable<LoadCellChannelCalibration>> source)
     {
         return source.Select(value => {
             var calibrations = new LoadCellsCalibrations();
             foreach (var calibration in value)
             {
-                calibrations.Add(new LoadCellCalibration(calibration));
+                calibrations.Add(new LoadCellCalibration
+                {
+                    Offset = calibration.Offset,
+                    Baseline = (int)calibration.Baseline,
+                    LoadCellIndex = calibration.Channel,
+                    Slope = calibration.Slope,
+                });
             }
             return calibrations;
         });
@@ -84,19 +89,6 @@ public class LoadCellCalibration{
         Offset = other.Offset;
         Baseline = other.Baseline;
         LoadCellIndex = other.LoadCellIndex;
-        Slope = other.Slope;
-    }
-
-
-    /// <summary>
-    /// Constructor to ensure conversion between LoadCellCalibrationOutput and LoadCellCalibration
-    /// </summary>
-    /// <param name="other"></param>
-    public LoadCellCalibration(LoadCellCalibrationOutput other)
-    {
-        Offset = other.Offset;
-        Baseline = (int)other.Baseline;
-        LoadCellIndex = other.Channel;
         Slope = other.Slope;
     }
 }
