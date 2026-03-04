@@ -72,9 +72,10 @@ async def iso_force_experiment(launcher: Launcher) -> None:
         return
 
     launcher.copy_logs()
-    RobocopyService(
-        source=launcher.session_directory, settings=RobocopySettings(destination=r"\\allen\aind\scratch\IsoForce\data")
-    ).transfer()
+    settings = RobocopySettings(destination=r"\\allen\aind\scratch\IsoForce\data")
+    assert launcher.session.session_name is not None, "Session name is None"
+    settings.destination = Path(settings.destination) / launcher.session.session_name
+    RobocopyService(source=launcher.session_directory, settings=settings).transfer()
     return
 
 
