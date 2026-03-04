@@ -6,6 +6,7 @@ from pydantic_settings import BaseSettings, CliApp, CliSubCommand
 from aind_behavior_iso_force import __semver__, regenerate
 from aind_behavior_iso_force.data_qc import DataQcCli
 
+
 class VersionCli(RootModel):
     root: t.Any
 
