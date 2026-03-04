@@ -74,7 +74,7 @@ To manage experiments and input files, this repository contains a launcher scrip
 uv run clabe run ./scripts/aind-launcher.py
 ```
 
-Additional arguments can be passed to the script as needed. For instance to allow the script to run with uncommited changes in the repository, the `--allow-dirty` flag can be used:
+Additional arguments can be passed to the script as needed. For instance to allow the script to run with uncommitted changes in the repository, the `--allow-dirty` flag can be used:
 
 ```powershell
 uv run clabe run ./scripts/aind-launcher.py --allow-dirty
