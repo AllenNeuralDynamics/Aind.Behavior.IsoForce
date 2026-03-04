@@ -68,21 +68,21 @@ You may need to install optional dependencies depending on the sub-commands you 
 
 # 🎮 Experiment launcher (CLABE)
 
-To manage experiments and input files, this repository contains a launcher script that can be used to run the IsoForce task. This script is located at `./src/aind_behavior_iso_force/launcher.py`. It can be run from the command line as follows:
+To manage experiments and input files, this repository contains a launcher script that can be used to run the IsoForce task. A default script is located at `./scripts/aind-launcher.py`. It can be run from the command line as follows:
 
 ```powershell
-uv run iso-force clabe
+uv run clabe run ./scripts/aind-launcher.py
 ```
 
-Additional arguments can be passed to the script as needed:
+Additional arguments can be passed to the script as needed. For instance to allow the script to run with uncommited changes in the repository, the `--allow-dirty` flag can be used:
 
 ```powershell
-uv run iso-force clabe -h
+uv run clabe run ./scripts/aind-launcher.py --allow-dirty
 ```
 
 or via a `./local/clabe.yml` file. (An example can be found in `./Examples/clabe.yml`)
 
-Additional custom launcher scripts can be created and used as needed.
+Additional custom launcher scripts can be created and used as needed. See documentation in the [`clabe` repository](https://allenneuraldynamics.github.io/clabe/) for more details.
 
 ## 🔍 Primary data quality-control
 
