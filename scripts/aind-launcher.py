@@ -7,7 +7,7 @@ from clabe.apps import AindBehaviorServicesBonsaiApp
 from clabe.data_transfer.robocopy import RobocopyService, RobocopySettings
 from clabe.launcher import Launcher, LauncherCliArgs, experiment
 from clabe.pickers import DefaultBehaviorPickerSettings
-from clabe.pickers.dataverse import DataversePicker
+from clabe.pickers.default_behavior import DefaultBehaviorPicker
 from pydantic_settings import CliApp
 
 from aind_behavior_iso_force import data_contract
@@ -19,13 +19,13 @@ logger = logging.getLogger(__name__)
 
 @experiment()
 async def iso_force_experiment(launcher: Launcher) -> None:
-    picker = DataversePicker(
+    picker = DefaultBehaviorPicker(
         launcher=launcher,
         settings=DefaultBehaviorPickerSettings(config_library_dir=r"\\allen\aind\scratch\AindBehavior.db\AindIsoForce"),
     )
 
     session = picker.pick_session(Session)
-    _, task_logic = picker.pick_trainer_state(AindIsoForceTaskLogic)
+    task_logic = picker.pick_task(AindIsoForceTaskLogic)
     rig = picker.pick_rig(AindIsoForceRig)
     ensure_rig_and_computer_name(rig)
 
