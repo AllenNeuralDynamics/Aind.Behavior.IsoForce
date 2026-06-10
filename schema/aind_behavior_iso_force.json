@@ -85,9 +85,13 @@
             }
           ]
         },
-        "manipulator": {
+        "lickometer_manipulator": {
           "$ref": "#/$defs/AindManipulatorDevice",
-          "description": "Manipulator"
+          "description": "Manipulator holding the lickometer"
+        },
+        "manipulandum_manipulator": {
+          "$ref": "#/$defs/AindManipulatorDevice",
+          "description": "Manipulator holding the manipulandum"
         },
         "calibration": {
           "$ref": "#/$defs/RigCalibration",
@@ -103,7 +107,8 @@
         "harp_lickometer",
         "harp_load_cells",
         "harp_clock_generator",
-        "manipulator",
+        "lickometer_manipulator",
+        "manipulandum_manipulator",
         "calibration"
       ],
       "title": "AindIsoForceRig",

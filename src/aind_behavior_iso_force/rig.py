@@ -16,7 +16,7 @@ class AindManipulatorDevice(aind_manipulator.AindManipulator):
 
 
 class RigCalibration(BaseModel):
-    water_valve: wvc.WaterValveCalibration = Field(default=..., description="Water valve calibration")
+    water_valve: wvc.WaterValveCalibration = Field(description="Water valve calibration")
 
 
 class AindIsoForceRig(Rig):
@@ -31,5 +31,6 @@ class AindIsoForceRig(Rig):
     harp_environment_sensor: Optional[harp.HarpEnvironmentSensor] = Field(
         default=None, description="Harp Environment sensor"
     )
-    manipulator: AindManipulatorDevice = Field(description="Manipulator")
+    lickometer_manipulator: AindManipulatorDevice = Field(description="Manipulator holding the lickometer")
+    manipulandum_manipulator: AindManipulatorDevice = Field(description="Manipulator holding the manipulandum")
     calibration: RigCalibration = Field(description="Load cells calibration")

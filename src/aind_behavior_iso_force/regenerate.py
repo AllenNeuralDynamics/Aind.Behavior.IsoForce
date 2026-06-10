@@ -8,7 +8,7 @@ from aind_behavior_services.session import Session
 from .rig import AindIsoForceRig
 from .task_logic import AindIsoForceTaskLogic, CrossingOutcome
 
-SCHEMA_ROOT = Path("./src/DataSchemas/")
+SCHEMA_ROOT = Path("./schema/")
 EXTENSIONS_ROOT = Path("./src/Extensions/")
 NAMESPACE_PREFIX = "AindIsoForceDataSchema"
 
