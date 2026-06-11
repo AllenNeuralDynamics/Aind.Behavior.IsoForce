@@ -75,7 +75,7 @@ namespace AindIsoForceDataSchema
     
         public AindIsoForceRig()
         {
-            _aindBehaviorServicesPkgVersion = "0.13.5";
+            _aindBehaviorServicesPkgVersion = "0.13.7";
             _version = "0.1.0-rc0";
             _triggeredCameraController = new CameraControllerSpinnakerCamera();
             _harpBehavior = new HarpBehavior();
@@ -554,7 +554,7 @@ namespace AindIsoForceDataSchema
     
         public AindIsoForceTaskParameters()
         {
-            _aindBehaviorServicesPkgVersion = "0.13.5";
+            _aindBehaviorServicesPkgVersion = "0.13.7";
             _environment = new Environment();
             _operationControl = new OperationControl();
         }
@@ -4003,8 +4003,8 @@ namespace AindIsoForceDataSchema
     
         public Session()
         {
-            _aindBehaviorServicesPkgVersion = "0.13.5";
-            _version = "0.13.5";
+            _aindBehaviorServicesPkgVersion = "0.13.7";
+            _version = "0.13.7";
             _experimenter = new System.Collections.Generic.List<string>();
             _allowDirtyRepo = false;
             _skipHardwareValidation = false;
