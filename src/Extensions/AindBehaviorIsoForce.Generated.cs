@@ -67,20 +67,23 @@ namespace AindIsoForceDataSchema
     
         private HarpEnvironmentSensor _harpEnvironmentSensor;
     
-        private AindManipulatorDevice _manipulator;
+        private AindManipulatorDevice _lickometerManipulator;
+    
+        private AindManipulatorDevice _manipulandumManipulator;
     
         private RigCalibration _calibration;
     
         public AindIsoForceRig()
         {
-            _aindBehaviorServicesPkgVersion = "0.13.5";
+            _aindBehaviorServicesPkgVersion = "0.13.7";
             _version = "0.1.0-rc0";
             _triggeredCameraController = new CameraControllerSpinnakerCamera();
             _harpBehavior = new HarpBehavior();
             _harpLickometer = new HarpLicketySplit();
             _harpLoadCells = new LoadCells();
             _harpClockGenerator = new HarpWhiteRabbit();
-            _manipulator = new AindManipulatorDevice();
+            _lickometerManipulator = new AindManipulatorDevice();
+            _manipulandumManipulator = new AindManipulatorDevice();
             _calibration = new RigCalibration();
         }
     
@@ -97,7 +100,8 @@ namespace AindIsoForceDataSchema
             _harpLoadCells = other._harpLoadCells;
             _harpClockGenerator = other._harpClockGenerator;
             _harpEnvironmentSensor = other._harpEnvironmentSensor;
-            _manipulator = other._manipulator;
+            _lickometerManipulator = other._lickometerManipulator;
+            _manipulandumManipulator = other._manipulandumManipulator;
             _calibration = other._calibration;
         }
     
@@ -287,20 +291,38 @@ namespace AindIsoForceDataSchema
         }
     
         /// <summary>
-        /// Manipulator
+        /// Manipulator holding the lickometer
         /// </summary>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        [Newtonsoft.Json.JsonPropertyAttribute("manipulator", Required=Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DescriptionAttribute("Manipulator")]
-        public AindManipulatorDevice Manipulator
+        [Newtonsoft.Json.JsonPropertyAttribute("lickometer_manipulator", Required=Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DescriptionAttribute("Manipulator holding the lickometer")]
+        public AindManipulatorDevice LickometerManipulator
         {
             get
             {
-                return _manipulator;
+                return _lickometerManipulator;
             }
             set
             {
-                _manipulator = value;
+                _lickometerManipulator = value;
+            }
+        }
+    
+        /// <summary>
+        /// Manipulator holding the manipulandum
+        /// </summary>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [Newtonsoft.Json.JsonPropertyAttribute("manipulandum_manipulator", Required=Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DescriptionAttribute("Manipulator holding the manipulandum")]
+        public AindManipulatorDevice ManipulandumManipulator
+        {
+            get
+            {
+                return _manipulandumManipulator;
+            }
+            set
+            {
+                _manipulandumManipulator = value;
             }
         }
     
@@ -345,7 +367,8 @@ namespace AindIsoForceDataSchema
             stringBuilder.Append("HarpLoadCells = " + _harpLoadCells + ", ");
             stringBuilder.Append("HarpClockGenerator = " + _harpClockGenerator + ", ");
             stringBuilder.Append("HarpEnvironmentSensor = " + _harpEnvironmentSensor + ", ");
-            stringBuilder.Append("Manipulator = " + _manipulator + ", ");
+            stringBuilder.Append("LickometerManipulator = " + _lickometerManipulator + ", ");
+            stringBuilder.Append("ManipulandumManipulator = " + _manipulandumManipulator + ", ");
             stringBuilder.Append("Calibration = " + _calibration);
             return true;
         }
@@ -531,7 +554,7 @@ namespace AindIsoForceDataSchema
     
         public AindIsoForceTaskParameters()
         {
-            _aindBehaviorServicesPkgVersion = "0.13.5";
+            _aindBehaviorServicesPkgVersion = "0.13.7";
             _environment = new Environment();
             _operationControl = new OperationControl();
         }
@@ -3980,8 +4003,8 @@ namespace AindIsoForceDataSchema
     
         public Session()
         {
-            _aindBehaviorServicesPkgVersion = "0.13.5";
-            _version = "0.13.5";
+            _aindBehaviorServicesPkgVersion = "0.13.7";
+            _version = "0.13.7";
             _experimenter = new System.Collections.Generic.List<string>();
             _allowDirtyRepo = false;
             _skipHardwareValidation = false;

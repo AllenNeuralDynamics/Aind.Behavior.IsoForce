@@ -42,6 +42,16 @@ def mock_rig() -> AindIsoForceRig:
         homing_order=[Axis.Y1, Axis.X, Axis.Z],
         initial_position=ManipulatorPosition(y1=0, y2=0, x=0, z=0),
     )
+    manipulandum_calibration = AindManipulatorCalibration(
+        full_step_to_mm=(ManipulatorPosition(x=0.010, y1=0.010, y2=0.010, z=0.010)),
+        axis_configuration=[
+            AxisConfiguration(axis=Axis.Y1, min_limit=-1, max_limit=15000),
+            AxisConfiguration(axis=Axis.X, min_limit=-1, max_limit=15000),
+            AxisConfiguration(axis=Axis.Z, min_limit=-1, max_limit=15000),
+        ],
+        homing_order=[Axis.Y1, Axis.X, Axis.Z],
+        initial_position=ManipulatorPosition(y1=0, y2=0, x=0, z=0),
+    )
 
     measurements = [
         Measurement(valve_open_interval=1, valve_open_time=1, water_weight=[1, 1], repeat_count=200),
@@ -79,7 +89,8 @@ def mock_rig() -> AindIsoForceRig:
         harp_behavior=harp.HarpBehavior(port_name="COM7"),
         harp_lickometer=harp.HarpLicketySplit(port_name="COM11"),
         harp_clock_generator=harp.HarpWhiteRabbit(port_name="COM10"),
-        manipulator=AindManipulatorDevice(port_name="COM9", calibration=manipulator_calibration),
+        lickometer_manipulator=AindManipulatorDevice(port_name="COM9", calibration=manipulator_calibration),
+        manipulandum_manipulator=AindManipulatorDevice(port_name="COM12", calibration=manipulandum_calibration),
         calibration=RigCalibration(water_valve=water_valve_calibration),
     )
 

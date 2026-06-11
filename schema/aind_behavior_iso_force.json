@@ -26,7 +26,7 @@
     "AindIsoForceRig": {
       "properties": {
         "aind_behavior_services_pkg_version": {
-          "default": "0.13.5",
+          "default": "0.13.7",
           "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
           "title": "aind_behavior_services package version",
           "type": "string"
@@ -85,9 +85,13 @@
             }
           ]
         },
-        "manipulator": {
+        "lickometer_manipulator": {
           "$ref": "#/$defs/AindManipulatorDevice",
-          "description": "Manipulator"
+          "description": "Manipulator holding the lickometer"
+        },
+        "manipulandum_manipulator": {
+          "$ref": "#/$defs/AindManipulatorDevice",
+          "description": "Manipulator holding the manipulandum"
         },
         "calibration": {
           "$ref": "#/$defs/RigCalibration",
@@ -103,7 +107,8 @@
         "harp_lickometer",
         "harp_load_cells",
         "harp_clock_generator",
-        "manipulator",
+        "lickometer_manipulator",
+        "manipulandum_manipulator",
         "calibration"
       ],
       "title": "AindIsoForceRig",
@@ -172,7 +177,7 @@
           "title": "Rng Seed"
         },
         "aind_behavior_services_pkg_version": {
-          "default": "0.13.5",
+          "default": "0.13.7",
           "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
           "title": "aind_behavior_services package version",
           "type": "string"
@@ -2330,14 +2335,14 @@
     "Session": {
       "properties": {
         "aind_behavior_services_pkg_version": {
-          "default": "0.13.5",
+          "default": "0.13.7",
           "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
           "title": "aind_behavior_services package version",
           "type": "string"
         },
         "version": {
-          "const": "0.13.5",
-          "default": "0.13.5",
+          "const": "0.13.7",
+          "default": "0.13.7",
           "title": "Version",
           "type": "string"
         },
